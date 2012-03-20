@@ -113,7 +113,8 @@ set mouse=a
 syntax on
 "highlight Normal ctermbg=black ctermfg=grey
 "highlight StatusLine term=none cterm=none ctermfg=black ctermbg=grey
-"highlight CursorLine term=none cterm=none ctermfg=none ctermbg=darkgray
+highlight CursorLine term=none cterm=none ctermfg=none ctermbg=darkgray
+set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
 set laststatus=2
 set nohlsearch " 検索キーワードをハイライトしないように設定
