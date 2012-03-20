@@ -130,11 +130,18 @@ set incsearch
 set wildmenu
 
 "ショートカットキー
-nmap <silent> <C-b> :write<CR>:make<CR>
-imap <silent> <C-b> <C-o>:write<CR><C-o>:make<CR>
-
-nmap <silent> <F5> :!a.exe<CR>
-imap <silent> <F5> <C-o>:!a.exe<CR>
+if has('win32') || has('win64')
+	nmap <silent> <C-b> :write<CR>:make<CR>
+	imap <silent> <C-b> <C-o>:write<CR><C-o>:make<CR>
+	nmap <silent> <F5> :!a.exe<CR>
+	imap <silent> <F5> <C-o>:!a.exe<CR>
+else
+	nmap <silent> <C-b> :write<CR>:make linux<CR>
+	imap <silent> <C-b> <C-o>:write<CR><C-o>:make linux<CR>
+	nmap <silent> <F5> :!./a.out<CR>
+	imap <silent> <F5> <C-o>:!./a.out<CR>
+	
+endif
 
 " 自動的にQuickFixを開く
 autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
