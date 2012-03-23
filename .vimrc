@@ -18,14 +18,14 @@ Bundle 'Shougo/unite.vim'
 Bundle 'mattn/zencoding-vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'tyru/open-browser.vim'
 " www.vim.orgにあるplugin
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'DirDiff.vim'
 Bundle 'TwitVim'
  " non github repos
- Bundle 'git://git.wincent.com/command-t.git'
-
+Bundle 'git://git.wincent.com/command-t.git'
 filetype plugin indent on
 
 " 文字コード設定
@@ -149,3 +149,16 @@ autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
 
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
+
+let g:quickrun_config = {}
+if has('win32') || has('win64')
+let g:quickrun_config['markdown'] = {
+	\ 'outputter': 'browser',
+	\ 'command': 'c:/Ruby193/bin/ruby',
+	\ 'cmdopt': '-Ku c:/Ruby193/bin/redcarpet'
+	\ }
+else
+let g:quickrun_config['markdown'] = {
+	\ 'outputter': 'browser'
+	\ }
+endif
