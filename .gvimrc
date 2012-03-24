@@ -1,10 +1,10 @@
-" ƒJƒ‰[İ’è:
+" ã‚«ãƒ©ãƒ¼è¨­å®š:
 colorscheme pablo
 
-" ƒc[ƒ‹ƒo[‚ğíœ
+" ãƒ„ãƒ¼ãƒ«ãƒãƒ¼ã‚’å‰Šé™¤
 set guioptions-=T
 
-"ƒƒjƒ…[‚ğíœ
+"ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’å‰Šé™¤
 set guioptions-=m
 
 if has('win64')

@@ -9,7 +9,7 @@ endif
 set rtp+=$DOTVIM/bundle/vundle
 call vundle#rc('$DOTVIM/bundle')
 Bundle 'gmarik/vundle'
-" github‚É‚ ‚éplugin
+" githubã«ã‚ã‚‹plugin
 Bundle 'thinca/vim-quickrun'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
@@ -20,7 +20,7 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'tyru/open-browser.vim'
-" www.vim.org‚É‚ ‚éplugin
+" www.vim.orgã«ã‚ã‚‹plugin
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'DirDiff.vim'
@@ -29,12 +29,12 @@ Bundle 'TwitVim'
 Bundle 'git://git.wincent.com/command-t.git'
 filetype plugin indent on
 
-" •¶šƒR[ƒhİ’è
-"if has('gui_running') && !has('unix')
-"  set encoding=utf-8
-"endif
+" æ–‡å­—ã‚³ãƒ¼ãƒ‰è¨­å®š
+if has('gui_running') && !has('unix')
+  set encoding=utf-8
+endif
 
-" •¶šƒR[ƒh‚Ì©“®”F¯
+" æ–‡å­—ã‚³ãƒ¼ãƒ‰ã®è‡ªå‹•èªè­˜
 if &encoding !=# 'utf-8'
   set encoding=japan
   set fileencoding=japan
@@ -42,16 +42,16 @@ endif
 if has('iconv')
   let s:enc_euc = 'euc-jp'
   let s:enc_jis = 'iso-2022-jp'
-  " iconv‚ªeucJP-ms‚É‘Î‰‚µ‚Ä‚¢‚é‚©‚ğƒ`ƒFƒbƒN
+  " iconvãŒeucJP-msã«å¯¾å¿œã—ã¦ã„ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯
   if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
     let s:enc_euc = 'eucjp-ms'
     let s:enc_jis = 'iso-2022-jp-3'
-  " iconv‚ªJISX0213‚É‘Î‰‚µ‚Ä‚¢‚é‚©‚ğƒ`ƒFƒbƒN
+  " iconvãŒJISX0213ã«å¯¾å¿œã—ã¦ã„ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯
   elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
     let s:enc_euc = 'euc-jisx0213'
     let s:enc_jis = 'iso-2022-jp-3'
   endif
-  " fileencodings‚ğ\’z
+  " fileencodingsã‚’æ§‹ç¯‰
   if &encoding ==# 'utf-8'
     let s:fileencodings_default = &fileencodings
     let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
@@ -71,11 +71,11 @@ if has('iconv')
       let &fileencodings = &fileencodings .','. s:enc_euc
     endif
   endif
-  " ’è”‚ğˆ•ª
+  " å®šæ•°ã‚’å‡¦åˆ†
   unlet s:enc_euc
   unlet s:enc_jis
 endif
-" “ú–{Œê‚ğŠÜ‚Ü‚È‚¢ê‡‚Í fileencoding ‚É encoding ‚ğg‚¤‚æ‚¤‚É‚·‚é
+" æ—¥æœ¬èªã‚’å«ã¾ãªã„å ´åˆã¯ fileencoding ã« encoding ã‚’ä½¿ã†ã‚ˆã†ã«ã™ã‚‹
 if has('autocmd')
   function! AU_ReCheck_FENC()
     if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
@@ -84,33 +84,33 @@ if has('autocmd')
   endfunction
   autocmd BufReadPost * call AU_ReCheck_FENC()
 endif
-" ‰üsƒR[ƒh‚Ì©“®”F¯
+" æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã®è‡ªå‹•èªè­˜
 set fileformats=unix,dos,mac
-"  ‚Æ‚©›‚Ì•¶š‚ª‚ ‚Á‚Ä‚àƒJ[ƒ\ƒ‹ˆÊ’u‚ª‚¸‚ê‚È‚¢‚æ‚¤‚É‚·‚é
+" â–¡ã¨ã‹â—‹ã®æ–‡å­—ãŒã‚ã£ã¦ã‚‚ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ãŒãšã‚Œãªã„ã‚ˆã†ã«ã™ã‚‹
 if exists('&ambiwidth')
   set ambiwidth=double
 endif
 
-" [Backspace] ‚ÅŠù‘¶‚Ì•¶š‚ğíœ‚Å‚«‚é‚æ‚¤‚Éİ’è
-"  start - Šù‘¶‚Ì•¶š‚ğíœ‚Å‚«‚é‚æ‚¤‚Éİ’è
-"  eol - s“ª‚Å[Backspace]‚ğg—p‚µ‚½ê‡ã‚Ìs‚Æ˜AŒ‹
-"  indent - ƒI[ƒgƒCƒ“ƒfƒ“ƒgƒ‚[ƒh‚ÅƒCƒ“ƒfƒ“ƒg‚ğíœ‚Å‚«‚é‚æ‚¤‚Éİ’è
+" [Backspace] ã§æ—¢å­˜ã®æ–‡å­—ã‚’å‰Šé™¤ã§ãã‚‹ã‚ˆã†ã«è¨­å®š
+"  start - æ—¢å­˜ã®æ–‡å­—ã‚’å‰Šé™¤ã§ãã‚‹ã‚ˆã†ã«è¨­å®š
+"  eol - è¡Œé ­ã§[Backspace]ã‚’ä½¿ç”¨ã—ãŸå ´åˆä¸Šã®è¡Œã¨é€£çµ
+"  indent - ã‚ªãƒ¼ãƒˆã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆãƒ¢ãƒ¼ãƒ‰ã§ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã‚’å‰Šé™¤ã§ãã‚‹ã‚ˆã†ã«è¨­å®š
 set backspace=start,eol,indent
 
-" “Á’è‚ÌƒL[‚És“ª‚¨‚æ‚Ñs––‚Ì‰ñ‚è‚±‚İˆÚ“®‚ğ‹–‰Â‚·‚éİ’è
-"  b - [Backspace]  ƒm[ƒ}ƒ‹ƒ‚[ƒh ƒrƒWƒ…ƒAƒ‹ƒ‚[ƒh
-"  s - [Space]      ƒm[ƒ}ƒ‹ƒ‚[ƒh ƒrƒWƒ…ƒAƒ‹ƒ‚[ƒh
-"  < - [©]          ƒm[ƒ}ƒ‹ƒ‚[ƒh ƒrƒWƒ…ƒAƒ‹ƒ‚[ƒh
-"  > - [¨]          ƒm[ƒ}ƒ‹ƒ‚[ƒh ƒrƒWƒ…ƒAƒ‹ƒ‚[ƒh
-"  [ - [©]          ‘}“üƒ‚[ƒh ’uŠ·ƒ‚[ƒh
-"  ] - [¨]          ‘}“üƒ‚[ƒh ’uŠ·ƒ‚[ƒh
-"  ~ - ~            ƒm[ƒ}ƒ‹ƒ‚[ƒh
+" ç‰¹å®šã®ã‚­ãƒ¼ã«è¡Œé ­ãŠã‚ˆã³è¡Œæœ«ã®å›ã‚Šã“ã¿ç§»å‹•ã‚’è¨±å¯ã™ã‚‹è¨­å®š
+"  b - [Backspace]  ãƒãƒ¼ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰ ãƒ“ã‚¸ãƒ¥ã‚¢ãƒ«ãƒ¢ãƒ¼ãƒ‰
+"  s - [Space]      ãƒãƒ¼ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰ ãƒ“ã‚¸ãƒ¥ã‚¢ãƒ«ãƒ¢ãƒ¼ãƒ‰
+"  < - [â†]          ãƒãƒ¼ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰ ãƒ“ã‚¸ãƒ¥ã‚¢ãƒ«ãƒ¢ãƒ¼ãƒ‰
+"  > - [â†’]          ãƒãƒ¼ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰ ãƒ“ã‚¸ãƒ¥ã‚¢ãƒ«ãƒ¢ãƒ¼ãƒ‰
+"  [ - [â†]          æŒ¿å…¥ãƒ¢ãƒ¼ãƒ‰ ç½®æ›ãƒ¢ãƒ¼ãƒ‰
+"  ] - [â†’]          æŒ¿å…¥ãƒ¢ãƒ¼ãƒ‰ ç½®æ›ãƒ¢ãƒ¼ãƒ‰
+"  ~ - ~            ãƒãƒ¼ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰
 set whichwrap=b,s,[,],<,>,~
 
-" ƒ}ƒEƒX‹@”\—LŒø‰»
+" ãƒã‚¦ã‚¹æ©Ÿèƒ½æœ‰åŠ¹åŒ–
 set mouse=a
 
-" ƒVƒ“ƒ^ƒbƒNƒXƒnƒCƒ‰ƒCƒg—LŒø‰»
+" ã‚·ãƒ³ã‚¿ãƒƒã‚¯ã‚¹ãƒã‚¤ãƒ©ã‚¤ãƒˆæœ‰åŠ¹åŒ–
 syntax on
 "highlight Normal ctermbg=black ctermfg=grey
 "highlight StatusLine term=none cterm=none ctermfg=black ctermbg=grey
@@ -118,20 +118,20 @@ highlight CursorLine term=none cterm=none ctermfg=none ctermbg=darkgray
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
 set laststatus=2
-set nohlsearch " ŒŸõƒL[ƒ[ƒh‚ğƒnƒCƒ‰ƒCƒg‚µ‚È‚¢‚æ‚¤‚Éİ’è
-set cursorline " ƒJ[ƒ\ƒ‹ƒ‰ƒCƒ“‚Ì‹­’²•\¦‚ğ—LŒø‰»
+set nohlsearch " æ¤œç´¢ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã‚’ãƒã‚¤ãƒ©ã‚¤ãƒˆã—ãªã„ã‚ˆã†ã«è¨­å®š
+set cursorline " ã‚«ãƒ¼ã‚½ãƒ«ãƒ©ã‚¤ãƒ³ã®å¼·èª¿è¡¨ç¤ºã‚’æœ‰åŠ¹åŒ–
 
-" s”Ô†‚ğ•\¦
+" è¡Œç•ªå·ã‚’è¡¨ç¤º
 set number
 
-" ƒCƒ“ƒNƒŠƒƒ“ƒ^ƒ‹ŒŸõ‚ğ—LŒø‰»
+" ã‚¤ãƒ³ã‚¯ãƒªãƒ¡ãƒ³ã‚¿ãƒ«æ¤œç´¢ã‚’æœ‰åŠ¹åŒ–
 set incsearch
 
-" •âŠ®‚Ìˆê——•\¦‹@”\—LŒø‰»
+" è£œå®Œæ™‚ã®ä¸€è¦§è¡¨ç¤ºæ©Ÿèƒ½æœ‰åŠ¹åŒ–
 "set wildmenu wildmode=list:full
 set wildmenu
 
-"ƒVƒ‡[ƒgƒJƒbƒgƒL[
+"ã‚·ãƒ§ãƒ¼ãƒˆã‚«ãƒƒãƒˆã‚­ãƒ¼
 if has('win32') || has('win64')
 	nmap <silent> <C-b> :write<CR>:make<CR>
 	imap <silent> <C-b> <C-o>:write<CR><C-o>:make<CR>
@@ -145,11 +145,11 @@ else
 	
 endif
 
-" ©“®“I‚ÉQuickFix‚ğŠJ‚­
+" è‡ªå‹•çš„ã«QuickFixã‚’é–‹ã
 autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
 
 " neocomplcache
-let g:neocomplcache_enable_at_startup = 1 " ‹N“®‚É—LŒø‰»
+let g:neocomplcache_enable_at_startup = 1 " èµ·å‹•æ™‚ã«æœ‰åŠ¹åŒ–
 
 let g:quickrun_config = {}
 if has('win32') || has('win64')
