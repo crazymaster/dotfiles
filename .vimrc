@@ -115,6 +115,11 @@ syntax on
 "highlight Normal ctermbg=black ctermfg=grey
 "highlight StatusLine term=none cterm=none ctermfg=black ctermbg=grey
 highlight CursorLine term=none cterm=none ctermfg=none ctermbg=darkgray
+"ポップアップ補完メニュー色設定（通常の項目、選択されている項目、スクロールバー、スクロールバーのつまみ部分）
+highlight Pmenu ctermbg=8 guibg=#606060
+highlight PmenuSel ctermbg=12 guibg=SlateBlue
+highlight PmenuSbar ctermbg=0 guibg=#404040
+"highlight PmenuThumb ctermbg=0 guibg=Red
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
 set laststatus=2
