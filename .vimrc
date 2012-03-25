@@ -2,9 +2,9 @@
 set nocompatible
 filetype off
 if has('win32') || has('win64')
-  let $DOTVIM = expand('$VIM/plugins')
+	let $DOTVIM = expand('$VIM/plugins')
 else
-  let $DOTVIM = expand('~/.vim')
+	let $DOTVIM = expand('~/.vim')
 endif
 set rtp+=$DOTVIM/bundle/vundle
 call vundle#rc('$DOTVIM/bundle')
@@ -31,7 +31,7 @@ filetype plugin indent on
 
 " 文字コード設定
 if has('gui_running') && !has('unix')
-  set encoding=utf-8
+	set encoding=utf-8
 endif
 
 " 文字コードの自動認識
@@ -115,28 +115,34 @@ syntax on
 "highlight Normal ctermbg=black ctermfg=grey
 "highlight StatusLine term=none cterm=none ctermfg=black ctermbg=grey
 highlight CursorLine term=none cterm=none ctermfg=none ctermbg=darkgray
-"ポップアップ補完メニュー色設定（通常の項目、選択されている項目、スクロールバー、スクロールバーのつまみ部分）
+
+"ポップアップ補完メニュー色設定
 highlight Pmenu ctermbg=8 guibg=#606060
 highlight PmenuSel ctermbg=12 guibg=SlateBlue
 highlight PmenuSbar ctermbg=0 guibg=#404040
-"highlight PmenuThumb ctermbg=0 guibg=Red
+highlight PmenuThumb ctermbg=0 guibg=Red
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
-set laststatus=2
+" ステータスラインを表示
+set laststatus=2 " ステータスラインを常に表示
 set nohlsearch " 検索キーワードをハイライトしないように設定
 set cursorline " カーソルラインの強調表示を有効化
 
 " 行番号を表示
 set number
 
+" タブ幅制御
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
 " インクリメンタル検索を有効化
 set incsearch
 
 " 補完時の一覧表示機能有効化
-"set wildmenu wildmode=list:full
 set wildmenu
 
-"ショートカットキー
+" ショートカットキー
 if has('win32') || has('win64')
 	nmap <silent> <C-b> :write<CR>:make<CR>
 	imap <silent> <C-b> <C-o>:write<CR><C-o>:make<CR>
@@ -147,7 +153,7 @@ else
 	imap <silent> <C-b> <C-o>:write<CR><C-o>:make linux<CR>
 	nmap <silent> <F5> :!./a.out<CR>
 	imap <silent> <F5> <C-o>:!./a.out<CR>
-	
+
 endif
 
 " 自動的にQuickFixを開く
@@ -158,13 +164,13 @@ let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
 
 let g:quickrun_config = {}
 if has('win32') || has('win64')
-let g:quickrun_config['markdown'] = {
-	\ 'outputter': 'browser',
-	\ 'command': 'c:/Ruby193/bin/ruby',
-	\ 'cmdopt': '-Ku c:/Ruby193/bin/redcarpet'
-	\ }
+	let g:quickrun_config['markdown'] = {
+		\ 'outputter': 'browser',
+		\ 'command': 'c:/Ruby193/bin/ruby',
+		\ 'cmdopt': '-Ku c:/Ruby193/bin/redcarpet'
+		\ }
 else
-let g:quickrun_config['markdown'] = {
-	\ 'outputter': 'browser'
-	\ }
+	let g:quickrun_config['markdown'] = {
+		\ 'outputter': 'browser'
+		\ }
 endif
