@@ -250,7 +250,7 @@ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 inoremap <expr> < search('^#include\%#', 'bcn')? ' <': smartchr#one_of(' < ', ' << ', '<')
 inoremap <expr> > search('^#include <.*\%#', 'bcn')? '>': smartchr#one_of(' > ', ' >> ', '>')
 inoremap <expr> + smartchr#one_of(' + ', '++', '+')
-inoremap <expr> - smartchr#one_of(' - ', '--', '-')
+"inoremap <expr> - smartchr#one_of(' - ', '--', '-')
 "inoremap <expr> / smartchr#one_of(' / ', '// ', '/')
 " *はポインタで使うので、空白はいれない
 inoremap <expr> & smartchr#one_of(' & ', ' && ', '&')
