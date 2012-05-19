@@ -144,6 +144,9 @@ set incsearch
 " 補完時の一覧表示機能有効化
 set wildmenu
 
+" actionscript
+au bufnewfile,bufread *.as	set filetype=actionscript
+
 " ショートカットキー
 nmap <silent> <C-b> :write<CR>:make<CR>
 imap <silent> <C-b> <C-o>:write<CR><C-o>:make<CR>
