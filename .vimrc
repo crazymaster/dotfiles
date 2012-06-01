@@ -151,8 +151,8 @@ au bufnewfile,bufread *.as	set filetype=actionscript
 nmap <silent> <C-b> :write<CR>:make -j<CR>
 imap <silent> <C-b> <C-o>:write<CR><C-o>:make -j<CR>
 if has('win32') || has('win64')
-	nmap <silent> <F5> :!*.exe<CR>
-	imap <silent> <F5> <C-o>:!*.exe<CR>
+	nmap <silent> <F5> :!a.exe<CR>
+	imap <silent> <F5> <C-o>:!a.exe<CR>
 else
 	nmap <silent> <F5> :!./*.out<CR>
 	imap <silent> <F5> <C-o>:!./*.out<CR>
