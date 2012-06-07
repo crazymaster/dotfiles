@@ -274,7 +274,7 @@ inoremap <expr> = search('\(&\<bar><bar>\<bar>+\<bar>-\<bar>/\<bar>>\<bar><\) \%
 inoremap <expr> } smartchr#one_of('}', '}<cr>')
 inoremap <expr> ; smartchr#one_of(';', ';<cr>')
 " 「->」は入力しづらいので、..で置換え
-inoremap <expr> . smartchr#loop('.', '->', '...')
+"inoremap <expr> . smartchr#loop('.', '->', '...')
 " 行先頭での@入力で、プリプロセス命令文を入力
 inoremap <expr> @ search('^\(#.\+\)\?\%#','bcn')? smartchr#one_of('#define', '#include', '#ifdef', '#endif', '@'): '@'
 
