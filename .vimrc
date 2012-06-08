@@ -282,3 +282,25 @@ inoremap <expr> " search('^#include\%#', 'bcn')? ' "': '"'
 " if文直後の(は自動で間に空白を入れる
 inoremap <expr> ( search('\<\if\%#', 'bcn')? ' (': '('
 
+call vimfiler#set_execute_file('vim', 'vim')
+call vimfiler#set_execute_file('txt', 'notepad')
+call vimfiler#set_execute_file('c', ['vim', 'notepad'])
+
+" Edit file by tabedit.
+"let g:vimfiler_edit_action = 'tabopen'
+
+let g:vimfiler_as_default_explorer = 1
+
+" Enable file operation commands.
+"let g:vimfiler_safe_mode_by_default = 0
+
+" Like Textmate icons.
+let g:vimfiler_tree_leaf_icon = ' '
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_file_icon = '-'
+let g:vimfiler_marked_file_icon = '*'
+
+" Use trashbox.
+" Windows only and require latest vimproc.
+"let g:unite_kind_file_use_trashbox = 1
