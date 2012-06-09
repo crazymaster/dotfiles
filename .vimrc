@@ -27,9 +27,11 @@ NeoBundle 'Shougo/neocomplcache-clang.git'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell'
+NeoBundle 'adie/BlockDiff'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'tyru/open-browser.vim'
 " Vim-script repositories
 NeoBundle 'DirDiff.vim'
@@ -436,4 +438,17 @@ if executable('ack-grep')
   let g:unite_source_grep_default_opts = '--no-heading --no-color -a'
   let g:unite_source_grep_recursive_opt = ''
 endif
+"}}}
+
+" neocomplcache-clang{{{
+" Use clang dll.
+let g:neocomplcache_clang_use_library = 1
+" More user include path.
+let g:neocomplcache_clang_user_options =
+\ '-I C:/MinGW/lib/gcc/mingw32/xxx/include '.
+\ '-I C:/lib/boost_xxx '.
+\ '-fms-extensions -fgnu-runtime '.
+\ '-include malloc.h '
+" More neocomplcache candidates.
+let g:neocomplcache_max_list = 300
 "}}}
