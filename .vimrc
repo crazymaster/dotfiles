@@ -1,35 +1,72 @@
-" vundle
-set nocompatible
-filetype off
+" neobundle.vim"{{{
+set nocompatible                " recommend
+filetype off                    " required!
+filetype plugin indent off      " required!
+
 if has('win32') || has('win64')
 	let $DOTVIM = expand('$VIM/plugins')
 else
 	let $DOTVIM = expand('~/.vim')
 endif
-set rtp+=$DOTVIM/bundle/vundle
-call vundle#rc('$DOTVIM/bundle')
-Bundle 'gmarik/vundle'
-" githubにあるplugin
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimfiler'
-Bundle 'mattn/zencoding-vim'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'thinca/vim-quickrun'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rails.git'
-Bundle 'tyru/open-browser.vim'
-" www.vim.orgにあるplugin
-Bundle 'DirDiff.vim'
-Bundle 'FuzzyFinder'
-Bundle 'L9'
-Bundle 'TwitVim'
-Bundle 'neco-look'
-Bundle 'smartchr'
- " non github repos
-Bundle 'git://git.wincent.com/command-t.git'
-filetype plugin indent on
+
+if has('vim_starting')
+	set runtimepath+=$DOTVIM/bundle/neobundle.vim
+endif
+
+call neobundle#rc(expand('$DOTVIM/bundle'))
+
+" let neobundle manage neobundle
+NeoBundle 'Shougo/neobundle.vim'
+
+" My Bundles here:
+"
+" Original repositories in github
+NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplcache-clang.git'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tyru/open-browser.vim'
+" Vim-script repositories
+NeoBundle 'DirDiff.vim'
+NeoBundle 'FuzzyFinder'
+NeoBundle 'L9'
+NeoBundle 'TwitVim'
+NeoBundle 'neco-look'
+NeoBundle 'rails.vim'
+NeoBundle 'smartchr'
+" Non-github repos
+NeoBundle 'git://git.wincent.com/command-t.git'
+" Non-git repos
+NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
+NeoBundle 'https://bitbucket.org/ns9tks/vim-fuzzyfinder'
+
+" Comment is allowed.
+NeoBundle 'https://bitbucket.org/ns9tks/vim-fuzzyfinder' " Foo, Bar
+
+" Build repos.
+NeoBundle 'Shougo/vimproc', {
+	  \ 'build' : {
+	  \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+	  \     'cygwin' : 'make -f make_cygwin.mak',
+	  \     'mac' : 'make -f make_mac.mak',
+	  \     'unix' : 'make -f make_unix.mak',
+	  \    },
+	  \ }
+
+" Lazy load.
+NeoBundleLazy 'c9s/perlomni.vim.git'
+NeoBundleSource perlomni.vim
+NeoBundleLazy 'klen/python-mode'
+autocmd FileType python
+	  \ NeoBundleSource python-mode
+
+filetype plugin indent on       " required!
+"}}}
 
 " 文字コード設定
 if has('gui_running') && !has('unix')
@@ -175,6 +212,7 @@ else
 		\ }
 endif
 
+" neocomplcache"{{{
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplcache.
@@ -248,40 +286,44 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+"}}}
 
-" 演算子の間に空白を入れる
-inoremap <expr> < search('^#include\%#', 'bcn')? ' <': smartchr#one_of(' < ', ' << ', '<')
-inoremap <expr> > search('^#include <.*\%#', 'bcn')? '>': smartchr#one_of(' > ', ' >> ', '>')
-inoremap <expr> + smartchr#one_of(' + ', '++', '+')
-inoremap <expr> - smartchr#one_of(' - ', '--', '-')
-"inoremap <expr> / smartchr#one_of(' / ', '// ', '/')
-" *はポインタで使うので、空白はいれない
-inoremap <expr> & smartchr#one_of(' & ', ' && ', '&')
-inoremap <expr> % smartchr#one_of(' % ', '%')
-inoremap <expr> <Bar> smartchr#one_of(' <Bar> ', ' <Bar><Bar> ', '<Bar>')
+" smartchr.vim"{{{
 inoremap <expr> , smartchr#one_of(', ', ',')
-" 3項演算子の場合は、後ろのみ空白を入れる
-inoremap <expr> ? smartchr#one_of('? ', '?')
-inoremap <expr> : smartchr#one_of(': ', '::', ':')
+inoremap <expr> ? smartchr#one_of('?', '? ')
 
-" =の場合、単純な代入や比較演算子として入力する場合は前後にスペースをいれる。
-" 複合演算代入としての入力の場合は、直前のスペースを削除して=を入力
+" Smart =.
 inoremap <expr> = search('\(&\<bar><bar>\<bar>+\<bar>-\<bar>/\<bar>>\<bar><\) \%#', 'bcn')? '<bs>= '
-				\ : search('\(*\<bar>!\)\%#', 'bcn') ? '= '
-				\ : smartchr#one_of(' = ', ' == ', '=')
+      \ : search('\(*\<bar>!\)\%#', 'bcn') ? '= '
+      \ : smartchr#one_of(' = ', '=', ' == ')
+augroup MyAutoCmd
+  " Substitute .. into -> .
+  autocmd FileType c,cpp inoremap <buffer> <expr> . smartchr#loop('.', '->', '...')
+  autocmd FileType perl,php inoremap <buffer> <expr> . smartchr#loop(' . ', '->', '.')
+  autocmd FileType perl,php inoremap <buffer> <expr> - smartchr#loop('-', '->')
+  autocmd FileType vim inoremap <buffer> <expr> . smartchr#loop('.', ' . ', '..', '...')
 
-" 下記の文字は連続して現れることがまれなので、二回続けて入力したら改行する
-inoremap <expr> } smartchr#one_of('}', '}<cr>')
-inoremap <expr> ; smartchr#one_of(';', ';<cr>')
-" 「->」は入力しづらいので、..で置換え
-"inoremap <expr> . smartchr#loop('.', '->', '...')
-" 行先頭での@入力で、プリプロセス命令文を入力
-inoremap <expr> @ search('^\(#.\+\)\?\%#','bcn')? smartchr#one_of('#define', '#include', '#ifdef', '#endif', '@'): '@'
+  autocmd FileType haskell,int-ghci
+        \ inoremap <buffer> <expr> + smartchr#loop('+', ' ++ ')
+        \| inoremap <buffer> <expr> - smartchr#loop('-', ' -> ', ' <- ')
+        \| inoremap <buffer> <expr> $ smartchr#loop(' $ ', '$')
+        \| inoremap <buffer> <expr> \ smartchr#loop('\ ', '\')
+        \| inoremap <buffer> <expr> : smartchr#loop(':', ' :: ', ' : ')
+        \| inoremap <buffer> <expr> . smartchr#loop('.', ' . ', '..')
 
-inoremap <expr> " search('^#include\%#', 'bcn')? ' "': '"'
-" if文直後の(は自動で間に空白を入れる
-inoremap <expr> ( search('\<\if\%#', 'bcn')? ' (': '('
+  autocmd FileType scala
+        \ inoremap <buffer> <expr> - smartchr#loop('-', ' -> ', ' <- ')
+        \| inoremap <buffer> <expr> = smartchr#loop(' = ', '=', ' => ')
+        \| inoremap <buffer> <expr> : smartchr#loop(': ', ':', ' :: ')
+        \| inoremap <buffer> <expr> . smartchr#loop('.', ' => ')
 
+  autocmd FileType eruby
+        \ inoremap <buffer> <expr> > smartchr#loop('>', '%>')
+        \| inoremap <buffer> <expr> < smartchr#loop('<', '<%', '<%=')
+augroup END
+"}}}
+
+" vimfiler"{{{
 call vimfiler#set_execute_file('vim', 'vim')
 call vimfiler#set_execute_file('txt', 'notepad')
 call vimfiler#set_execute_file('c', ['vim', 'notepad'])
@@ -304,3 +346,94 @@ let g:vimfiler_marked_file_icon = '*'
 " Use trashbox.
 " Windows only and require latest vimproc.
 "let g:unite_kind_file_use_trashbox = 1
+"}}}
+
+" vimshell"{{{
+let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+"let g:vimshell_right_prompt = 'vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
+let g:vimshell_enable_smart_case = 1
+
+if has('win32') || has('win64')
+  " Display user name on Windows.
+  let g:vimshell_prompt = $USERNAME."% "
+else
+  " Display user name on Linux.
+  let g:vimshell_prompt = $USER."% "
+
+  call vimshell#set_execute_file('bmp,jpg,png,gif', 'gexe eog')
+  call vimshell#set_execute_file('mp3,m4a,ogg', 'gexe amarok')
+  let g:vimshell_execute_file_list['zip'] = 'zipinfo'
+  call vimshell#set_execute_file('tgz,gz', 'gzcat')
+	call vimshell#set_execute_file('tbz,bz2', 'bzcat')
+endif
+
+" Initialize execute file list.
+let g:vimshell_execute_file_list = {}
+call vimshell#set_execute_file('txt,vim,c,h,cpp,d,xml,java', 'vim')
+let g:vimshell_execute_file_list['rb'] = 'ruby'
+let g:vimshell_execute_file_list['pl'] = 'perl'
+let g:vimshell_execute_file_list['py'] = 'python'
+call vimshell#set_execute_file('html,xhtml', 'gexe firefox')
+
+autocmd FileType vimshell
+\ call vimshell#altercmd#define('g', 'git')
+\| call vimshell#altercmd#define('i', 'iexe')
+\| call vimshell#altercmd#define('l', 'll')
+\| call vimshell#altercmd#define('ll', 'ls -l')
+\| call vimshell#hook#add('chpwd', 'my_chpwd', 'g:my_chpwd')
+
+function! g:my_chpwd(args, context)
+  call vimshell#execute('ls')
+endfunction
+
+autocmd FileType int-* call s:interactive_settings()
+function! s:interactive_settings()
+endfunction
+"}}}
+
+" unit.vim"{{{
+" The prefix key.
+nnoremap    [unite]   <Nop>
+nmap    f [unite]
+
+nnoremap <silent> [unite]c  :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files -prompt=%\  buffer file_mru bookmark file<CR>
+nnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
+nnoremap  [unite]f  :<C-u>Unite source<CR>
+
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()"{{{
+  " Overwrite settings.
+
+  nmap <buffer> <ESC>      <Plug>(unite_exit)
+  imap <buffer> jj      <Plug>(unite_insert_leave)
+  "imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+
+  " <C-l>: manual neocomplcache completion.
+  inoremap <buffer> <C-l>  <C-x><C-u><C-p><Down>
+
+  " Start insert.
+  "let g:unite_enable_start_insert = 1
+endfunction"}}}
+
+let g:unite_source_file_mru_limit = 200
+let g:unite_cursor_line_highlight = 'TabLineSel'
+let g:unite_abbr_highlight = 'TabLine'
+
+" For optimize.
+let g:unite_source_file_mru_filename_format = ''
+
+" For unite-session.
+" Save session automatically.
+"let g:unite_source_session_enable_auto_save = 1
+" Load session automatically.
+"autocmd VimEnter * UniteSessionLoad
+
+" For ack.
+if executable('ack-grep')
+  let g:unite_source_grep_command = 'ack-grep'
+  let g:unite_source_grep_default_opts = '--no-heading --no-color -a'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+"}}}
