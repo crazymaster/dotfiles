@@ -33,6 +33,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'vim-jp/vimdoc-ja.git'
 " Vim-script repositories
 NeoBundle 'DirDiff.vim'
 NeoBundle 'FuzzyFinder'
@@ -74,6 +75,8 @@ filetype plugin indent on       " required!
 if has('gui_running') && !has('unix')
 	set encoding=utf-8
 endif
+
+set helplang=ja,en
 
 " 文字コードの自動認識
 if &encoding !=# 'utf-8'
