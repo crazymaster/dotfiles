@@ -6,7 +6,7 @@ if s:is_windows
   language message en
 else
 " For Linux.
-  language mes C
+  "language mes C
 endif
 
 " neobundle.vim"{{{
