@@ -55,6 +55,7 @@ NeoBundle 'ujihisa/neco-look'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundleLazy 'choplin/unite-vim_hacks'
 NeoBundleLazy 'tyru/open-browser.vim'
+NeoBundleLazy 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'ujihisa/unite-locate'
 " Vim-script repositories
 NeoBundle 'DirDiff.vim'
@@ -178,7 +179,7 @@ set mouse=a
 syntax on
 "highlight Normal ctermbg=black ctermfg=grey
 "highlight StatusLine term=none cterm=none ctermfg=black ctermbg=grey
-highlight CursorLine term=none cterm=none ctermfg=none ctermbg=darkgray
+highlight CursorLine term=none cterm=bold ctermfg=none ctermbg=darkgray
 
 "ポップアップ補完メニュー色設定
 highlight Pmenu ctermbg=8 guibg=#606060
@@ -470,7 +471,7 @@ function! s:unite_my_settings()"{{{
 endfunction"}}}
 
 let g:unite_source_file_mru_limit = 200
-let g:unite_cursor_line_highlight = 'TabLineSel'
+let g:unite_cursor_line_highlight = 'CursorLine' 
 "let g:unite_abbr_highlight = 'TabLine'
 
 " For optimize.
