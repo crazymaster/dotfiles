@@ -269,6 +269,18 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
+imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+
+" SuperTab like snippets behavior.
+"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
+" \ "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
 "inoremap <expr><CR>  neocomplcache#close_popup() . "\<CR>"
@@ -279,10 +291,6 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
-" <C-k>: unite completion.
-imap <C-k> <Plug>(neocomplcache_start_unite_complete)
-" : unite quick match.
-imap : <Plug>(neocomplcache_start_unite_quick_match)
 
 " For cursor moving in insert mode(Not recommended)
 "inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
@@ -442,22 +450,28 @@ nnoremap  [unite]f  :<C-u>Unite source<CR>
 
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
-  " Overwrite settings.
+	" Overwrite settings.
 
-  nmap <buffer> <ESC>      <Plug>(unite_exit)
-  imap <buffer> jj      <Plug>(unite_insert_leave)
-  "imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+	nmap <buffer> <ESC>      <Plug>(unite_exit)
+	imap <buffer> jj      <Plug>(unite_insert_leave)
+	"imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
 
-  " <C-l>: manual neocomplcache completion.
-  inoremap <buffer> <C-l>  <C-x><C-u><C-p><Down>
+	" <C-l>: manual neocomplcache completion.
+	inoremap <buffer> <C-l>  <C-x><C-u><C-p><Down>
+	" <C-k>: unite completion.
+	imap <C-k> <Plug>(neocomplcache_start_unite_complete)
+	" : unite quick match.
+	imap : <Plug>(neocomplcache_start_unite_quick_match)
 
-  " Start insert.
-  "let g:unite_enable_start_insert = 1
+	imap <C-s>  <Plug>(neocomplcache_start_unite_snippet)
+
+	" Start insert.
+	"let g:unite_enable_start_insert = 1
 endfunction"}}}
 
 let g:unite_source_file_mru_limit = 200
 let g:unite_cursor_line_highlight = 'TabLineSel'
-let g:unite_abbr_highlight = 'TabLine'
+"let g:unite_abbr_highlight = 'TabLine'
 
 " For optimize.
 let g:unite_source_file_mru_filename_format = ''
