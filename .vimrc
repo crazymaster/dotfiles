@@ -3,10 +3,10 @@ let s:is_windows = has('win32') || has('win64')
 " Use English interface.
 if s:is_windows
 " For Windows.
-  language message en
+	"language message en
 else
 " For Linux.
-  "language mes C
+	"language mes C
 endif
 
 " neobundle.vim"{{{
