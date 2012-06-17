@@ -40,9 +40,9 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'adie/BlockDiff'
+NeoBundle 'crazymaster/unite-vim_hacks'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'kana/vim-smartchr'
-NeoBundle 'crazymaster/unite-vim_hacks'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'thinca/vim-openbuf'
@@ -462,7 +462,7 @@ function! s:unite_my_settings()"{{{
 	" <C-k>: unite completion.
 	imap <C-k> <Plug>(neocomplcache_start_unite_complete)
 	" : unite quick match.
-	imap : <Plug>(neocomplcache_start_unite_quick_match)
+	imap ' <Plug>(neocomplcache_start_unite_quick_match)
 
 	imap <C-s>  <Plug>(neocomplcache_start_unite_snippet)
 
