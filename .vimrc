@@ -233,9 +233,6 @@ else
 		\ }
 endif
 
-" Alignを日本語環境で使用するための設定
-let g:Align_xstrlen = 3
-
 " neocomplcache"{{{
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
