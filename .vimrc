@@ -1,14 +1,3 @@
-let s:is_windows = has('win32') || has('win64')
-
-" Use English interface.
-if s:is_windows
-" For Windows.
-	"language message en
-else
-" For Linux.
-	"language mes C
-endif
-
 " neobundle.vim"{{{
 set nocompatible                " recommend
 filetype off                    " required!
@@ -48,8 +37,10 @@ NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'thinca/vim-openbuf'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
+NeoBundle 'thinca/vim-scouter'
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-surround'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'tyru/open-browser.vim'
@@ -58,6 +49,7 @@ NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'ujihisa/unite-locate'
 NeoBundle 'vim-jp/vimdoc-ja'
 " Vim-script repositories
+NeoBundle 'Align'
 NeoBundle 'DirDiff.vim'
 NeoBundle 'FuzzyFinder'
 NeoBundle 'L9'
@@ -207,6 +199,10 @@ set incsearch
 " 補完時の一覧表示機能有効化
 set wildmenu
 
+" ビジュアルモードでインデント変更後も選択を継続
+vnoremap < <gv
+vnoremap > >gv
+
 " actionscript
 au bufnewfile,bufread *.as	set filetype=actionscript
 
@@ -219,7 +215,6 @@ if has('win32') || has('win64')
 else
 	nmap <silent> <F5> :!./*.out<CR>
 	imap <silent> <F5> <C-o>:!./*.out<CR>
-
 endif
 
 " 自動的にQuickFixを開く
@@ -237,6 +232,9 @@ else
 		\ 'outputter': 'browser'
 		\ }
 endif
+
+" Alignを日本語環境で使用するための設定
+let g:Align_xstrlen = 3
 
 " neocomplcache"{{{
 " Disable AutoComplPop.
@@ -452,20 +450,39 @@ nnoremap  [unite]f  :<C-u>Unite source<CR>
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
 	" Overwrite settings.
+	imap <buffer> jj <Plug>(unite_insert_leave)
+	imap <buffer> <TAB> <Plug>(unite_select_next_line)
+	imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+	imap <buffer> ' <Plug>(unite_quick_match_default_action)
+	nmap <buffer> ' <Plug>(unite_quick_match_default_action)
+	imap <buffer><expr> x
+		\ unite#smart_map('x', "\<Plug>(unite_quick_match_choose_action)")
+	nmap <buffer> x <Plug>(unite_quick_match_choose_action)
+	nmap <buffer> cd <Plug>(unite_quick_match_default_action)
+	imap <buffer> <C-g> <Plug>(unite_input_directory)
+	nmap <buffer> <C-z> <Plug>(unite_toggle_transpose_window)
+	imap <buffer> <C-z> <Plug>(unite_toggle_transpose_window)
+	imap <buffer> <C-y> <Plug>(unite_narrowing_path)
+	nmap <buffer> <C-y> <Plug>(unite_narrowing_path)
+	nmap <buffer> <C-j> <Plug>(unite_toggle_auto_preview)
+	nmap <buffer> <C-r> <Plug>(unite_narrowing_input_history)
+	imap <buffer> <C-r> <Plug>(unite_narrowing_input_history)
+	nmap <silent><buffer> <Tab> :call <SID>NextWindow()<CR>
+	nnoremap <silent><buffer><expr> l
+		\ unite#smart_map('l', unite#do_action('default'))
+	nunmap <buffer> x
+	iunmap <buffer> x
 
-	nmap <buffer> <ESC>      <Plug>(unite_exit)
-	imap <buffer> jj      <Plug>(unite_insert_leave)
-	"imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+	let unite = unite#get_current_unite()
+	if unite.buffer_name =~# '^search'
+	nnoremap <silent><buffer><expr> r unite#do_action('replace')
+	else
+	nnoremap <silent><buffer><expr> r unite#do_action('rename')
+	endif
 
-	" <C-l>: manual neocomplcache completion.
-	inoremap <buffer> <C-l>  <C-x><C-u><C-p><Down>
-	" <C-k>: unite completion.
-	imap <C-k> <Plug>(neocomplcache_start_unite_complete)
-	" : unite quick match.
-	imap ' <Plug>(neocomplcache_start_unite_quick_match)
-
-	imap <C-s>  <Plug>(neocomplcache_start_unite_snippet)
-
+	nnoremap <silent><buffer><expr> cd unite#do_action('lcd')
+	nnoremap <buffer><expr> S unite#mappings#set_current_filters(
+		\ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
 	" Start insert.
 	"let g:unite_enable_start_insert = 1
 endfunction"}}}
