@@ -23,10 +23,12 @@ NeoBundle 'Shougo/neobundle.vim'
 " Original repositories in github
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'Shougo/echodoc'
+NeoBundle 'Shougo/git-vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplcache-snippets-complete'
 NeoBundle 'Shougo/unite-build'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vim-vcs'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'adie/BlockDiff'
@@ -42,7 +44,6 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-scouter'
 NeoBundle 'thinca/vim-unite-history'
-NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'tsukkee/unite-tag'
@@ -236,6 +237,13 @@ else
 endif
 
 let g:echodoc_enable_at_startup = 1
+
+" Smart space mapping.
+" Notice: when starting other <Space> mappings in noremap,  disappeared [Space].
+map <Space> [Space]
+xmap <Space> [Space]
+nnoremap [Space] <Nop>
+xnoremap [Space] <Nop>
 
 " neocomplcache"{{{
 " Disable AutoComplPop.
@@ -437,18 +445,154 @@ function! s:interactive_settings()
 endfunction
 "}}}
 
-" unit.vim"{{{
+" git.vim{{{
+let g:git_no_default_mappings = 1
+let g:git_use_vimproc = 1
+let g:git_command_edit = 'rightbelow vnew'
+nnoremap <silent> [Space]gd :<C-u>GitDiff --cached<CR>
+nnoremap <silent> [Space]gD :<C-u>GitDiff<CR>
+" nnoremap <silent> [Space]gs :<C-u>GitStatus<CR>
+nnoremap <silent> [Space]gl :<C-u>GitLog<CR>
+nnoremap <silent> [Space]gL :<C-u>GitLog -u \| head -10000<CR>
+nnoremap <silent> [Space]ga :<C-u>GitAdd<CR>
+nnoremap <silent> [Space]gA :<C-u>GitAdd <cfile><CR>
+" nnoremap <silent> [Space]gc :<C-u>GitCommit<CR>
+nnoremap <silent> [Space]gp q:Git push<Space>
+nnoremap <silent> [Space]gt q:Git tag<Space>
+"}}}
+
+" vcs.vim{{{
+nnoremap <silent> [Space]gc :<C-u>Vcs commit<CR>
+nnoremap <silent> [Space]gC :<C-u>Vcs commit --amend<CR>
+nnoremap <silent> [Space]gs :<C-u>Vcs status<CR>
+"}}}
+
+" unite.vim"{{{
 " The prefix key.
 nnoremap    [unite]   <Nop>
+xnoremap    [unite]   <Nop>
 nmap    f [unite]
+xmap    f [unite]
 
-nnoremap <silent> [unite]c  :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
-nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files -prompt=%\  buffer file_mru bookmark file<CR>
-nnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
+nnoremap [unite]u  q:Unite<Space>
+" nnoremap <silent> :  :<C-u>Unite history/command command<CR>
+nnoremap <expr><silent> [unite]b  <SID>unite_build()
+function! s:unite_build()
+  return ":\<C-u>Unite -buffer-name=build". tabpagenr() ." -no-quit build\<CR>"
+endfunction
+nnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register history/yank<CR>
+nnoremap <silent> [unite]o  :<C-u>Unite outline -start-insert<CR>
 nnoremap  [unite]f  :<C-u>Unite source<CR>
+nnoremap <silent> [unite]t  :<C-u>UniteWithCursorWord -buffer-name=tag tag/include<CR>
+xnoremap <silent> [unite]r  d:<C-u>Unite -buffer-name=register register history/yank<CR>
+nnoremap <silent> [unite]w  :<C-u>UniteWithCursorWord -buffer-name=register
+      \ buffer file_mru bookmark file<CR>
+nnoremap <silent> [unite]h  :<C-u>Unite history/command<CR>
+nnoremap <silent> [unite]q  :<C-u>Unite qflist -no-quit<CR>
+nnoremap <silent> [unite]g  :<C-u>Unite grep -buffer-name=search -no-quit<CR>
+nnoremap <silent> <C-k>  :<C-u>Unite change jump<CR>
+nnoremap <silent> [unite]c  :<C-u>Unite change<CR>
+"nnoremap <silent> [unite]f  :<C-u>Unite -buffer-name=resume resume<CR>
+nnoremap <silent> [unite]d  :<C-u>Unite -buffer-name=files -default-action=lcd directory_mru<CR>
+nnoremap <silent> [unite]ma  :<C-u>Unite mapping<CR>
+nnoremap <silent> [unite]me  :<C-u>Unite output:message<CR>
+inoremap <silent> <C-z>  <C-o>:call unite#start_complete(['register'], {'is_insert' : 1})<CR>
 
-autocmd FileType unite call s:unite_my_settings()
+nnoremap <silent> [Window]s  :<C-u>Unite -buffer-name=files -no-split
+      \ jump_point file_point buffer_tab file_rec/async:! file file/new file_mru<CR>
+nnoremap <silent> [Window]t  :<C-u>Unite -buffer-name=files tab<CR>
+nnoremap <silent> [Window]w  :<C-u>Unite window<CR>
+nnoremap <silent> [Space]b  :<C-u>UniteBookmarkAdd<CR>
+
+" t: tags-and-searches "{{{
+" The prefix key.
+nnoremap    [Tag]   <Nop>
+nmap    t [Tag]
+" Jump.
+" nnoremap [Tag]t  <C-]>
+nnoremap <silent><expr> [Tag]t  &filetype == 'help' ?  "\<C-]>" :
+      \ ":\<C-u>UniteWithCursorWord -buffer-name=tag tag/include\<CR>"
+" Jump next.
+nnoremap <silent> [Tag]n  :<C-u>tag<CR>
+" Jump previous.
+" nnoremap <silent> [Tag]p  :<C-u>pop<CR>
+nnoremap <silent><expr> [Tag]p  &filetype == 'help' ?
+      \ ":\<C-u>pop\<CR>" : ":\<C-u>Unite jump\<CR>"
+"}}}
+
+" Execute help.
+" nnoremap <C-h>  :<C-u>help<Space>
+nnoremap <C-h>  :<C-u>UniteWithInput help<CR>
+" Execute help by cursor keyword.
+" nnoremap <silent> g<C-h>  :<C-u>help<Space><C-r><C-w><CR>
+nnoremap <silent> g<C-h>  :<C-u>UniteWithCursorWord help<CR>
+
+" Search.
+nnoremap <expr> /  <SID>smart_search_expr('/',
+      \ ":\<C-u>Unite -buffer-name=search -start-insert line\<CR>")
+nnoremap <expr> g/  <SID>smart_search_expr('g/',
+      \ ":\<C-u>Unite -buffer-name=search -start-insert line_migemo\<CR>")
+nnoremap [Alt]/  g/
+nnoremap <silent><expr> ? <SID>smart_search_expr('?',
+      \ ":\<C-u>Unite mapping\<CR>")
+nnoremap <silent><expr> * <SID>smart_search_expr('*',
+      \ ":\<C-u>UniteWithCursorWord -input="
+      \ . expand('<cword>') . " -buffer-name=search line\<CR>")
+
+function! s:smart_search_expr(expr1, expr2)
+  return line('$') > 4000 ?  a:expr1 : a:expr2
+endfunction
+
+nnoremap <expr><silent> N  <SID>smart_search_expr('N',
+      \ ":\<C-u>Unite -buffer-name=search -input=" . @/
+      \  . " -no-start-insert line\<CR>")
+nnoremap <silent><expr> n  <SID>smart_search_expr('n',
+      \ ":\<C-u>UniteResume search\<CR>")
+
+let g:unite_enable_split_vertically = 0
+let g:unite_kind_file_cd_command = 'TabpageCD'
+let g:unite_kind_file_lcd_command = 'TabpageCD'
+
+let g:unite_source_history_yank_enable = 1
+
+let g:unite_winheight = 20
+
+autocmd MyAutoCmd FileType unite call s:unite_my_settings()
+
+" Directory partial match.
+" call unite#set_substitute_pattern('files', '\%([~.*]\+\)\@<!/', '*/*', 100)
+" call unite#set_substitute_pattern('files', '^\\', substitute(substitute($HOME, '\\', '/', 'g'), ' ', '\\ ', 'g') . '/*', -100)
+" Test.
+" call unite#set_substitute_pattern('files', '^\.v/', unite#util#substitute_path_separator($HOME).'/.vim/', 1000)
+call unite#set_substitute_pattern('files', '^\.v/',
+      \ [expand('~/.vim/'), unite#util#substitute_path_separator($HOME) . '/.bundle/*/'], 1000)
+call unite#set_substitute_pattern('files', '\.', '*.', 1000)
+call unite#custom_alias('file', 'h', 'left')
+call unite#custom_default_action('directory', 'narrow')
+" call unite#custom_default_action('file', 'my_tabopen')
+call unite#set_substitute_pattern('file', '[^~.]\zs/', '*/*', 20)
+
+" Custom actions."{{{
+let my_tabopen = {
+      \ 'description' : 'my tabopen items',
+      \ 'is_selectable' : 1,
+      \ }
+function! my_tabopen.func(candidates)"{{{
+  call unite#take_action('tabopen', a:candidates)
+
+  let dir = isdirectory(a:candidates[0].word) ? a:candidates[0].word : fnamemodify(a:candidates[0].word, ':p:h')
+  execute g:unite_lcd_command '`=dir`'
+endfunction"}}}
+call unite#custom_action('file,buffer', 'tabopen', my_tabopen)
+unlet my_tabopen
+"}}}
+
+" Custom filters."{{{
+" call unite#custom_filters('file,buffer,file_rec', ['matcher_fuzzy', 'sorter_default', 'converter_default'])
+"}}}
+
+let g:unite_enable_start_insert = 0
+
 function! s:unite_my_settings()"{{{
 	" Overwrite settings.
 	imap <buffer> jj <Plug>(unite_insert_leave)
@@ -485,15 +629,16 @@ function! s:unite_my_settings()"{{{
 	nnoremap <buffer><expr> S unite#mappings#set_current_filters(
 		\ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
 	" Start insert.
-	"let g:unite_enable_start_insert = 1
 endfunction"}}}
 
-let g:unite_source_file_mru_limit = 200
+" For optimize.
 let g:unite_cursor_line_highlight = 'CursorLine' 
 "let g:unite_abbr_highlight = 'TabLine'
-
-" For optimize.
-let g:unite_source_file_mru_filename_format = ''
+"let g:unite_source_file_mru_filename_format = ''
+let g:unite_source_file_mru_filename_format  =  ':~:.'
+let g:unite_source_file_mru_limit  =  300
+" let g:unite_source_directory_mru_time_format  =  ''
+let g:unite_source_directory_mru_limit  =  300
 
 " For unite-session.
 " Save session automatically.
