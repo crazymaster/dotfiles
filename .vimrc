@@ -22,6 +22,7 @@ NeoBundle 'Shougo/neobundle.vim'
 "
 " Original repositories in github
 NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'Shougo/echodoc'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplcache-snippets-complete'
 NeoBundle 'Shougo/unite-build'
@@ -34,13 +35,13 @@ NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/wwwrenderer-vim'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'thinca/vim-openbuf'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-scouter'
 NeoBundle 'thinca/vim-unite-history'
-NeoBundle 'mattn/wwwrenderer-vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tsukkee/unite-help'
@@ -233,6 +234,8 @@ else
 		\ 'outputter': 'browser'
 		\ }
 endif
+
+let g:echodoc_enable_at_startup = 1
 
 " neocomplcache"{{{
 " Disable AutoComplPop.
