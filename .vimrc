@@ -170,31 +170,12 @@ set whichwrap=b,s,[,],<,>,~
 " マウス機能有効化
 set mouse=a
 
-" コンソールでのカラー表示のための設定(暫定的にUNIX専用)
-if has('unix') && !has('gui_running')
-  let uname = system('uname')
-  if uname =~? "linux"
-    set term=builtin_linux
-  elseif uname =~? "freebsd"
-    set term=builtin_cons25
-  elseif uname =~? "Darwin"
-    set term=beos-ansi
-  else
-    set term=builtin_xterm
-  endif
-  unlet uname
-endif
-
-" コンソール版で環境変数$DISPLAYが設定されていると起動が遅くなる件へ対応
-if !has('gui_running') && has('xterm_clipboard')
-  set clipboard=exclude:cons\\\|linux\\\|cygwin\\\|rxvt\\\|screen
-endif
-
 " シンタックスハイライト有効化
 syntax on
 "highlight Normal ctermbg=black ctermfg=grey
 "highlight StatusLine term=none cterm=none ctermfg=black ctermbg=grey
 highlight CursorLine term=none cterm=bold ctermfg=none ctermbg=darkgray
+set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
 "ポップアップ補完メニュー色設定
 highlight Pmenu ctermbg=8 guibg=#606060
