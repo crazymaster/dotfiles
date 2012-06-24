@@ -170,6 +170,26 @@ set whichwrap=b,s,[,],<,>,~
 " マウス機能有効化
 set mouse=a
 
+" コンソールでのカラー表示のための設定(暫定的にUNIX専用)
+if has('unix') && !has('gui_running')
+  let uname = system('uname')
+  if uname =~? "linux"
+    set term=builtin_linux
+  elseif uname =~? "freebsd"
+    set term=builtin_cons25
+  elseif uname =~? "Darwin"
+    set term=beos-ansi
+  else
+    set term=builtin_xterm
+  endif
+  unlet uname
+endif
+
+" コンソール版で環境変数$DISPLAYが設定されていると起動が遅くなる件へ対応
+if !has('gui_running') && has('xterm_clipboard')
+  set clipboard=exclude:cons\\\|linux\\\|cygwin\\\|rxvt\\\|screen
+endif
+
 " シンタックスハイライト有効化
 syntax on
 "highlight Normal ctermbg=black ctermfg=grey
@@ -181,12 +201,17 @@ highlight Pmenu ctermbg=8 guibg=#606060
 highlight PmenuSel ctermbg=12 guibg=SlateBlue
 highlight PmenuSbar ctermbg=0 guibg=#404040
 highlight PmenuThumb ctermbg=0 guibg=Red
-set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
 " ステータスラインを表示
 set laststatus=2 " ステータスラインを常に表示
-set nohlsearch " 検索キーワードをハイライトしないように設定
+"set nohlsearch " 検索キーワードをハイライトしないように設定
 set cursorline " カーソルラインの強調表示を有効化
+" コマンドラインの高さ (Windows用gvim使用時はgvimrcを編集すること)
+set cmdheight=2
+" コマンドをステータス行に表示
+set showcmd
+" タイトルを表示
+set title
 
 " 行番号を表示
 set number
@@ -195,12 +220,30 @@ set number
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+" タブをスペースに展開しない (expandtab:展開する)
+set noexpandtab
+" 自動的にインデントする (noautoindent:インデントしない)
+set autoindent
+" 検索時にファイルの最後まで行ったら最初に戻る (nowrapscan:戻らない)
+set wrapscan
+" 括弧入力時に対応する括弧を表示 (noshowmatch:表示しない)
+set showmatch
+" コマンドライン補完するときに強化されたものを使う(参照 :help wildmenu)
+set wildmenu
+" テキスト挿入中の自動折り返しを日本語に対応させる
+set formatoptions+=mM
 
 " インクリメンタル検索を有効化
 set incsearch
+" 検索時に大文字小文字を無視 (noignorecase:無視しない)
+set ignorecase
+" 大文字小文字の両方が含まれている場合は大文字小文字を区別
+set smartcase
 
 " 補完時の一覧表示機能有効化
 set wildmenu
+" ファイル名補完時に無視するファイルパターン
+set wildignore=*.o,*.obj,*.bak,*.swp,*.d,*~
 
 " ビジュアルモードでインデント変更後も選択を継続
 vnoremap < <gv
