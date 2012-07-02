@@ -497,6 +497,8 @@ nnoremap    [unite]   <Nop>
 xnoremap    [unite]   <Nop>
 nmap    f [unite]
 xmap    f [unite]
+nnoremap	[Window]	<Nop>
+nmap	s [Window]
 
 nnoremap [unite]u  q:Unite<Space>
 " nnoremap <silent> :  :<C-u>Unite history/command command<CR>
