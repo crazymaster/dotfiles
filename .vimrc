@@ -509,7 +509,7 @@ endfunction
 nnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register history/yank<CR>
 nnoremap <silent> [unite]o  :<C-u>Unite outline -start-insert<CR>
 nnoremap  [unite]f  :<C-u>Unite source<CR>
-nnoremap <silent> [unite]t  :<C-u>UniteWithCursorWord -buffer-name=tag tag/include<CR>
+nnoremap <silent> [unite]t  :<C-u>UniteWithCursorWord -buffer-name=tag tag tag/include<CR>
 xnoremap <silent> [unite]r  d:<C-u>Unite -buffer-name=register register history/yank<CR>
 nnoremap <silent> [unite]w  :<C-u>UniteWithCursorWord -buffer-name=register
       \ buffer file_mru bookmark file<CR>
@@ -537,7 +537,7 @@ nmap    t [Tag]
 " Jump.
 " nnoremap [Tag]t  <C-]>
 nnoremap <silent><expr> [Tag]t  &filetype == 'help' ?  "\<C-]>" :
-      \ ":\<C-u>UniteWithCursorWord -buffer-name=tag tag/include\<CR>"
+      \ ":\<C-u>UniteWithCursorWord -buffer-name=tag tag tag/include\<CR>"
 " Jump next.
 nnoremap <silent> [Tag]n  :<C-u>tag<CR>
 " Jump previous.
@@ -573,7 +573,7 @@ nnoremap <expr><silent> N  <SID>smart_search_expr('N',
       \ ":\<C-u>Unite -buffer-name=search -input=" . @/
       \  . " -no-start-insert line\<CR>")
 nnoremap <silent><expr> n  <SID>smart_search_expr('n',
-      \ ":\<C-u>UniteResume search\<CR>")
+      \ ":\<C-u>UniteResume search -no-start-insert\<CR>")
 
 let g:unite_enable_split_vertically = 0
 let g:unite_kind_file_cd_command = 'TabpageCD'
