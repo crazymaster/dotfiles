@@ -685,3 +685,17 @@ if executable('ack-grep')
   let g:unite_source_grep_recursive_opt = ''
 endif
 "}}}
+
+" jekyll.vim"{{{
+let g:jekyll_path  =  "~/Desktop"
+let g:jekyll_post_suffix = "md"
+let g:jekyll_post_published = "false"
+"let g:jekyll_post_created = "epoch"
+"let g:jekyll_post_created = "%D %T"
+let g:jekyll_prompt_tags = "true"
+let g:jekyll_prompt_categories = "true"
+
+nnoremap <Space>jb  :JekyllBuild<CR>
+nnoremap <Space>jn  :JekyllPost<CR>
+nnoremap <Space>jl  :JekyllList<CR>
+"}}}
