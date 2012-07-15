@@ -703,3 +703,38 @@ nnoremap <Space>jb  :JekyllBuild<CR>
 nnoremap <Space>jn  :JekyllPost<CR>
 nnoremap <Space>jl  :JekyllList<CR>
 "}}}
+
+" lingr-vim"{{{
+let g:lingr_vim_sidebar_width = 30
+
+" Keymappings.
+autocmd MyAutoCmd FileType lingr-messages call s:lingr_messages_my_settings()
+autocmd MyAutoCmd FileType lingr-say call s:lingr_say_my_settings()
+autocmd MyAutoCmd FileType lingr-rooms call s:lingr_looms_my_settings()
+
+function! s:lingr_messages_my_settings()"{{{
+	nmap <buffer> o <Plug>(lingr-messages-show-say-buffer)
+	nunmap <buffer> s
+
+	if has('win32') || has('win64')
+		" Dirty shellslash hack.
+		set noshellslash
+
+		augroup MyAutoCmd
+			autocmd WinEnter,BufWinEnter <buffer> set noshellslash
+			autocmd WinLeave,BufWinLeave <buffer> set shellslash
+		augroup END
+	endif
+endfunction"}}}
+function! s:lingr_say_my_settings()"{{{
+	imap <buffer> <CR> <Plug>(lingr-say-insert-mode-say)
+	nmap <buffer> q <Plug>(lingr-say-close)
+endfunction"}}}
+function! s:lingr_looms_my_settings()"{{{
+	nmap <buffer> l <Plug>(lingr-rooms-select-room)
+endfunction"}}}
+
+if !has('win32') || !has('win64')
+	command! Suicide call system('kill -KILL ' . getpid())
+endif
+"}}}
