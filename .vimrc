@@ -691,7 +691,7 @@ endif
 "}}}
 
 " jekyll.vim"{{{
-let g:jekyll_path  =  "~/Desktop"
+let g:jekyll_path  =  "."
 let g:jekyll_post_suffix = "md"
 let g:jekyll_post_published = "false"
 "let g:jekyll_post_created = "epoch"
