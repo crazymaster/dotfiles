@@ -236,6 +236,9 @@ set wildignore=*.o,*.obj,*.bak,*.swp,*.d,*~
 vnoremap < <gv
 vnoremap > >gv
 
+" クリップボードを利用する
+set clipboard=unnamed
+
 " actionscript
 au bufnewfile,bufread *.as	set filetype=actionscript
 
