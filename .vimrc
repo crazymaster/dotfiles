@@ -243,17 +243,6 @@ set clipboard=unnamed
 " actionscript
 au bufnewfile,bufread *.as	set filetype=actionscript
 
-" ショートカットキー
-nmap <silent> <C-b> :write<CR>:make -j<CR>
-imap <silent> <C-b> <C-o>:write<CR><C-o>:make -j<CR>
-if has('win32') || has('win64')
-	nmap <silent> <F5> :!a.exe<CR>
-	imap <silent> <F5> <C-o>:!a.exe<CR>
-else
-	nmap <silent> <F5> :!./*.out<CR>
-	imap <silent> <F5> <C-o>:!./*.out<CR>
-endif
-
 " 自動的にQuickFixを開く
 autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
 
@@ -291,7 +280,7 @@ let g:neocomplcache_enable_camel_case_completion = 1
 " Use underbar completion.
 let g:neocomplcache_enable_underbar_completion = 1
 " Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_min_syntax_length = 2
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
@@ -490,13 +479,13 @@ nnoremap <silent> [Space]gl :<C-u>GitLog<CR>
 nnoremap <silent> [Space]gL :<C-u>GitLog -u \| head -10000<CR>
 nnoremap <silent> [Space]ga :<C-u>GitAdd<CR>
 nnoremap <silent> [Space]gA :<C-u>GitAdd <cfile><CR>
-"nnoremap <silent> [Space]gc :<C-u>GitCommit -a<CR>
+nnoremap <silent> [Space]gc :<C-u>Gcommit -a<CR>
 "nnoremap <silent> [Space]gp q:Git push<Space>
 "nnoremap <silent> [Space]gt q:Git tag<Space>
 "}}}
 
 " vcs.vim{{{
-nnoremap <silent> [Space]gc :<C-u>Vcs commit<CR>
+"nnoremap <silent> [Space]gc :<C-u>Vcs commit<CR>
 "nnoremap <silent> [Space]gC :<C-u>Vcs commit --amend<CR>
 nnoremap <silent> [Space]gs :<C-u>Vcs status<CR>
 "}}}
@@ -737,4 +726,8 @@ endfunction"}}}
 if !has('win32') || !has('win64')
 	command! Suicide call system('kill -KILL ' . getpid())
 endif
+"}}}
+
+" zencoding-vim"{{{
+let g:use_zen_complete_tag = 1
 "}}}
