@@ -71,13 +71,10 @@ NeoBundle 'L9'
 NeoBundle 'TwitVim'
 NeoBundle 'rails.vim'
 " Non-github repos
-NeoBundle 'git://git.wincent.com/command-t.git'
+"NeoBundle 'git://git.wincent.com/command-t.git'
 " Non-git repos
-NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
-NeoBundle 'https://bitbucket.org/ns9tks/vim-fuzzyfinder'
-
-" Comment is allowed.
-NeoBundle 'https://bitbucket.org/ns9tks/vim-fuzzyfinder' " Foo, Bar
+"NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
+"NeoBundle 'https://bitbucket.org/ns9tks/vim-fuzzyfinder'
 
 " Build repos.
 NeoBundle 'Shougo/vimproc', {
@@ -90,11 +87,11 @@ NeoBundle 'Shougo/vimproc', {
 	  \ }
 
 " Lazy load.
-NeoBundleLazy 'c9s/perlomni.vim.git'
-NeoBundleSource perlomni.vim
-NeoBundleLazy 'klen/python-mode'
-autocmd FileType python
-	  \ NeoBundleSource python-mode
+"NeoBundleLazy 'c9s/perlomni.vim.git'
+"NeoBundleSource perlomni.vim
+"NeoBundleLazy 'klen/python-mode'
+"autocmd FileType python
+"	  \ NeoBundleSource python-mode
 
 filetype plugin indent on       " required!
 "}}}
