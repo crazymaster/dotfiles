@@ -189,7 +189,7 @@ highlight CursorLine term=none cterm=bold ctermfg=none ctermbg=darkgray
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
 "ポップアップ補完メニュー色設定
-highlight Pmenu ctermbg=8 guibg=#606060
+highlight Pmenu ctermbg=8 ctermfg=White guibg=#606060
 highlight PmenuSel ctermbg=12 guibg=SlateBlue
 highlight PmenuSbar ctermbg=0 guibg=#404040
 highlight PmenuThumb ctermbg=0 guibg=Red
