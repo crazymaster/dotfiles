@@ -184,7 +184,14 @@ syntax on
 "highlight Normal ctermbg=black ctermfg=grey
 "highlight StatusLine term=none cterm=none ctermfg=black ctermbg=grey
 highlight CursorLine term=none cterm=bold ctermfg=none ctermbg=darkgray
+
+" Powerline"{{{
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
+if has('unix') && !has('gui_running')
+    inoremap <silent> <Esc> <Esc>
+    inoremap <silent> <C-[> <Esc>
+endif
+"}}}
 
 "ポップアップ補完メニュー色設定
 highlight Pmenu ctermbg=8 guibg=#606060
@@ -282,7 +289,12 @@ let g:neocomplcache_enable_camel_case_completion = 1
 " Use underbar completion.
 let g:neocomplcache_enable_underbar_completion = 1
 " Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 2
+let g:neocomplcache_min_syntax_length = 3
+" Set auto completion length.
+let g:neocomplcache_auto_completion_start_length = 2
+" Set minimum keyword length.
+let g:neocomplcache_min_keyword_length = 3
+
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
@@ -292,11 +304,14 @@ let g:neocomplcache_dictionary_filetype_lists = {
 	\ 'scheme' : $HOME.'/.gosh_completions'
 	\ }
 
-" Define keyword.
+" Define keyword pattern.
 if !exists('g:neocomplcache_keyword_patterns')
 	let g:neocomplcache_keyword_patterns = {}
 endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+let g:neocomplcache_keyword_patterns.default = '\h\w*'
+let g:neocomplcache_keyword_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+let g:neocomplcache_snippets_dir = $HOME . '/snippets'
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplcache#undo_completion()
@@ -306,8 +321,8 @@ imap <C-k>     <Plug>(neocomplcache_snippets_expand)
 smap <C-k>     <Plug>(neocomplcache_snippets_expand)
 
 " SuperTab like snippets behavior.
-"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
-" \ "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
+ \ "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " For snippet_complete marker.
 if has('conceal')
@@ -316,18 +331,37 @@ endif
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-"inoremap <expr><CR>  neocomplcache#close_popup() . "\<CR>"
+inoremap <expr><silent> <CR> <SID>my_cr_function()
+function! s:my_cr_function()
+  return pumvisible() ? neocomplcache#close_popup() . "\<CR>" : "\<CR>"
+endfunction
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ neocomplcache#start_manual_complete()
+function! s:check_back_space()"{{{
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~ '\s'
+endfunction"}}}
+" <S-TAB>: completion back.
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
+" <C-y>: paste.
+inoremap <expr><C-y> pumvisible() ? neocomplcache#close_popup() : "\<C-r>\""
+" <C-e>: close popup.
+inoremap <expr><C-e> pumvisible() ? neocomplcache#cancel_popup() : "\<End>"
+" <C-k>: unite completion.
+imap <C-k> <Plug>(neocomplcache_start_unite_complete)
+" <C-n>: neocomplcache.
+inoremap <expr><C-n> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>\<Down>"
+" <C-p>: keyword completion.
+inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
 
 " For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
+inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
+inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
 "inoremap <expr><Up>    neocomplcache#close_popup() . "\<Up>"
 "inoremap <expr><Down>  neocomplcache#close_popup() . "\<Down>"
 " Or set this.
@@ -361,6 +395,12 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.mail = '^\s*\w\+'
+let g:neocomplcache_caching_limit_file_size = 500000
+
+if !exists('g:neocomplcache_same_filetype_lists')
+  let g:neocomplcache_same_filetype_lists = {}
+endif
 
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
