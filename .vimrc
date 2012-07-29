@@ -185,13 +185,8 @@ syntax on
 "highlight StatusLine term=none cterm=none ctermfg=black ctermbg=grey
 highlight CursorLine term=none cterm=bold ctermfg=none ctermbg=darkgray
 
-" Powerline"{{{
+" For Powerline
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
-if has('unix') && !has('gui_running')
-    inoremap <silent> <Esc> <Esc>
-    inoremap <silent> <C-[> <Esc>
-endif
-"}}}
 
 "ポップアップ補完メニュー色設定
 highlight Pmenu ctermbg=8 guibg=#606060
@@ -331,10 +326,10 @@ endif
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-inoremap <expr><silent> <CR> <SID>my_cr_function()
-function! s:my_cr_function()
-  return pumvisible() ? neocomplcache#close_popup() . "\<CR>" : "\<CR>"
-endfunction
+"inoremap <expr><silent> <CR> <SID>my_cr_function()
+"function! s:my_cr_function()
+"  return pumvisible() ? neocomplcache#close_popup() . "\<CR>" : "\<CR>"
+"endfunction
 " <TAB>: completion.
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
