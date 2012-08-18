@@ -1,7 +1,6 @@
 " neobundle.vim"{{{
 set nocompatible                " recommend
 filetype off                    " required!
-filetype plugin indent off      " required!
 
 if has('win32') || has('win64')
 	let $DOTVIM = expand('$VIM/plugins')
@@ -94,6 +93,14 @@ NeoBundle 'Shougo/vimproc', {
 "	  \ NeoBundleSource python-mode
 
 filetype plugin indent on       " required!
+
+" Installation check.
+if neobundle#exists_not_installed_bundles()
+  echomsg 'Not installed bundles : ' .
+		\ string(neobundle#get_not_installed_bundle_names())
+  echomsg 'Please execute ":NeoBundleInstall" command.'
+  finish
+endif
 "}}}
 
 " 文字コード設定
@@ -388,9 +395,9 @@ endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.mail = '^\s*\w\+'
+let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplcache_caching_limit_file_size = 500000
 
 if !exists('g:neocomplcache_same_filetype_lists')
