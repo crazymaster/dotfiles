@@ -53,11 +53,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tsukkee/lingr-vim'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'tyru/eskk.vim.git',
-      \ { 'depends' : [
-      \ 'tyru/cul.vim.git', 'tyru/savemap.vim.git',
-      \ 'tyru/vice.vim.git', 'tyru/skkdict.vim.git',
-      \ ]}
+NeoBundle 'tyru/eskk.vim.git'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'ujihisa/unite-colorscheme'
