@@ -199,7 +199,7 @@ highlight PmenuThumb ctermbg=0 guibg=Red
 
 " ステータスラインを表示
 set laststatus=2 " ステータスラインを常に表示
-"set nohlsearch " 検索キーワードをハイライトしないように設定
+set hlsearch " 検索キーワードをハイライト
 set cursorline " カーソルラインの強調表示を有効化
 " コマンドラインの高さ (Windows用gvim使用時はgvimrcを編集すること)
 set cmdheight=2
@@ -212,11 +212,13 @@ set title
 set number
 
 " タブ幅制御
-set tabstop=4
+set tabstop=8
 set softtabstop=4
 set shiftwidth=4
-" タブをスペースに展開しない (expandtab:展開する)
-set noexpandtab
+set smarttab
+set shiftround
+" タブをスペースに展開する
+set expandtab
 " 自動的にインデントする (noautoindent:インデントしない)
 set autoindent
 " 検索時にファイルの最後まで行ったら最初に戻る (nowrapscan:戻らない)
