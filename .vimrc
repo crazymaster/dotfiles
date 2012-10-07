@@ -53,11 +53,12 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tsukkee/lingr-vim'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'tyru/eskk.vim.git'
+NeoBundle 'tyru/eskk.vim.git',
+    \ { 'depends' : 'tyru/skkdict.vim' }
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
-NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'vim-jp/vimdoc-ja'
+NeoBundleLazy 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'ujihisa/unite-locate'
 " Vim-script repositories
 NeoBundle 'DirDiff.vim'
