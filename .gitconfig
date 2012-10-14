@@ -1,0 +1,11 @@
+[user]
+	name = crazymaster
+	email = ken.i54k@gmail.com
+[credential]
+	helper = cache
+[github]
+	user = crazymaster
+[color]
+	ui = auto
+[core]
+	excludesfile = ~/.gitignore_global
