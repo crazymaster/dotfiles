@@ -36,5 +36,6 @@
 Icon?
 ehthumbs.db
 Thumbs.db
-
 *~
+*.swp
+tags

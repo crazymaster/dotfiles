@@ -34,6 +34,7 @@ NeoBundle 'adie/BlockDiff'
 NeoBundle 'basyura/TweetVim',
     \ { 'depends' : 'basyura/twibill.vim' }
 NeoBundle 'csexton/jekyll.vim'
+NeoBundle 'groenewege/vim-less'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'hail2u/vim-css3-syntax'
@@ -43,6 +44,8 @@ NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/wwwrenderer-vim'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'othree/html5.vim'
+NeoBundle 'pasela/unite-webcolorname'
+NeoBundle 'skammer/vim-css-color'
 NeoBundle 'thinca/vim-openbuf'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
@@ -69,6 +72,7 @@ NeoBundle 'DirDiff.vim'
 NeoBundle 'FuzzyFinder'
 NeoBundle 'L9'
 NeoBundle 'rails.vim'
+NeoBundle 'taglist.vim'
 " Non-github repos
 "NeoBundle 'git://git.wincent.com/command-t.git'
 " Non-git repos
@@ -252,9 +256,6 @@ vnoremap > >gv
 
 " クリップボードを利用する
 set clipboard=unnamed
-
-" actionscript
-au bufnewfile,bufread *.as	set filetype=actionscript
 
 " 自動的にQuickFixを開く
 autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
