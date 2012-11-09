@@ -369,7 +369,7 @@ inoremap <expr><C-y> pumvisible() ? neocomplcache#close_popup() : "\<C-r>\""
 " <C-e>: close popup.
 inoremap <expr><C-e> pumvisible() ? neocomplcache#cancel_popup() : "\<End>"
 " <C-k>: unite completion.
-imap <C-k> <Plug>(neocomplcache_start_unite_complete)
+"imap <C-k> <Plug>(neocomplcache_start_unite_complete)
 " <C-n>: neocomplcache.
 inoremap <expr><C-n> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>\<Down>"
 " <C-p>: keyword completion.
