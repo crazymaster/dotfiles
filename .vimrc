@@ -24,6 +24,7 @@ NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'Shougo/echodoc'
 NeoBundle 'Shougo/git-vim'
 NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplcache-clang'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/unite-build'
 NeoBundle 'Shougo/unite.vim'
@@ -259,6 +260,10 @@ set clipboard=unnamed
 
 " 自動的にQuickFixを開く
 autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
+
+if has('unix')
+    set path+=/usr/include/c++/4.7.2,/usr/include/qt4/QtCore,/usr/include/qt4/QtGui,/usr/include/qt4
+endif
 
 let g:quickrun_config = {}
 if has('win32') || has('win64')
