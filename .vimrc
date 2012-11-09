@@ -36,6 +36,7 @@ NeoBundle 'basyura/TweetVim',
     \ { 'depends' : 'basyura/twibill.vim' }
 NeoBundle 'csexton/jekyll.vim'
 NeoBundle 'groenewege/vim-less'
+NeoBundle "honza/snipmate-snippets"
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'hail2u/vim-css3-syntax'
@@ -345,6 +346,8 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='$DOTVIM/bundle/snipmate-snippets/snippets'
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
 "inoremap <expr><silent> <CR> <SID>my_cr_function()
