@@ -3,13 +3,13 @@ set nocompatible                " recommend
 filetype off                    " required!
 
 if has('win32') || has('win64')
-	let $DOTVIM = expand('$VIM/plugins')
+    let $DOTVIM = expand('$VIM/plugins')
 else
-	let $DOTVIM = expand('~/.vim')
+    let $DOTVIM = expand('~/.vim')
 endif
 
 if has('vim_starting')
-	set runtimepath+=$DOTVIM/bundle/neobundle.vim
+    set runtimepath+=$DOTVIM/bundle/neobundle.vim
 endif
 
 call neobundle#rc(expand('$DOTVIM/bundle'))
@@ -71,10 +71,10 @@ NeoBundleLazy 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'ujihisa/unite-locate'
 " Vim-script repositories
 NeoBundle 'DirDiff.vim'
-NeoBundle 'FuzzyFinder'
-NeoBundle 'L9'
-NeoBundle 'rails.vim'
 NeoBundle 'taglist.vim'
+"NeoBundle 'FuzzyFinder'
+"NeoBundle 'L9'
+"NeoBundle 'rails.vim'
 " Non-github repos
 "NeoBundle 'git://git.wincent.com/command-t.git'
 " Non-git repos
@@ -268,15 +268,15 @@ endif
 
 let g:quickrun_config = {}
 if has('win32') || has('win64')
-	let g:quickrun_config['markdown'] = {
-		\ 'outputter': 'browser',
-		\ 'command': 'c:/Ruby193/bin/ruby',
-		\ 'cmdopt': '-Ku c:/Ruby193/bin/redcarpet'
-		\ }
+    let g:quickrun_config['markdown'] = {
+                \ 'outputter': 'browser',
+                \ 'command': 'c:/Ruby193/bin/ruby',
+                \ 'cmdopt': '-Ku c:/Ruby193/bin/redcarpet'
+                \ }
 else
-	let g:quickrun_config['markdown'] = {
-		\ 'outputter': 'browser'
-		\ }
+    let g:quickrun_config['markdown'] = {
+                \ 'outputter': 'browser'
+                \ }
 endif
 
 let g:echodoc_enable_at_startup = 1
@@ -317,7 +317,7 @@ let g:neocomplcache_dictionary_filetype_lists = {
 
 " Define keyword pattern.
 if !exists('g:neocomplcache_keyword_patterns')
-	let g:neocomplcache_keyword_patterns = {}
+    let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns.default = '\h\w*'
 let g:neocomplcache_keyword_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
@@ -348,6 +348,7 @@ endif
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='$DOTVIM/bundle/snipmate-snippets/snippets'
+
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
 "inoremap <expr><silent> <CR> <SID>my_cr_function()
@@ -680,41 +681,41 @@ unlet my_tabopen
 let g:unite_enable_start_insert = 0
 
 function! s:unite_my_settings()"{{{
-	" Overwrite settings.
-	imap <buffer> jj <Plug>(unite_insert_leave)
-	imap <buffer> <TAB> <Plug>(unite_select_next_line)
-	imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-	imap <buffer> ' <Plug>(unite_quick_match_default_action)
-	nmap <buffer> ' <Plug>(unite_quick_match_default_action)
-	imap <buffer><expr> x
-		\ unite#smart_map('x', "\<Plug>(unite_quick_match_choose_action)")
-	nmap <buffer> x <Plug>(unite_quick_match_choose_action)
-	nmap <buffer> cd <Plug>(unite_quick_match_default_action)
-	imap <buffer> <C-g> <Plug>(unite_input_directory)
-	nmap <buffer> <C-z> <Plug>(unite_toggle_transpose_window)
-	imap <buffer> <C-z> <Plug>(unite_toggle_transpose_window)
-	imap <buffer> <C-y> <Plug>(unite_narrowing_path)
-	nmap <buffer> <C-y> <Plug>(unite_narrowing_path)
-	nmap <buffer> <C-j> <Plug>(unite_toggle_auto_preview)
-	nmap <buffer> <C-r> <Plug>(unite_narrowing_input_history)
-	imap <buffer> <C-r> <Plug>(unite_narrowing_input_history)
-	nmap <silent><buffer> <Tab> :call <SID>NextWindow()<CR>
-	nnoremap <silent><buffer><expr> l
-		\ unite#smart_map('l', unite#do_action('default'))
-	nunmap <buffer> x
-	iunmap <buffer> x
+    " Overwrite settings.
+    imap <buffer> jj <Plug>(unite_insert_leave)
+    imap <buffer> <TAB> <Plug>(unite_select_next_line)
+    imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+    imap <buffer> ' <Plug>(unite_quick_match_default_action)
+    nmap <buffer> ' <Plug>(unite_quick_match_default_action)
+    imap <buffer><expr> x
+                \ unite#smart_map('x', "\<Plug>(unite_quick_match_choose_action)")
+    nmap <buffer> x <Plug>(unite_quick_match_choose_action)
+    nmap <buffer> cd <Plug>(unite_quick_match_default_action)
+    imap <buffer> <C-g> <Plug>(unite_input_directory)
+    nmap <buffer> <C-z> <Plug>(unite_toggle_transpose_window)
+    imap <buffer> <C-z> <Plug>(unite_toggle_transpose_window)
+    imap <buffer> <C-y> <Plug>(unite_narrowing_path)
+    nmap <buffer> <C-y> <Plug>(unite_narrowing_path)
+    nmap <buffer> <C-j> <Plug>(unite_toggle_auto_preview)
+    nmap <buffer> <C-r> <Plug>(unite_narrowing_input_history)
+    imap <buffer> <C-r> <Plug>(unite_narrowing_input_history)
+    nmap <silent><buffer> <Tab> :call <SID>NextWindow()<CR>
+    nnoremap <silent><buffer><expr> l
+                \ unite#smart_map('l', unite#do_action('default'))
+    nunmap <buffer> x
+    iunmap <buffer> x
 
-	let unite = unite#get_current_unite()
-	if unite.buffer_name =~# '^search'
-	nnoremap <silent><buffer><expr> r unite#do_action('replace')
-	else
-	nnoremap <silent><buffer><expr> r unite#do_action('rename')
-	endif
+    let unite = unite#get_current_unite()
+    if unite.buffer_name =~# '^search'
+        nnoremap <silent><buffer><expr> r unite#do_action('replace')
+    else
+        nnoremap <silent><buffer><expr> r unite#do_action('rename')
+    endif
 
-	nnoremap <silent><buffer><expr> cd unite#do_action('lcd')
-	nnoremap <buffer><expr> S unite#mappings#set_current_filters(
-		\ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
-	" Start insert.
+    nnoremap <silent><buffer><expr> cd unite#do_action('lcd')
+    nnoremap <buffer><expr> S unite#mappings#set_current_filters(
+                \ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
+    " Start insert.
 endfunction"}}}
 
 " For optimize.
@@ -763,29 +764,29 @@ autocmd MyAutoCmd FileType lingr-say call s:lingr_say_my_settings()
 autocmd MyAutoCmd FileType lingr-rooms call s:lingr_looms_my_settings()
 
 function! s:lingr_messages_my_settings()"{{{
-	nmap <buffer> o <Plug>(lingr-messages-show-say-buffer)
-	nunmap <buffer> s
+    nmap <buffer> o <Plug>(lingr-messages-show-say-buffer)
+    nunmap <buffer> s
 
-	if has('win32') || has('win64')
-		" Dirty shellslash hack.
-		set noshellslash
+    if has('win32') || has('win64')
+        " Dirty shellslash hack.
+        set noshellslash
 
-		augroup MyAutoCmd
-			autocmd WinEnter,BufWinEnter <buffer> set noshellslash
-			autocmd WinLeave,BufWinLeave <buffer> set shellslash
-		augroup END
-	endif
+        augroup MyAutoCmd
+            autocmd WinEnter,BufWinEnter <buffer> set noshellslash
+            autocmd WinLeave,BufWinLeave <buffer> set shellslash
+        augroup END
+    endif
 endfunction"}}}
 function! s:lingr_say_my_settings()"{{{
-	imap <buffer> <CR> <Plug>(lingr-say-insert-mode-say)
-	nmap <buffer> q <Plug>(lingr-say-close)
+    imap <buffer> <CR> <Plug>(lingr-say-insert-mode-say)
+    nmap <buffer> q <Plug>(lingr-say-close)
 endfunction"}}}
 function! s:lingr_looms_my_settings()"{{{
-	nmap <buffer> l <Plug>(lingr-rooms-select-room)
+    nmap <buffer> l <Plug>(lingr-rooms-select-room)
 endfunction"}}}
 
 if !has('win32') || !has('win64')
-	command! Suicide call system('kill -KILL ' . getpid())
+    command! Suicide call system('kill -KILL ' . getpid())
 endif
 "}}}
 
@@ -853,4 +854,9 @@ if !exists('g:eskk#disable') || !g:eskk#disable
             unlet t
         endfunction "}}}
 endif
+"}}}
+
+" TweetVim"{{{
+let g:tweetvim_display_icon = 1
+let g:tweetvim_async_post = 1
 "}}}
