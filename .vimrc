@@ -21,10 +21,10 @@ NeoBundle 'Shougo/neobundle.vim'
 "
 " Original repositories in github
 NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'Shougo/echodoc'
 NeoBundle 'Shougo/git-vim'
 NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neocomplcache-clang'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/unite-build'
 NeoBundle 'Shougo/unite.vim'
@@ -425,6 +425,22 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+" For clang_complete
+" neocomplcache 側の設定
+let g:neocomplcache_force_overwrite_completefunc=1
+
+if !exists("g:neocomplcache_force_omni_patterns")
+    let g:neocomplcache_force_omni_patterns = {}
+endif
+
+" omnifunc が呼び出される場合の正規表現パターンを設定しておく
+let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|::'
+
+" clang_complete 側の設定
+" clang_complete の自動呼び出しは必ず切っておいて下さい
+" これを設定しておかなければ補完がおかしくなります
+let g:clang_complete_auto=0
 "}}}
 
 " smartchr.vim"{{{
