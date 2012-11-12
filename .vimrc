@@ -66,7 +66,7 @@ NeoBundle 'ujihisa/neco-look'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'yomi322/neco-tweetvim'
 NeoBundle 'yomi322/unite-tweetvim'
-NeoBundleLazy 'crazymaster/unite-vim_hacks'
+NeoBundleLazy 'choplin/unite-vim_hacks'
 NeoBundleLazy 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'ujihisa/unite-locate'
 " Vim-script repositories
