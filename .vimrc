@@ -873,6 +873,6 @@ endif
 "}}}
 
 " TweetVim"{{{
-let g:tweetvim_display_icon = 1
+"let g:tweetvim_display_icon = 1
 let g:tweetvim_async_post = 1
 "}}}
