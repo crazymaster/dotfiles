@@ -21,7 +21,7 @@ NeoBundle 'Shougo/neobundle.vim'
 "
 " Original repositories in github
 NeoBundle 'Lokaltog/vim-powerline'
-NeoBundle 'Rip-Rip/clang_complete'
+NeoBundleLazy 'Rip-Rip/clang_complete'
 NeoBundle 'Shougo/echodoc'
 NeoBundle 'Shougo/git-vim'
 NeoBundle 'Shougo/neocomplcache'
