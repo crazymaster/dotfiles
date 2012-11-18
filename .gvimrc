@@ -10,9 +10,11 @@ set guioptions-=L
 set guioptions-=b "下スクロールバーなし
 
 if has('win64')
-	augroup hack234
-		autocmd!
-		autocmd FocusGained * set transparency=220
-		autocmd FocusLost * set transparency=150
-	augroup END
+    augroup hack234
+        autocmd!
+        autocmd FocusGained * set transparency=220
+        autocmd FocusLost * set transparency=150
+    augroup END
+else
+    set guifont=Monospace\ 13
 endif
