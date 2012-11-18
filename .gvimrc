@@ -9,12 +9,12 @@ set guioptions-=l "左スクロールバーなし
 set guioptions-=L
 set guioptions-=b "下スクロールバーなし
 
-if has('win64')
+if has('win32') || has('win64')
     augroup hack234
         autocmd!
         autocmd FocusGained * set transparency=220
         autocmd FocusLost * set transparency=150
     augroup END
-else
+elseif has('unix')
     set guifont=Monospace\ 13
 endif
