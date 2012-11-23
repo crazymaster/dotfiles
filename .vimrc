@@ -824,11 +824,9 @@ if !exists('g:eskk#disable') || !g:eskk#disable
 
     " Disable mapping.
     "let g:eskk#map_normal_keys = 0
-
-    " Toggle debug.
-    nnoremap <silent> [Space]ed :<C-u>call ToggleVariable('g:eskk#debug')<CR>
-
-    autocmd MyAutoCmd User eskk-initialize EskkMap -remap jj <Plug>(eskk:disable)<Esc>
+    "
+    imap <C-j> <Plug>(eskk:toggle)
+    cmap <C-j> <Plug>(eskk:toggle)
 
     "let g:eskk#dictionary = {
     "\ 'path': expand('~/.skk-eskk-jisyo'),

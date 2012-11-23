@@ -10,3 +10,8 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	autocrlf = input
+[branch]
+	autosetuprebase = always
+[pull]
+        # from 1.7.9
+	rebase = true
