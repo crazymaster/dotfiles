@@ -826,8 +826,8 @@ if !exists('g:eskk#disable') || !g:eskk#disable
     " Disable mapping.
     "let g:eskk#map_normal_keys = 0
 
-    imap <C-j> <Plug>(eskk:toggle)
-    cmap <C-j> <Plug>(eskk:toggle)
+    autocmd VimEnter * imap <C-j> <Plug>(eskk:toggle)
+    autocmd VimEnter * cmap <C-j> <Plug>(eskk:toggle)
 
     "let g:eskk#dictionary = {
     "\ 'path': expand('~/.skk-eskk-jisyo'),
