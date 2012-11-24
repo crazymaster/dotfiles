@@ -42,13 +42,13 @@ NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kana/vim-smartinput'
+NeoBundle 'mattn/benchvimrc-vim'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/wwwrenderer-vim'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'pasela/unite-webcolorname'
-NeoBundle 'skammer/vim-css-color'
 NeoBundle 'thinca/vim-openbuf'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
@@ -68,6 +68,7 @@ NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'yomi322/neco-tweetvim'
 NeoBundle 'yomi322/unite-tweetvim'
 NeoBundleLazy 'choplin/unite-vim_hacks'
+NeoBundleLazy 'skammer/vim-css-color'
 NeoBundleLazy 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'ujihisa/unite-locate'
 " Vim-script repositories
@@ -85,7 +86,7 @@ NeoBundle 'taglist.vim'
 " Build repos.
 NeoBundle 'Shougo/vimproc', {
 	  \ 'build' : {
-	  \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+          \     'windows' : 'make -f make_mingw32.mak',
 	  \     'cygwin' : 'make -f make_cygwin.mak',
 	  \     'mac' : 'make -f make_mac.mak',
 	  \     'unix' : 'make -f make_unix.mak',
@@ -824,7 +825,7 @@ if !exists('g:eskk#disable') || !g:eskk#disable
 
     " Disable mapping.
     "let g:eskk#map_normal_keys = 0
-    "
+
     imap <C-j> <Plug>(eskk:toggle)
     cmap <C-j> <Plug>(eskk:toggle)
 
