@@ -3,13 +3,13 @@ set nocompatible                " recommend
 filetype off                    " required!
 
 if has('win32') || has('win64')
-    let $DOTVIM = expand('$VIM/plugins')
+  let $DOTVIM = expand('$VIM/plugins')
 else
-    let $DOTVIM = expand('~/.vim')
+  let $DOTVIM = expand('~/.vim')
 endif
 
 if has('vim_starting')
-    set runtimepath+=$DOTVIM/bundle/neobundle.vim
+  set runtimepath+=$DOTVIM/bundle/neobundle.vim
 endif
 
 call neobundle#rc(expand('$DOTVIM/bundle'))
@@ -33,7 +33,7 @@ NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'adie/BlockDiff'
 NeoBundle 'basyura/TweetVim',
-    \ { 'depends' : 'basyura/twibill.vim' }
+      \ { 'depends' : 'basyura/twibill.vim' }
 NeoBundle 'csexton/jekyll.vim'
 NeoBundle 'groenewege/vim-less'
 NeoBundle "honza/snipmate-snippets"
@@ -61,7 +61,7 @@ NeoBundle 'tsukkee/lingr-vim'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'tyru/eskk.vim.git',
-    \ { 'depends' : 'tyru/skkdict.vim' }
+      \ { 'depends' : 'tyru/skkdict.vim' }
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'vim-jp/vimdoc-ja'
@@ -85,13 +85,13 @@ NeoBundle 'taglist.vim'
 
 " Build repos.
 NeoBundle 'Shougo/vimproc', {
-	  \ 'build' : {
-          \     'windows' : 'make -f make_mingw32.mak',
-	  \     'cygwin' : 'make -f make_cygwin.mak',
-	  \     'mac' : 'make -f make_mac.mak',
-	  \     'unix' : 'make -f make_unix.mak',
-	  \    },
-	  \ }
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
 
 " Lazy load.
 "NeoBundleLazy 'c9s/perlomni.vim.git'
@@ -105,7 +105,7 @@ filetype plugin indent on       " required!
 " Installation check.
 if neobundle#exists_not_installed_bundles()
   echomsg 'Not installed bundles : ' .
-		\ string(neobundle#get_not_installed_bundle_names())
+        \ string(neobundle#get_not_installed_bundle_names())
   echomsg 'Please execute ":NeoBundleInstall" command.'
   finish
 endif
@@ -113,7 +113,7 @@ endif
 
 " 文字コード設定
 if has('gui_running') && !has('unix')
-	set encoding=utf-8
+  set encoding=utf-8
 endif
 
 set helplang=ja,en
@@ -130,7 +130,7 @@ if has('iconv')
   if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
     let s:enc_euc = 'eucjp-ms'
     let s:enc_jis = 'iso-2022-jp-3'
-  " iconvがJISX0213に対応しているかをチェック
+    " iconvがJISX0213に対応しているかをチェック
   elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
     let s:enc_euc = 'euc-jisx0213'
     let s:enc_jis = 'iso-2022-jp-3'
@@ -225,8 +225,8 @@ set number
 
 " タブ幅制御
 set tabstop=8
-set softtabstop=4
-set shiftwidth=4
+set softtabstop=2
+set shiftwidth=2
 set smarttab
 set shiftround
 " タブをスペースに展開する
@@ -265,20 +265,20 @@ set clipboard=unnamed
 autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
 
 if has('unix')
-    set path+=/usr/include/c++/4.7.2,/usr/include/qt4/QtCore,/usr/include/qt4/QtGui,/usr/include/qt4
+  set path+=/usr/include/c++/4.7.2,/usr/include/qt4/QtCore,/usr/include/qt4/QtGui,/usr/include/qt4
 endif
 
 let g:quickrun_config = {}
 if has('win32') || has('win64')
-    let g:quickrun_config['markdown'] = {
-                \ 'outputter': 'browser',
-                \ 'command': 'c:/Ruby193/bin/ruby',
-                \ 'cmdopt': '-Ku c:/Ruby193/bin/redcarpet'
-                \ }
+  let g:quickrun_config['markdown'] = {
+        \ 'outputter': 'browser',
+        \ 'command': 'c:/Ruby193/bin/ruby',
+        \ 'cmdopt': '-Ku c:/Ruby193/bin/redcarpet'
+        \ }
 else
-    let g:quickrun_config['markdown'] = {
-                \ 'outputter': 'browser'
-                \ }
+  let g:quickrun_config['markdown'] = {
+        \ 'outputter': 'browser'
+        \ }
 endif
 
 let g:echodoc_enable_at_startup = 1
@@ -312,14 +312,14 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
-	\ 'default' : '',
-	\ 'vimshell' : $HOME.'/.vimshell_hist',
-	\ 'scheme' : $HOME.'/.gosh_completions'
-	\ }
+      \ 'default' : '',
+      \ 'vimshell' : $HOME.'/.vimshell_hist',
+      \ 'scheme' : $HOME.'/.gosh_completions'
+      \ }
 
 " Define keyword pattern.
 if !exists('g:neocomplcache_keyword_patterns')
-    let g:neocomplcache_keyword_patterns = {}
+  let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns.default = '\h\w*'
 let g:neocomplcache_keyword_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
@@ -337,11 +337,11 @@ xmap <C-l> <Plug>(neosnippet_start_unite_snippet_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable() ?
-            \ "\<Plug>(neosnippet_expand_or_jump)"
-            \: pumvisible() ? "\<C-n>" : "\<TAB>"
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable() ?
-            \ "\<Plug>(neosnippet_expand_or_jump)"
-            \: "\<TAB>"
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: "\<TAB>"
 
 " For snippet_complete marker.
 if has('conceal')
@@ -427,7 +427,7 @@ let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 let g:neocomplcache_force_overwrite_completefunc=1
 
 if !exists("g:neocomplcache_force_omni_patterns")
-    let g:neocomplcache_force_omni_patterns = {}
+  let g:neocomplcache_force_omni_patterns = {}
 endif
 
 " omnifunc が呼び出される場合の正規表現パターンを設定しておく
@@ -515,7 +515,7 @@ else
   call vimshell#set_execute_file('mp3,m4a,ogg', 'gexe amarok')
   let g:vimshell_execute_file_list['zip'] = 'zipinfo'
   call vimshell#set_execute_file('tgz,gz', 'gzcat')
-	call vimshell#set_execute_file('tbz,bz2', 'bzcat')
+  call vimshell#set_execute_file('tbz,bz2', 'bzcat')
 endif
 
 " Initialize execute file list.
@@ -527,11 +527,11 @@ let g:vimshell_execute_file_list['py'] = 'python'
 call vimshell#set_execute_file('html,xhtml', 'gexe firefox')
 
 autocmd FileType vimshell
-\ call vimshell#altercmd#define('g', 'git')
-\| call vimshell#altercmd#define('i', 'iexe')
-\| call vimshell#altercmd#define('l', 'll')
-\| call vimshell#altercmd#define('ll', 'ls -l')
-\| call vimshell#hook#add('chpwd', 'my_chpwd', 'g:my_chpwd')
+      \ call vimshell#altercmd#define('g', 'git')
+      \| call vimshell#altercmd#define('i', 'iexe')
+      \| call vimshell#altercmd#define('l', 'll')
+      \| call vimshell#altercmd#define('ll', 'ls -l')
+      \| call vimshell#hook#add('chpwd', 'my_chpwd', 'g:my_chpwd')
 
 function! g:my_chpwd(args, context)
   call vimshell#execute('ls')
@@ -693,41 +693,41 @@ unlet my_tabopen
 let g:unite_enable_start_insert = 0
 
 function! s:unite_my_settings()"{{{
-    " Overwrite settings.
-    imap <buffer> jj <Plug>(unite_insert_leave)
-    imap <buffer> <TAB> <Plug>(unite_select_next_line)
-    imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-    imap <buffer> ' <Plug>(unite_quick_match_default_action)
-    nmap <buffer> ' <Plug>(unite_quick_match_default_action)
-    imap <buffer><expr> x
-                \ unite#smart_map('x', "\<Plug>(unite_quick_match_choose_action)")
-    nmap <buffer> x <Plug>(unite_quick_match_choose_action)
-    nmap <buffer> cd <Plug>(unite_quick_match_default_action)
-    imap <buffer> <C-g> <Plug>(unite_input_directory)
-    nmap <buffer> <C-z> <Plug>(unite_toggle_transpose_window)
-    imap <buffer> <C-z> <Plug>(unite_toggle_transpose_window)
-    imap <buffer> <C-y> <Plug>(unite_narrowing_path)
-    nmap <buffer> <C-y> <Plug>(unite_narrowing_path)
-    nmap <buffer> <C-j> <Plug>(unite_toggle_auto_preview)
-    nmap <buffer> <C-r> <Plug>(unite_narrowing_input_history)
-    imap <buffer> <C-r> <Plug>(unite_narrowing_input_history)
-    nmap <silent><buffer> <Tab> :call <SID>NextWindow()<CR>
-    nnoremap <silent><buffer><expr> l
-                \ unite#smart_map('l', unite#do_action('default'))
-    nunmap <buffer> x
-    iunmap <buffer> x
+  " Overwrite settings.
+  imap <buffer> jj <Plug>(unite_insert_leave)
+  imap <buffer> <TAB> <Plug>(unite_select_next_line)
+  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+  imap <buffer> ' <Plug>(unite_quick_match_default_action)
+  nmap <buffer> ' <Plug>(unite_quick_match_default_action)
+  imap <buffer><expr> x
+        \ unite#smart_map('x', "\<Plug>(unite_quick_match_choose_action)")
+  nmap <buffer> x <Plug>(unite_quick_match_choose_action)
+  nmap <buffer> cd <Plug>(unite_quick_match_default_action)
+  imap <buffer> <C-g> <Plug>(unite_input_directory)
+  nmap <buffer> <C-z> <Plug>(unite_toggle_transpose_window)
+  imap <buffer> <C-z> <Plug>(unite_toggle_transpose_window)
+  imap <buffer> <C-y> <Plug>(unite_narrowing_path)
+  nmap <buffer> <C-y> <Plug>(unite_narrowing_path)
+  nmap <buffer> <C-j> <Plug>(unite_toggle_auto_preview)
+  nmap <buffer> <C-r> <Plug>(unite_narrowing_input_history)
+  imap <buffer> <C-r> <Plug>(unite_narrowing_input_history)
+  nmap <silent><buffer> <Tab> :call <SID>NextWindow()<CR>
+  nnoremap <silent><buffer><expr> l
+        \ unite#smart_map('l', unite#do_action('default'))
+  nunmap <buffer> x
+  iunmap <buffer> x
 
-    let unite = unite#get_current_unite()
-    if unite.buffer_name =~# '^search'
-        nnoremap <silent><buffer><expr> r unite#do_action('replace')
-    else
-        nnoremap <silent><buffer><expr> r unite#do_action('rename')
-    endif
+  let unite = unite#get_current_unite()
+  if unite.buffer_name =~# '^search'
+    nnoremap <silent><buffer><expr> r unite#do_action('replace')
+  else
+    nnoremap <silent><buffer><expr> r unite#do_action('rename')
+  endif
 
-    nnoremap <silent><buffer><expr> cd unite#do_action('lcd')
-    nnoremap <buffer><expr> S unite#mappings#set_current_filters(
-                \ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
-    " Start insert.
+  nnoremap <silent><buffer><expr> cd unite#do_action('lcd')
+  nnoremap <buffer><expr> S unite#mappings#set_current_filters(
+        \ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
+  " Start insert.
 endfunction"}}}
 
 " For optimize.
@@ -776,29 +776,29 @@ autocmd MyAutoCmd FileType lingr-say call s:lingr_say_my_settings()
 autocmd MyAutoCmd FileType lingr-rooms call s:lingr_looms_my_settings()
 
 function! s:lingr_messages_my_settings()"{{{
-    nmap <buffer> o <Plug>(lingr-messages-show-say-buffer)
-    nunmap <buffer> s
+  nmap <buffer> o <Plug>(lingr-messages-show-say-buffer)
+  nunmap <buffer> s
 
-    if has('win32') || has('win64')
-        " Dirty shellslash hack.
-        set noshellslash
+  if has('win32') || has('win64')
+    " Dirty shellslash hack.
+    set noshellslash
 
-        augroup MyAutoCmd
-            autocmd WinEnter,BufWinEnter <buffer> set noshellslash
-            autocmd WinLeave,BufWinLeave <buffer> set shellslash
-        augroup END
-    endif
+    augroup MyAutoCmd
+      autocmd WinEnter,BufWinEnter <buffer> set noshellslash
+      autocmd WinLeave,BufWinLeave <buffer> set shellslash
+    augroup END
+  endif
 endfunction"}}}
 function! s:lingr_say_my_settings()"{{{
-    imap <buffer> <CR> <Plug>(lingr-say-insert-mode-say)
-    nmap <buffer> q <Plug>(lingr-say-close)
+  imap <buffer> <CR> <Plug>(lingr-say-insert-mode-say)
+  nmap <buffer> q <Plug>(lingr-say-close)
 endfunction"}}}
 function! s:lingr_looms_my_settings()"{{{
-    nmap <buffer> l <Plug>(lingr-rooms-select-room)
+  nmap <buffer> l <Plug>(lingr-rooms-select-room)
 endfunction"}}}
 
 if !has('win32') || !has('win64')
-    command! Suicide call system('kill -KILL ' . getpid())
+  command! Suicide call system('kill -KILL ' . getpid())
 endif
 "}}}
 
@@ -808,61 +808,61 @@ let g:use_zen_complete_tag = 1
 
 " eskk.vim"{{{
 if !exists('g:eskk#disable') || !g:eskk#disable
-    " Disable skk.vim
-    let g:plugin_skk_disable = 1
+  " Disable skk.vim
+  let g:plugin_skk_disable = 1
 
-    let g:eskk#disable = 0
+  let g:eskk#disable = 0
 
-    let g:eskk#debug = 0
+  let g:eskk#debug = 0
 
-    " Don't keep state.
-    let g:eskk#keep_state = 0
+  " Don't keep state.
+  let g:eskk#keep_state = 0
 
-    let g:eskk#show_annotation = 1
-    let g:eskk#rom_input_style = 'msime'
-    let g:eskk#egg_like_newline = 1
-    let g:eskk#egg_like_newline_completion = 1
+  let g:eskk#show_annotation = 1
+  let g:eskk#rom_input_style = 'msime'
+  let g:eskk#egg_like_newline = 1
+  let g:eskk#egg_like_newline_completion = 1
 
-    " Disable mapping.
-    "let g:eskk#map_normal_keys = 0
+  " Disable mapping.
+  "let g:eskk#map_normal_keys = 0
 
-    autocmd VimEnter * imap <C-j> <Plug>(eskk:toggle)
-    autocmd VimEnter * cmap <C-j> <Plug>(eskk:toggle)
+  autocmd VimEnter * imap <C-j> <Plug>(eskk:toggle)
+  autocmd VimEnter * cmap <C-j> <Plug>(eskk:toggle)
 
-    "let g:eskk#dictionary = {
-    "\ 'path': expand('~/.skk-eskk-jisyo'),
-    "\ 'sorted': 0,
-    "\ 'encoding': 'utf-8',
-    "\}
-    let g:eskk#large_dictionary = {
+  "let g:eskk#dictionary = {
+  "\ 'path': expand('~/.skk-eskk-jisyo'),
+  "\ 'sorted': 0,
+  "\ 'encoding': 'utf-8',
+  "\}
+  let g:eskk#large_dictionary = {
         \ 'path': expand('/usr/share/skk/SKK-JISYO.L'),
         \ 'sorted': 1,
         \ 'encoding': 'euc-jp',
         \}
 
-    " Use /bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory" instead of this settings.
-    "if &encoding == 'utf-8' && !has('gui_running')
-        " GNOME Terminal only.
+  " Use /bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory" instead of this settings.
+  "if &encoding == 'utf-8' && !has('gui_running')
+  " GNOME Terminal only.
 
-        " Use <> instead of ▽.
-        "let g:eskk#marker_henkan = '<>'
-        " Use >> instead of ▼.
-        "let g:eskk#marker_henkan_select = '>>'
-    "endif
+  " Use <> instead of ▽.
+  "let g:eskk#marker_henkan = '<>'
+  " Use >> instead of ▼.
+  "let g:eskk#marker_henkan_select = '>>'
+  "endif
 
-    " Define table.
-    autocmd MyAutoCmd User eskk-initialize-pre call s:eskk_initial_pre()
-        function! s:eskk_initial_pre() "{{{
-            let t = eskk#table#new('rom_to_hira*', 'rom_to_hira')
-            call t.add_map('z ', '　')
-            call t.add_map('~', '〜')
-            call t.add_map('zc', '©')
-            call t.add_map('zr', '®')
-            call t.add_map('z9', '（')
-            call t.add_map('z0', '）')
-            call eskk#register_mode_table('hira', t)
-            unlet t
-        endfunction "}}}
+  " Define table.
+  autocmd MyAutoCmd User eskk-initialize-pre call s:eskk_initial_pre()
+  function! s:eskk_initial_pre() "{{{
+    let t = eskk#table#new('rom_to_hira*', 'rom_to_hira')
+    call t.add_map('z ', '　')
+    call t.add_map('~', '〜')
+    call t.add_map('zc', '©')
+    call t.add_map('zr', '®')
+    call t.add_map('z9', '（')
+    call t.add_map('z0', '）')
+    call eskk#register_mode_table('hira', t)
+    unlet t
+  endfunction "}}}
 endif
 "}}}
 
