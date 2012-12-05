@@ -268,18 +268,26 @@ if has('unix')
   set path+=/usr/include/c++/4.7.2,/usr/include/qt4/QtCore,/usr/include/qt4/QtGui,/usr/include/qt4
 endif
 
+" quickrun.vim"{{{
 let g:quickrun_config = {}
 if has('win32') || has('win64')
-  let g:quickrun_config['markdown'] = {
+  let g:quickrun_config.markdown = {
         \ 'outputter': 'browser',
         \ 'command': 'c:/Ruby193/bin/ruby',
         \ 'cmdopt': '-Ku c:/Ruby193/bin/redcarpet'
         \ }
 else
-  let g:quickrun_config['markdown'] = {
+  let g:quickrun_config.markdown = {
         \ 'outputter': 'browser'
         \ }
 endif
+
+let g:quickrun_config.html = {
+      \ 'command' : 'cat',
+      \ 'exec' : ['%c %s'],
+      \ 'outputter': 'browser'
+      \ }
+"}}}
 
 let g:echodoc_enable_at_startup = 1
 
