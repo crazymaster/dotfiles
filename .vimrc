@@ -21,7 +21,11 @@ NeoBundle 'Shougo/neobundle.vim'
 "
 " Original repositories in github
 NeoBundle 'Lokaltog/vim-powerline'
-NeoBundleLazy 'Rip-Rip/clang_complete'
+NeoBundleLazy 'Rip-Rip/clang_complete', {
+      \ 'autoload' : {
+      \     'filetypes' : ['c', 'cpp'],
+      \    },
+      \ }
 NeoBundle 'Shougo/echodoc'
 NeoBundle 'Shougo/git-vim'
 NeoBundle 'Shougo/neocomplcache'
@@ -32,8 +36,9 @@ NeoBundle 'Shougo/vim-vcs'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'adie/BlockDiff'
-NeoBundle 'basyura/TweetVim',
-      \ { 'depends' : 'basyura/twibill.vim' }
+NeoBundleLazy 'basyura/TweetVim',{
+      \ 'depends' : 'basyura/twibill.vim',
+      \ 'autoload' : { 'commands' : 'TweetVimHomeTimeline' }}
 NeoBundle 'csexton/jekyll.vim'
 NeoBundle 'groenewege/vim-less'
 NeoBundle "honza/snipmate-snippets"
@@ -41,8 +46,9 @@ NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'kana/vim-smartchr'
-NeoBundle 'kana/vim-smartinput'
-NeoBundle 'mattn/benchvimrc-vim'
+NeoBundleLazy 'kana/vim-smartinput'
+NeoBundleLazy 'mattn/benchvimrc-vim',
+      \ { 'autoload' : { 'commands' : 'BenchVimrc' }}
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/wwwrenderer-vim'
@@ -52,7 +58,8 @@ NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'thinca/vim-openbuf'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
-NeoBundle 'thinca/vim-scouter'
+NeoBundleLazy 'thinca/vim-scouter',
+      \ { 'autoload' : { 'commands' : 'Scouter' }}
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-markdown'
@@ -65,12 +72,12 @@ NeoBundle 'tyru/eskk.vim.git',
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'yomi322/neco-tweetvim'
-NeoBundle 'yomi322/unite-tweetvim'
 NeoBundleLazy 'choplin/unite-vim_hacks'
 NeoBundleLazy 'skammer/vim-css-color'
 NeoBundleLazy 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'ujihisa/unite-locate'
+NeoBundleLazy 'yomi322/neco-tweetvim'
+NeoBundleLazy 'yomi322/unite-tweetvim'
 " Vim-script repositories
 NeoBundle 'DirDiff.vim'
 NeoBundle 'taglist.vim'
