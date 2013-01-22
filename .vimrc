@@ -818,6 +818,55 @@ endif
 "}}}
 
 " zencoding-vim"{{{
+let g:user_zen_settings = {
+      \  'lang' : 'ja',
+      \  'html' : {
+      \    'filters' : 'html',
+      \    'indentation' : ' ',
+      \    'snippets' : {
+      \      'jq' : "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js\"></script>"
+      \    }, 
+      \  },
+      \  'perl' : {
+      \    'indentation' : '  ',
+      \    'aliases' : {
+      \      'req' : "require '|'"
+      \    },
+      \    'snippets' : {
+      \      'use' : "use strict\nuse warnings\n\n",
+      \      'w' : "warn \"${cursor}\";",
+      \    },
+      \  },
+      \  'php' : {
+      \    'extends' : 'html',
+      \    'filters' : 'html,c',
+      \  },
+      \  'css' : {
+      \    'filters' : 'fc',
+      \  },
+      \  'less' : {
+      \    'filters' : 'fc',
+      \    'extends' : 'css',
+      \  },
+      \  'javascript' : {
+      \    'snippets' : {
+      \      'jq' : "\\$(function() {\n\t\\${cursor}\\${child}\n});",
+      \      'jq:json' : "\\$.getJSON(\"${cursor}\", function(data) {\n\t\\${child}\n});",
+      \      'jq:each' : "\\$.each(arr, function(index, item)\n\t\\${child}\n});",
+      \      'fn' : "(function() {\n\t\\${cursor}\n})();",
+      \      'tm' : "setTimeout(function() {\n\t\\${cursor}\n}, 100);",
+      \    },
+      \  },
+      \ 'java' : {
+      \  'indentation' : '    ',
+      \  'snippets' : {
+      \   'main': "public static void main(String[] args) {\n\t|\n}",
+      \   'println': "System.out.println(\"|\");",
+      \   'class': "public class | {\n}\n",
+      \  },
+      \ },
+      \}
+
 let g:use_zen_complete_tag = 1
 "}}}
 
