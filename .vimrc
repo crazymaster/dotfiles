@@ -1,6 +1,5 @@
 " neobundle.vim"{{{
-set nocompatible                " recommend
-filetype off                    " required!
+set nocompatible                " Recommend
 
 if has('win32') || has('win64')
   let $DOTVIM = expand('$VIM/plugins')
@@ -14,8 +13,8 @@ endif
 
 call neobundle#rc(expand('$DOTVIM/bundle'))
 
-" let neobundle manage neobundle
-NeoBundle 'Shougo/neobundle.vim'
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
 "
@@ -107,15 +106,10 @@ NeoBundle 'Shougo/vimproc', {
 "autocmd FileType python
 "	  \ NeoBundleSource python-mode
 
-filetype plugin indent on       " required!
+filetype plugin indent on       " Required!
 
 " Installation check.
-if neobundle#exists_not_installed_bundles()
-  echomsg 'Not installed bundles : ' .
-        \ string(neobundle#get_not_installed_bundle_names())
-  echomsg 'Please execute ":NeoBundleInstall" command.'
-  finish
-endif
+NeoBundleCheck
 "}}}
 
 " 文字コード設定
