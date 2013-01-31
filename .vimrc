@@ -66,8 +66,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tsukkee/lingr-vim'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'tyru/eskk.vim.git',
-      \ { 'depends' : 'tyru/skkdict.vim' }
+NeoBundle 'tyru/eskk.vim.git'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'vim-jp/vimdoc-ja'
