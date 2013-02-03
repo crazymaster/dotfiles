@@ -88,6 +88,12 @@ NeoBundle 'taglist.vim'
 "NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
 "NeoBundle 'https://bitbucket.org/ns9tks/vim-fuzzyfinder'
 
+if has('unix')
+  NeoBundle 'fuenor/im_control.vim'
+  " PythonによるIBus制御指定
+  let IM_CtrlIBusPython = 1
+endif
+
 " Build repos.
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
