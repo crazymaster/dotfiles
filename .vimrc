@@ -289,9 +289,8 @@ else
 endif
 
 let g:quickrun_config.html = {
-      \ 'command' : 'cat',
-      \ 'exec' : ['%c %s'],
-      \ 'outputter': 'browser'
+      \ 'outputter': 'null', 
+      \ 'command': 'firefox'
       \ }
 "}}}
 
