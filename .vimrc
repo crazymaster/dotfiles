@@ -34,6 +34,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vim-vcs'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/vinarise' 
 NeoBundle 'adie/BlockDiff'
 NeoBundleLazy 'basyura/TweetVim',{
       \ 'depends' : 'basyura/twibill.vim',
@@ -932,4 +933,8 @@ endif
 " TweetVim"{{{
 "let g:tweetvim_display_icon = 1
 let g:tweetvim_async_post = 1
+"}}}
+
+" vinarise.vim"{{{
+let g:vinarise_enable_auto_detect = 1
 "}}}
