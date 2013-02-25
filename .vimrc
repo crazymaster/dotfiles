@@ -266,6 +266,9 @@ set wildignore=*.o,*.obj,*.bak,*.swp,*.d,*~
 vnoremap < <gv
 vnoremap > >gv
 
+" 連続コピペ
+vnoremap <silent> <C-p> "0p<CR>
+
 " クリップボードを利用する
 set clipboard=unnamed
 
