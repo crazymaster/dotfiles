@@ -36,9 +36,9 @@ NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/vinarise' 
 NeoBundle 'adie/BlockDiff'
-NeoBundleLazy 'basyura/TweetVim',{
-      \ 'depends' : 'basyura/twibill.vim',
-      \ 'autoload' : { 'commands' : 'TweetVimHomeTimeline' }}
+"NeoBundleLazy 'basyura/TweetVim',{
+"      \ 'depends' : 'basyura/twibill.vim',
+"      \ 'autoload' : { 'commands' : 'TweetVimHomeTimeline' }}
 NeoBundle 'csexton/jekyll.vim'
 NeoBundle 'groenewege/vim-less'
 NeoBundle "honza/snipmate-snippets"
@@ -55,6 +55,7 @@ NeoBundle 'mattn/wwwrenderer-vim'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'pasela/unite-webcolorname'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thinca/vim-openbuf'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
@@ -75,8 +76,8 @@ NeoBundleLazy 'choplin/unite-vim_hacks'
 NeoBundleLazy 'skammer/vim-css-color'
 NeoBundleLazy 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'ujihisa/unite-locate'
-NeoBundleLazy 'yomi322/neco-tweetvim'
-NeoBundleLazy 'yomi322/unite-tweetvim'
+"NeoBundleLazy 'yomi322/neco-tweetvim'
+"NeoBundleLazy 'yomi322/unite-tweetvim'
 " Vim-script repositories
 NeoBundle 'DirDiff.vim'
 NeoBundle 'taglist.vim'
@@ -930,11 +931,10 @@ if !exists('g:eskk#disable') || !g:eskk#disable
 endif
 "}}}
 
-" TweetVim"{{{
-"let g:tweetvim_display_icon = 1
-let g:tweetvim_async_post = 1
-"}}}
-
 " vinarise.vim"{{{
 let g:vinarise_enable_auto_detect = 1
 "}}}
+
+" Syntastic"{{{
+let g:syntastic_auto_loc_list=1
+"}}
