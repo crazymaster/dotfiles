@@ -20,11 +20,11 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "
 " Original repositories in github
 NeoBundle 'Lokaltog/vim-powerline'
-NeoBundleLazy 'Rip-Rip/clang_complete', {
-      \ 'autoload' : {
-      \     'filetypes' : ['c', 'cpp'],
-      \    },
-      \ }
+"NeoBundleLazy 'Rip-Rip/clang_complete', {
+"      \ 'autoload' : {
+"      \     'filetypes' : ['c', 'cpp'],
+"      \    },
+"      \ }
 NeoBundle 'Shougo/echodoc'
 NeoBundle 'Shougo/git-vim'
 NeoBundle 'Shougo/neocomplcache'
@@ -441,19 +441,21 @@ let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 " For clang_complete
 " neocomplcache 側の設定
-let g:neocomplcache_force_overwrite_completefunc=1
-
-if !exists("g:neocomplcache_force_omni_patterns")
-  let g:neocomplcache_force_omni_patterns = {}
-endif
-
-" omnifunc が呼び出される場合の正規表現パターンを設定しておく
-let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|::'
-
-" clang_complete 側の設定
-" clang_complete の自動呼び出しは必ず切っておいて下さい
-" これを設定しておかなければ補完がおかしくなります
-let g:clang_complete_auto=0
+"if !exists("g:neocomplcache_force_omni_patterns")
+"  let g:neocomplcache_force_omni_patterns = {}
+"endif
+"let g:neocomplcache_force_overwrite_completefunc = 1
+"let g:neocomplcache_force_omni_patterns.c =
+"      \ '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplcache_force_omni_patterns.cpp =
+"      \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+"let g:neocomplcache_force_omni_patterns.objc =
+"      \ '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplcache_force_omni_patterns.objcpp =
+"      \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+"let g:clang_complete_auto = 0
+"let g:clang_auto_select = 0
+"let g:clang_use_library = 1
 "}}}
 
 " smartchr.vim"{{{
