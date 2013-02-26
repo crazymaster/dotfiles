@@ -40,13 +40,15 @@ NeoBundle 'adie/BlockDiff'
 "      \ 'depends' : 'basyura/twibill.vim',
 "      \ 'autoload' : { 'commands' : 'TweetVimHomeTimeline' }}
 NeoBundle 'csexton/jekyll.vim'
+NeoBundle 'godlygeek/tabular'
 NeoBundle 'groenewege/vim-less'
-NeoBundle "honza/snipmate-snippets"
+NeoBundle 'honza/snipmate-snippets'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'kana/vim-smartchr'
 NeoBundleLazy 'kana/vim-smartinput'
+NeoBundle 'majutsushi/tagbar'
 NeoBundleLazy 'mattn/benchvimrc-vim',
       \ { 'autoload' : { 'commands' : 'BenchVimrc' }}
 NeoBundle 'mattn/gist-vim'
@@ -80,9 +82,6 @@ NeoBundleLazy 'ujihisa/unite-locate'
 "NeoBundleLazy 'yomi322/unite-tweetvim'
 " Vim-script repositories
 NeoBundle 'DirDiff.vim'
-NeoBundle 'taglist.vim'
-"NeoBundle 'FuzzyFinder'
-"NeoBundle 'L9'
 "NeoBundle 'rails.vim'
 " Non-github repos
 "NeoBundle 'git://git.wincent.com/command-t.git'
@@ -940,4 +939,8 @@ let g:vinarise_enable_auto_detect = 1
 
 " Syntastic"{{{
 let g:syntastic_auto_loc_list=1
-"}}
+"}}}
+
+" Tagbar"{{{
+nmap <F8> :TagbarToggle<CR>
+"}}}
