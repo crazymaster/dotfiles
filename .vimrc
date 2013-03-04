@@ -51,10 +51,14 @@ NeoBundleLazy 'kana/vim-smartinput'
 NeoBundle 'majutsushi/tagbar'
 NeoBundleLazy 'mattn/benchvimrc-vim',
       \ { 'autoload' : { 'commands' : 'BenchVimrc' }}
+NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'mattn/gist-vim'
+NeoBundle 'mattn/unite-remotefile'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/wwwrenderer-vim'
 NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'osyo-manga/unite-fold'
+NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'scrooloose/syntastic'
@@ -73,10 +77,14 @@ NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'tyru/eskk.vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
+NeoBundle 'ujihisa/quicklearn'
+NeoBundle 'ujihisa/unite-gem'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundleLazy 'choplin/unite-vim_hacks'
+NeoBundleLazy 'mattn/unite-advent_calendar'
 NeoBundleLazy 'skammer/vim-css-color'
 NeoBundleLazy 'ujihisa/unite-colorscheme'
+NeoBundleLazy 'ujihisa/unite-font'
 NeoBundleLazy 'ujihisa/unite-locate'
 "NeoBundleLazy 'yomi322/neco-tweetvim'
 "NeoBundleLazy 'yomi322/unite-tweetvim'
@@ -601,7 +609,6 @@ function! s:unite_build()
 endfunction
 nnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register history/yank<CR>
 nnoremap <silent> [unite]o  :<C-u>Unite outline -start-insert<CR>
-nnoremap  [unite]f  :<C-u>Unite source<CR>
 nnoremap <silent> [unite]t  :<C-u>UniteWithCursorWord -buffer-name=tag tag tag/include<CR>
 xnoremap <silent> [unite]r  d:<C-u>Unite -buffer-name=register register history/yank<CR>
 nnoremap <silent> [unite]w  :<C-u>UniteWithCursorWord -buffer-name=register
@@ -611,11 +618,12 @@ nnoremap <silent> [unite]q  :<C-u>Unite qflist -no-quit<CR>
 nnoremap <silent> [unite]g  :<C-u>Unite grep -buffer-name=search -no-quit<CR>
 nnoremap <silent> <C-k>  :<C-u>Unite change jump<CR>
 nnoremap <silent> [unite]c  :<C-u>Unite change<CR>
-"nnoremap <silent> [unite]f  :<C-u>Unite -buffer-name=resume resume<CR>
+nnoremap <silent> [unite]f  :<C-u>Unite -buffer-name=resume resume<CR>
 nnoremap <silent> [unite]d  :<C-u>Unite -buffer-name=files -default-action=lcd directory_mru<CR>
 nnoremap <silent> [unite]ma  :<C-u>Unite mapping<CR>
 nnoremap <silent> [unite]me  :<C-u>Unite output:message<CR>
 inoremap <silent> <C-z>  <C-o>:call unite#start_complete(['register'], {'is_insert' : 1})<CR>
+nnoremap  [unite]f  :<C-u>Unite source<CR>
 
 nnoremap <silent> [Window]s  :<C-u>Unite -buffer-name=files -no-split
       \ jump_point file_point buffer_tab file_rec/async:! file file/new file_mru<CR>
@@ -714,28 +722,23 @@ let g:unite_enable_start_insert = 0
 
 function! s:unite_my_settings()"{{{
   " Overwrite settings.
+  "nmap <buffer> <ESC>      <Plug>(unite_exit)
   imap <buffer> jj <Plug>(unite_insert_leave)
-  imap <buffer> <TAB> <Plug>(unite_select_next_line)
-  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+  "imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+  imap <buffer><expr> j unite#smart_map('j', '')
   imap <buffer> ' <Plug>(unite_quick_match_default_action)
   nmap <buffer> ' <Plug>(unite_quick_match_default_action)
   imap <buffer><expr> x
         \ unite#smart_map('x', "\<Plug>(unite_quick_match_choose_action)")
   nmap <buffer> x <Plug>(unite_quick_match_choose_action)
   nmap <buffer> cd <Plug>(unite_quick_match_default_action)
-  imap <buffer> <C-g> <Plug>(unite_input_directory)
   nmap <buffer> <C-z> <Plug>(unite_toggle_transpose_window)
   imap <buffer> <C-z> <Plug>(unite_toggle_transpose_window)
   imap <buffer> <C-y> <Plug>(unite_narrowing_path)
   nmap <buffer> <C-y> <Plug>(unite_narrowing_path)
   nmap <buffer> <C-j> <Plug>(unite_toggle_auto_preview)
-  nmap <buffer> <C-r> <Plug>(unite_narrowing_input_history)
-  imap <buffer> <C-r> <Plug>(unite_narrowing_input_history)
-  nmap <silent><buffer> <Tab> :call <SID>NextWindow()<CR>
   nnoremap <silent><buffer><expr> l
         \ unite#smart_map('l', unite#do_action('default'))
-  nunmap <buffer> x
-  iunmap <buffer> x
 
   let unite = unite#get_current_unite()
   if unite.buffer_name =~# '^search'
@@ -747,7 +750,6 @@ function! s:unite_my_settings()"{{{
   nnoremap <silent><buffer><expr> cd unite#do_action('lcd')
   nnoremap <buffer><expr> S unite#mappings#set_current_filters(
         \ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
-  " Start insert.
 endfunction"}}}
 
 " For optimize.
