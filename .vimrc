@@ -356,24 +356,6 @@ let g:neocomplcache_snippets_dir = $HOME . '/snippets'
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-xmap <C-l> <Plug>(neosnippet_start_unite_snippet_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='$DOTVIM/bundle/snipmate-snippets/snippets'
 
@@ -465,6 +447,29 @@ let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 "let g:clang_complete_auto = 0
 "let g:clang_auto_select = 0
 "let g:clang_use_library = 1
+"}}}
+
+" neosnippet"{{{
+" Plugin key-mappings.
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+xmap <C-l> <Plug>(neosnippet_start_unite_snippet_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+set completeopt-=preview
 "}}}
 
 " smartchr.vim"{{{
