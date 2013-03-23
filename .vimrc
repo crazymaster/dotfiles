@@ -215,6 +215,7 @@ syntax on
 "highlight Normal ctermbg=black ctermfg=grey
 "highlight StatusLine term=none cterm=none ctermfg=black ctermbg=grey
 highlight CursorLine term=none cterm=bold ctermfg=none ctermbg=darkgray
+highlight SpellBad ctermbg=Red
 
 " For Powerline
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
