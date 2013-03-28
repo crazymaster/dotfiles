@@ -36,6 +36,10 @@
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# Editor generated files #
+##########################
 *~
 *.swp
 tags
+tags-ja
