@@ -122,6 +122,9 @@ NeoBundle 'Shougo/vimproc', {
 "autocmd FileType python
 "	  \ NeoBundleSource python-mode
 
+" Disable netrw.vim
+let g:loaded_netrwPlugin = 1
+
 filetype plugin indent on       " Required!
 
 " Installation check.
