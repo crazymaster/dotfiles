@@ -43,7 +43,7 @@ NeoBundle 'adie/BlockDiff'
 NeoBundle 'csexton/jekyll.vim'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'groenewege/vim-less'
-NeoBundle 'honza/snipmate-snippets'
+NeoBundle 'honza/vim-snippets'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'kana/vim-smartchr'
@@ -361,9 +361,6 @@ let g:neocomplcache_snippets_dir = $HOME . '/snippets'
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='$DOTVIM/bundle/snipmate-snippets/snippets'
-
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
 "inoremap <expr><silent> <CR> <SID>my_cr_function()
@@ -474,7 +471,11 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-set completeopt-=preview
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='$DOTVIM/bundle/vim-snippets/snippets'
 "}}}
 
 " smartchr.vim"{{{
