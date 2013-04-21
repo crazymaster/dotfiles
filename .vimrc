@@ -71,6 +71,7 @@ NeoBundleLazy 'thinca/vim-scouter',
       \ { 'autoload' : { 'commands' : 'Scouter' }}
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-liquid'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tsukkee/lingr-vim'
