@@ -716,7 +716,7 @@ let my_tabopen = {
       \ 'description' : 'my tabopen items',
       \ 'is_selectable' : 1,
       \ }
-function! my_tabopen.func(candidates)"{{{
+function! my_tabopen.func(candidates) "{{{
   call unite#take_action('tabopen', a:candidates)
 
   let dir = isdirectory(a:candidates[0].word) ? a:candidates[0].word : fnamemodify(a:candidates[0].word, ':p:h')
@@ -732,7 +732,7 @@ unlet my_tabopen
 
 let g:unite_enable_start_insert = 0
 
-function! s:unite_my_settings()"{{{
+function! s:unite_my_settings() "{{{
   " Overwrite settings.
   "nmap <buffer> <ESC>      <Plug>(unite_exit)
   imap <buffer> jj <Plug>(unite_insert_leave)
@@ -762,7 +762,7 @@ function! s:unite_my_settings()"{{{
   nnoremap <silent><buffer><expr> cd unite#do_action('lcd')
   nnoremap <buffer><expr> S unite#mappings#set_current_filters(
         \ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
-endfunction"}}}
+endfunction "}}}
 
 " For optimize.
 let g:unite_cursor_line_highlight = 'CursorLine' 
@@ -809,7 +809,7 @@ autocmd MyAutoCmd FileType lingr-messages call s:lingr_messages_my_settings()
 autocmd MyAutoCmd FileType lingr-say call s:lingr_say_my_settings()
 autocmd MyAutoCmd FileType lingr-rooms call s:lingr_looms_my_settings()
 
-function! s:lingr_messages_my_settings()"{{{
+function! s:lingr_messages_my_settings() "{{{
   nmap <buffer> o <Plug>(lingr-messages-show-say-buffer)
   nunmap <buffer> s
 
@@ -822,14 +822,14 @@ function! s:lingr_messages_my_settings()"{{{
       autocmd WinLeave,BufWinLeave <buffer> set shellslash
     augroup END
   endif
-endfunction"}}}
-function! s:lingr_say_my_settings()"{{{
+endfunction "}}}
+function! s:lingr_say_my_settings() "{{{
   imap <buffer> <CR> <Plug>(lingr-say-insert-mode-say)
   nmap <buffer> q <Plug>(lingr-say-close)
-endfunction"}}}
-function! s:lingr_looms_my_settings()"{{{
+endfunction "}}}
+function! s:lingr_looms_my_settings() "{{{
   nmap <buffer> l <Plug>(lingr-rooms-select-room)
-endfunction"}}}
+endfunction "}}}
 
 if !has('win32') || !has('win64')
   command! Suicide call system('kill -KILL ' . getpid())
