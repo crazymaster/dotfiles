@@ -721,7 +721,7 @@ function! my_tabopen.func(candidates) "{{{
 
   let dir = isdirectory(a:candidates[0].word) ? a:candidates[0].word : fnamemodify(a:candidates[0].word, ':p:h')
   execute g:unite_lcd_command '`=dir`'
-endfunction"}}}
+endfunction "}}}
 call unite#custom_action('file,buffer', 'tabopen', my_tabopen)
 unlet my_tabopen
 "}}}
