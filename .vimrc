@@ -633,7 +633,7 @@ nnoremap <silent> [unite]f  :<C-u>Unite -buffer-name=resume resume<CR>
 nnoremap <silent> [unite]d  :<C-u>Unite -buffer-name=files -default-action=lcd directory_mru<CR>
 nnoremap <silent> [unite]ma  :<C-u>Unite mapping<CR>
 nnoremap <silent> [unite]me  :<C-u>Unite output:message<CR>
-nnoremap <silent> [unite]up  :<C-u>Unite neobundle/update<CR>
+nnoremap <silent> [unite]up  :<C-u>Unite neobundle/update -log<CR>
 inoremap <silent> <C-z>  <C-o>:call unite#start_complete(['register'], {'is_insert' : 1})<CR>
 nnoremap  [unite]f  :<C-u>Unite source<CR>
 
@@ -695,6 +695,7 @@ let g:unite_kind_file_lcd_command = 'TabpageCD'
 let g:unite_source_history_yank_enable = 1
 
 let g:unite_winheight = 20
+let g:unite_winwidth  = 78
 
 autocmd MyAutoCmd FileType unite call s:unite_my_settings()
 
