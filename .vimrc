@@ -227,10 +227,10 @@ highlight SpellBad ctermbg=Red
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 
 "ポップアップ補完メニュー色設定
-highlight Pmenu ctermbg=8 ctermfg=White guibg=#606060
-highlight PmenuSel ctermbg=12 guibg=SlateBlue
-highlight PmenuSbar ctermbg=0 guibg=#404040
-highlight PmenuThumb ctermbg=0 guibg=Red
+highlight Pmenu ctermbg=DarkGray ctermfg=White guibg=#606060
+highlight PmenuSel ctermbg=Blue guibg=SlateBlue
+highlight PmenuSbar ctermbg=Black guibg=#404040
+highlight PmenuThumb ctermbg=DarkBlue guibg=Red
 
 " ステータスラインを表示
 set laststatus=2 " ステータスラインを常に表示
