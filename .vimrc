@@ -288,7 +288,7 @@ vnoremap <silent> <C-p> "0p<CR>
 set clipboard=unnamed
 
 " 自動的にQuickFixを開く
-autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
+"autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
 
 if has('unix')
   set path+=/usr/include/c++/4.7.2,/usr/include/qt4/QtCore,/usr/include/qt4/QtGui,/usr/include/qt4
@@ -955,7 +955,7 @@ let g:vinarise_enable_auto_detect = 1
 "}}}
 
 " Syntastic"{{{
-let g:syntastic_auto_loc_list=1
+let g:syntastic_auto_loc_list = 2
 "}}}
 
 " Tagbar"{{{
