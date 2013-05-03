@@ -16,5 +16,5 @@ if has('win32') || has('win64')
     autocmd FocusLost * set transparency=150
   augroup END
 elseif has('unix')
-  set guifont=Monospace\ 13
+  set guifont=Ubuntu\ Mono\ 13
 endif

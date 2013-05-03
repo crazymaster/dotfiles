@@ -229,7 +229,7 @@ set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 "ポップアップ補完メニュー色設定
 highlight Pmenu ctermbg=DarkGray ctermfg=White guibg=#606060
 highlight PmenuSel ctermbg=Blue guibg=SlateBlue
-highlight PmenuSbar ctermbg=Black guibg=#404040
+highlight PmenuSbar ctermbg=Gray guibg=#404040
 highlight PmenuThumb ctermbg=DarkBlue guibg=Red
 
 " ステータスラインを表示
@@ -296,18 +296,9 @@ endif
 
 " quickrun.vim"{{{
 let g:quickrun_config = {}
-if has('win32') || has('win64')
-  let g:quickrun_config.markdown = {
-        \ 'outputter': 'browser',
-        \ 'command': 'c:/Ruby193/bin/ruby',
-        \ 'cmdopt': '-Ku c:/Ruby193/bin/redcarpet'
-        \ }
-else
-  let g:quickrun_config.markdown = {
-        \ 'outputter': 'browser'
-        \ }
-endif
-
+let g:quickrun_config.markdown = {
+      \ 'outputter': 'browser'
+      \ }
 let g:quickrun_config.html = {
       \ 'outputter': 'null', 
       \ 'command': 'firefox'
