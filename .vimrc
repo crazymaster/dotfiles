@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " neobundle.vim"{{{
 set nocompatible                " Recommend
 
