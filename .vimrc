@@ -20,6 +20,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
 "
+
 " Original repositories in github
 NeoBundle 'Lokaltog/vim-powerline'
 "NeoBundleLazy 'Rip-Rip/clang_complete', {
@@ -55,12 +56,10 @@ NeoBundleLazy 'mattn/benchvimrc-vim',
       \ { 'autoload' : { 'commands' : 'BenchVimrc' }}
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'mattn/gist-vim'
-NeoBundle 'mattn/unite-remotefile'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/wwwrenderer-vim'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'miripiruni/CSScomb-for-Vim'
-NeoBundle 'osyo-manga/unite-fold'
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'pasela/unite-webcolorname'
@@ -83,25 +82,22 @@ NeoBundle 'tyru/eskk.vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'ujihisa/quicklearn'
-NeoBundle 'ujihisa/unite-gem'
 NeoBundle 'vim-jp/autofmt'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundleLazy 'choplin/unite-vim_hacks'
 NeoBundleLazy 'mattn/unite-advent_calendar'
+NeoBundleLazy 'mattn/unite-remotefile'
+NeoBundleLazy 'osyo-manga/unite-fold'
 NeoBundleLazy 'skammer/vim-css-color'
 NeoBundleLazy 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'ujihisa/unite-font'
+NeoBundleLazy 'ujihisa/unite-gem'
 NeoBundleLazy 'ujihisa/unite-locate'
 "NeoBundleLazy 'yomi322/neco-tweetvim'
 "NeoBundleLazy 'yomi322/unite-tweetvim'
+
 " Vim-script repositories
 NeoBundle 'DirDiff.vim'
-"NeoBundle 'rails.vim'
-" Non-github repos
-"NeoBundle 'git://git.wincent.com/command-t.git'
-" Non-git repos
-"NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
-"NeoBundle 'https://bitbucket.org/ns9tks/vim-fuzzyfinder'
 
 if has('unix')
   NeoBundle 'fuenor/im_control.vim'
@@ -287,13 +283,14 @@ vnoremap > >gv
 vnoremap <silent> <C-p> "0p<CR>
 
 " クリップボードを利用する
-set clipboard=unnamed
+set clipboard+=unnamed
 
 " 自動的にQuickFixを開く
 "autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
 
+" Add path
 if has('unix')
-  set path+=/usr/include/c++/4.7.2,/usr/include/qt4/QtCore,/usr/include/qt4/QtGui,/usr/include/qt4
+  set path+=/usr/include/qt5,/usr/local/include/bullet
 endif
 
 " quickrun.vim"{{{
