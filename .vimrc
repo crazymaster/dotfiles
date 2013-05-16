@@ -224,9 +224,10 @@ highlight SpellBad ctermbg=Red
 
 " For Powerline
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
-let g:Powerline_theme = "unite_status"
-let g:Powerline_colorscheme = "unite_status"
+let g:Powerline_theme = "unite_vimfiler_status"
+let g:Powerline_colorscheme = "unite_vimfiler_status"
 let g:unite_force_overwrite_statusline = 0
+let g:vimfiler_force_overwrite_statusline = 0
 
 "ポップアップ補完メニュー色設定
 highlight Pmenu ctermbg=DarkGray ctermfg=White guibg=#606060
