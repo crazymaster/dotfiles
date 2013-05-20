@@ -101,20 +101,18 @@ NeoBundleLazy 'ujihisa/unite-locate'
 NeoBundle 'DirDiff.vim'
 
 if has('unix')
-  NeoBundle 'fuenor/im_control.vim'
   " PythonによるIBus制御指定
+  NeoBundle 'fuenor/im_control.vim'
   let IM_CtrlIBusPython = 1
+
+  " Build repos.
+  NeoBundle 'Shougo/vimproc', {
+        \ 'build' : {
+        \     'unix' : 'make -f make_unix.mak',
+        \    },
+        \ }
 endif
 
-" Build repos.
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
 
 " Lazy load.
 "NeoBundleLazy 'c9s/perlomni.vim.git'
