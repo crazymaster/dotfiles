@@ -690,41 +690,9 @@ let g:unite_source_history_yank_enable = 1
 let g:unite_winheight = 20
 let g:unite_winwidth  = 78
 
-autocmd MyAutoCmd FileType unite call s:unite_my_settings()
-
-" Directory partial match.
-" call unite#set_substitute_pattern('files', '\%([~.*]\+\)\@<!/', '*/*', 100)
-" call unite#set_substitute_pattern('files', '^\\', substitute(substitute($HOME, '\\', '/', 'g'), ' ', '\\ ', 'g') . '/*', -100)
-" Test.
-" call unite#set_substitute_pattern('files', '^\.v/', unite#util#substitute_path_separator($HOME).'/.vim/', 1000)
-call unite#set_substitute_pattern('files', '^\.v/',
-      \ [expand('~/.vim/'), unite#util#substitute_path_separator($HOME) . '/.bundle/*/'], 1000)
-call unite#set_substitute_pattern('files', '\.', '*.', 1000)
-call unite#custom_alias('file', 'h', 'left')
-call unite#custom_default_action('directory', 'narrow')
-" call unite#custom_default_action('file', 'my_tabopen')
-call unite#set_substitute_pattern('file', '[^~.]\zs/', '*/*', 20)
-
-" Custom actions."{{{
-let my_tabopen = {
-      \ 'description' : 'my tabopen items',
-      \ 'is_selectable' : 1,
-      \ }
-function! my_tabopen.func(candidates) "{{{
-  call unite#take_action('tabopen', a:candidates)
-
-  let dir = isdirectory(a:candidates[0].word) ? a:candidates[0].word : fnamemodify(a:candidates[0].word, ':p:h')
-  execute g:unite_lcd_command '`=dir`'
-endfunction "}}}
-call unite#custom_action('file,buffer', 'tabopen', my_tabopen)
-unlet my_tabopen
-"}}}
-
-" Custom filters."{{{
-" call unite#custom_filters('file,buffer,file_rec', ['matcher_fuzzy', 'sorter_default', 'converter_default'])
-"}}}
-
 let g:unite_enable_start_insert = 0
+
+autocmd MyAutoCmd FileType unite call s:unite_my_settings()
 
 function! s:unite_my_settings() "{{{
   " Overwrite settings.
