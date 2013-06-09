@@ -469,10 +469,6 @@ augroup END
 "}}}
 
 " vimfiler"{{{
-call vimfiler#set_execute_file('vim', 'vim')
-call vimfiler#set_execute_file('txt', 'notepad')
-call vimfiler#set_execute_file('c', ['vim', 'notepad'])
-
 " Edit file by tabedit.
 "let g:vimfiler_edit_action = 'tabopen'
 
