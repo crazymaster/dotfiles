@@ -99,7 +99,7 @@ NeoBundleLazy 'ujihisa/unite-locate'
 "NeoBundleLazy 'yomi322/unite-tweetvim'
 
 " Vim-script repositories
-NeoBundle 'DirDiff.vim'
+NeoBundleLazy 'DirDiff.vim'
 
 if has('unix')
   " PythonによるIBus制御指定
