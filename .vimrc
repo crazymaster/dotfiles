@@ -285,7 +285,7 @@ vnoremap > >gv
 vnoremap <silent> <C-p> "0p<CR>
 
 " クリップボードを利用する
-set clipboard+=unnamed
+set clipboard=unnamed
 
 " 自動的にQuickFixを開く
 "autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
@@ -639,6 +639,44 @@ nnoremap <expr><silent> N  <SID>smart_search_expr('N',
       \  . " -no-start-insert line\<CR>")
 nnoremap <silent><expr> n  <SID>smart_search_expr('n',
       \ ":\<C-u>UniteResume search -no-start-insert\<CR>")
+
+" unite-menu {{{
+if !exists("g:unite_source_menu_menus")
+  let g:unite_source_menu_menus = {}
+endif
+
+let g:unite_source_menu_menus.shortcut = {
+      \   "description" : "shortcut"
+      \}
+let g:unite_source_menu_menus.shortcut.command_candidates = [
+      \   [ "AllMap", "Unite output:map|map!|lmap" ],
+      \   [ "Unite Beautiful Attack", "Unite -auto-preview colorscheme" ],
+      \]
+
+let g:unite_source_menu_menus.fenc = {
+      \ 'description' : 'Change file fenc option.',
+      \ }
+let g:unite_source_menu_menus.fenc.command_candidates = [
+      \ ['utf8', 'setlocal fenc=utf8'],
+      \ ['iso2022jp', 'setlocal fenc=iso2022jp'],
+      \ ['cp932', 'setlocal fenc=cp932'],
+      \ ['euc', 'setlocal fenc=euc'],
+      \ ['utf16', 'setlocal fenc=utf16'],
+      \ ['utf16-be', 'setlocal fenc=utf16be'],
+      \ ['jis', 'setlocal fenc=jis'],
+      \ ['sjis', 'setlocal fenc=sjis'],
+      \ ['unicode', 'setlocal fenc=unicode'],
+      \ ]
+
+let g:unite_source_menu_menus.ff = {
+      \ 'description' : 'Change file format option.',
+      \ }
+let g:unite_source_menu_menus.ff.command_candidates = [
+      \ ['unix' , 'setlocal ff=unix'],
+      \ ['dos' , 'setlocal ff=dos'],
+      \ ['mac' , 'setlocal ff=mac'],
+      \ ]
+"}}}
 
 let g:unite_enable_split_vertically = 0
 let g:unite_kind_file_cd_command = 'TabpageCD'
