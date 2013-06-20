@@ -564,14 +564,12 @@ xmap    f [unite]
 nnoremap	[Window]	<Nop>
 nmap	s [Window]
 
-nnoremap [unite]u  q:Unite<Space>
-" nnoremap <silent> :  :<C-u>Unite history/command command<CR>
 nnoremap <expr><silent> [unite]b  <SID>unite_build()
 function! s:unite_build()
   return ":\<C-u>Unite -buffer-name=build". tabpagenr() ." -no-quit build\<CR>"
 endfunction
 nnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register history/yank<CR>
-nnoremap <silent> [unite]o  :<C-u>Unite outline -start-insert<CR>
+nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
 nnoremap <silent> [unite]t  :<C-u>UniteWithCursorWord -buffer-name=tag tag tag/include<CR>
 xnoremap <silent> [unite]r  d:<C-u>Unite -buffer-name=register register history/yank<CR>
 nnoremap <silent> [unite]w  :<C-u>UniteWithCursorWord -buffer-name=register
@@ -581,16 +579,19 @@ nnoremap <silent> [unite]q  :<C-u>Unite qflist -no-quit<CR>
 nnoremap <silent> [unite]g  :<C-u>Unite grep -buffer-name=search -no-quit<CR>
 nnoremap <silent> <C-k>  :<C-u>Unite change jump<CR>
 nnoremap <silent> [unite]c  :<C-u>Unite change<CR>
-nnoremap <silent> [unite]f  :<C-u>Unite -buffer-name=resume resume<CR>
 nnoremap <silent> [unite]d  :<C-u>Unite -buffer-name=files -default-action=lcd directory_mru<CR>
-nnoremap <silent> [unite]ma  :<C-u>Unite mapping<CR>
-nnoremap <silent> [unite]me  :<C-u>Unite output:message<CR>
-nnoremap <silent> [unite]up  :<C-u>Unite neobundle/update -log<CR>
+nnoremap <silent> [unite]ma :<C-u>Unite mapping<CR>
+nnoremap <silent> [unite]me :<C-u>Unite output:message<CR>
+nnoremap <silent> [unite]up :<C-u>Unite neobundle/update -log<CR>
+nnoremap <silent> [unite]s  :<C-u>Unite menu:shortcut<CR>
 inoremap <silent> <C-z>  <C-o>:call unite#start_complete(['register'], {'is_insert' : 1})<CR>
 nnoremap  [unite]f  :<C-u>Unite source<CR>
 
 nnoremap <silent> [Window]s  :<C-u>Unite -buffer-name=files -no-split
-      \ jump_point file_point buffer_tab file_rec/async:! file file/new file_mru<CR>
+      \ jump_point file_point buffer_tab file_rec/async:!
+      \ file file/new file_mru<CR>
+nnoremap <silent> [Window]c  :<C-u>UniteWithCurrentDir
+      \ -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap <silent> [Window]t  :<C-u>Unite -buffer-name=files tab<CR>
 nnoremap <silent> [Window]w  :<C-u>Unite window<CR>
 nnoremap <silent> [Space]b  :<C-u>UniteBookmarkAdd<CR>
@@ -641,21 +642,22 @@ nnoremap <silent><expr> n  <SID>smart_search_expr('n',
       \ ":\<C-u>UniteResume search -no-start-insert\<CR>")
 
 " unite-menu {{{
-if !exists("g:unite_source_menu_menus")
+if !exists('g:unite_source_menu_menus')
   let g:unite_source_menu_menus = {}
 endif
 
-let g:unite_source_menu_menus.shortcut = {
-      \   "description" : "shortcut"
-      \}
+let g:unite_source_menu_menus.shortcut =  
+      \ {'description' : 'shortcut'}
 let g:unite_source_menu_menus.shortcut.command_candidates = [
-      \   [ "AllMap", "Unite output:map|map!|lmap" ],
-      \   [ "Unite Beautiful Attack", "Unite -auto-preview colorscheme" ],
-      \]
+      \ ['vimrc', 'edit $MYVIMRC'],
+      \ ['gvimrc', 'edit $MYGVIMRC'],
+      \ ['neobundles', 'Unite directory:$DOTVIM/bundle'],
+      \ ['AllMap', 'Unite output:map|map!|lmap'],
+      \ ['Unite Beautiful Attack', 'Unite -auto-preview colorscheme'],
+      \ ]
 
-let g:unite_source_menu_menus.fenc = {
-      \ 'description' : 'Change file fenc option.',
-      \ }
+let g:unite_source_menu_menus.fenc = 
+      \ {'description' : 'Change file fenc option.'}
 let g:unite_source_menu_menus.fenc.command_candidates = [
       \ ['utf8', 'setlocal fenc=utf8'],
       \ ['iso2022jp', 'setlocal fenc=iso2022jp'],
@@ -668,13 +670,12 @@ let g:unite_source_menu_menus.fenc.command_candidates = [
       \ ['unicode', 'setlocal fenc=unicode'],
       \ ]
 
-let g:unite_source_menu_menus.ff = {
-      \ 'description' : 'Change file format option.',
-      \ }
+let g:unite_source_menu_menus.ff = 
+      \ {'description' : 'Change file format option.'}
 let g:unite_source_menu_menus.ff.command_candidates = [
-      \ ['unix' , 'setlocal ff=unix'],
-      \ ['dos' , 'setlocal ff=dos'],
-      \ ['mac' , 'setlocal ff=mac'],
+      \ ['unix', 'setlocal ff=unix'],
+      \ ['dos', 'setlocal ff=dos'],
+      \ ['mac', 'setlocal ff=mac'],
       \ ]
 "}}}
 
