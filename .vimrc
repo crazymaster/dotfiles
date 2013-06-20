@@ -91,10 +91,14 @@ NeoBundleLazy 'mattn/unite-advent_calendar'
 NeoBundleLazy 'mattn/unite-remotefile'
 NeoBundleLazy 'osyo-manga/unite-fold'
 NeoBundleLazy 'skammer/vim-css-color'
-NeoBundleLazy 'ujihisa/unite-colorscheme'
+NeoBundleLazy 'ujihisa/unite-colorscheme', { 'autoload' : {
+      \ 'unite_sources' : 'colorscheme',
+      \ }}
 NeoBundleLazy 'ujihisa/unite-font'
 NeoBundleLazy 'ujihisa/unite-gem'
-NeoBundleLazy 'ujihisa/unite-locate'
+NeoBundleLazy 'ujihisa/unite-locate', { 'autoload' : {
+      \ 'unite_sources' : 'locate',
+      \ }}
 "NeoBundleLazy 'yomi322/neco-tweetvim'
 "NeoBundleLazy 'yomi322/unite-tweetvim'
 
