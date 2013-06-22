@@ -83,7 +83,6 @@ NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'tyru/eskk.vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
-NeoBundle 'ujihisa/quicklearn'
 NeoBundle 'vim-jp/autofmt'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundleLazy 'choplin/unite-vim_hacks'
@@ -92,6 +91,7 @@ NeoBundleLazy 'mattn/unite-advent_calendar'
 NeoBundleLazy 'mattn/unite-remotefile'
 NeoBundleLazy 'osyo-manga/unite-fold'
 NeoBundleLazy 'skammer/vim-css-color'
+NeoBundleLazy 'ujihisa/quicklearn'
 NeoBundleLazy 'ujihisa/unite-colorscheme', { 'autoload' : {
       \ 'unite_sources' : 'colorscheme',
       \ }}
