@@ -702,6 +702,7 @@ function! s:unite_my_settings() "{{{
   " Overwrite settings.
   "nmap <buffer> <ESC>      <Plug>(unite_exit)
   imap <buffer> jj <Plug>(unite_insert_leave)
+  imap <buffer> <Down> <Plug>(unite_insert_leave)
   "imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
   imap <buffer><expr> j unite#smart_map('j', '')
   imap <buffer> ' <Plug>(unite_quick_match_default_action)
