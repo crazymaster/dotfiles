@@ -287,6 +287,10 @@ set wildignore=*.o,*.obj,*.bak,*.swp,*.d,*~
 vnoremap < <gv
 vnoremap > >gv
 
+" 表示行移動
+nnoremap j gj
+nnoremap k gk
+
 " 連続コピペ
 vnoremap <silent> <C-p> "0p<CR>
 
