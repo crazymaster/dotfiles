@@ -132,6 +132,11 @@ endif
 "autocmd FileType python
 "	  \ NeoBundleSource python-mode
 
+" Go tools
+if $GOROOT != ''
+  set rtp+=$GOROOT/misc/vim,$GOPATH/src/github.com/nsf/gocode/vim
+endif
+
 " Disable netrw.vim
 let g:loaded_netrwPlugin = 1
 
@@ -308,11 +313,6 @@ set clipboard=unnamed
 " Add path
 if has('unix')
   set path+=/usr/include/qt5,/usr/local/include/bullet
-endif
-
-" Go tools
-if $GOROOT != ''
-  set rtp+=$GOROOT/misc/vim,$GOPATH/src/github.com/nsf/gocode/vim
 endif
 
 " quickrun.vim"{{{
