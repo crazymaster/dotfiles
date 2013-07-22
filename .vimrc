@@ -84,8 +84,6 @@ NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'tyru/eskk.vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
-NeoBundle 'vim-jp/autofmt'
-NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundleLazy 'choplin/unite-vim_hacks'
 NeoBundleLazy 'lilydjwg/colorizer'
 NeoBundleLazy 'mattn/unite-advent_calendar'
@@ -115,6 +113,9 @@ if has('unix')
   " PythonによるIBus制御指定
   NeoBundle 'fuenor/im_control.vim'
   let IM_CtrlIBusPython = 1
+
+  NeoBundle 'vim-jp/autofmt'
+  NeoBundle 'vim-jp/vimdoc-ja'
 
   " Build repos.
   NeoBundle 'Shougo/vimproc', {
@@ -307,6 +308,11 @@ set clipboard=unnamed
 " Add path
 if has('unix')
   set path+=/usr/include/qt5,/usr/local/include/bullet
+endif
+
+" Go tools
+if $GOROOT != ''
+  set rtp+=$GOROOT/misc/vim,$GOPATH/src/github.com/nsf/gocode/vim
 endif
 
 " quickrun.vim"{{{
@@ -739,26 +745,24 @@ function! s:unite_my_settings() "{{{
         \ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
 endfunction "}}}
 
-" For optimize.
 let g:unite_cursor_line_highlight = 'CursorLine' 
 "let g:unite_abbr_highlight = 'TabLine'
-"let g:unite_source_file_mru_filename_format = ''
-let g:unite_source_file_mru_filename_format  =  ':~:.'
-let g:unite_source_file_mru_limit  =  300
-" let g:unite_source_directory_mru_time_format  =  ''
-let g:unite_source_directory_mru_limit  =  300
 
-" For unite-session.
-" Save session automatically.
-"let g:unite_source_session_enable_auto_save = 1
-" Load session automatically.
-"autocmd VimEnter * UniteSessionLoad
+" For optimize.
+let g:unite_source_file_mru_filename_format = ''
+
+if executable('jvgrep')
+  " For jvgrep.
+  let g:unite_source_grep_command = 'jvgrep'
+  let g:unite_source_grep_default_opts = '--exclude ''\.(git|svn|hg|bzr)'''
+  let g:unite_source_grep_recursive_opt = '-R'
+endif
 
 " For ack.
 if executable('ack-grep')
-  let g:unite_source_grep_command = 'ack-grep'
-  let g:unite_source_grep_default_opts = '--no-heading --no-color -a'
-  let g:unite_source_grep_recursive_opt = ''
+  " let g:unite_source_grep_command = 'ack-grep'
+  " let g:unite_source_grep_default_opts = '--no-heading --no-color -a -H'
+  " let g:unite_source_grep_recursive_opt = ''
 endif
 "}}}
 
@@ -836,63 +840,61 @@ let g:use_zen_complete_tag = 1
 "}}}
 
 " eskk.vim"{{{
-if !exists('g:eskk#disable') || !g:eskk#disable
-  " Disable skk.vim
-  let g:plugin_skk_disable = 1
+" Disable skk.vim
+let g:plugin_skk_disable = 1
 
-  let g:eskk#disable = 0
+let g:eskk#disable = 0
 
-  let g:eskk#debug = 0
+let g:eskk#debug = 0
 
-  " Don't keep state.
-  let g:eskk#keep_state = 0
+" Don't keep state.
+let g:eskk#keep_state = 0
 
-  let g:eskk#show_annotation = 1
-  let g:eskk#rom_input_style = 'msime'
-  let g:eskk#egg_like_newline = 1
-  let g:eskk#egg_like_newline_completion = 1
+let g:eskk#show_annotation = 1
+let g:eskk#rom_input_style = 'msime'
+let g:eskk#egg_like_newline = 1
+let g:eskk#egg_like_newline_completion = 1
 
-  " Disable mapping.
-  "let g:eskk#map_normal_keys = 0
+" Disable mapping.
+"let g:eskk#map_normal_keys = 0
 
-  autocmd VimEnter * imap <C-j> <Plug>(eskk:toggle)
-  autocmd VimEnter * cmap <C-j> <Plug>(eskk:toggle)
+autocmd VimEnter * imap <C-j> <Plug>(eskk:toggle)
+autocmd VimEnter * cmap <C-j> <Plug>(eskk:toggle)
 
-  "let g:eskk#dictionary = {
-  "\ 'path': expand('~/.skk-eskk-jisyo'),
-  "\ 'sorted': 0,
-  "\ 'encoding': 'utf-8',
-  "\}
-  let g:eskk#large_dictionary = {
-        \ 'path': expand('/usr/share/skk/SKK-JISYO.L'),
-        \ 'sorted': 1,
-        \ 'encoding': 'euc-jp',
-        \}
+"let g:eskk#dictionary = {
+"\ 'path': expand('~/.skk-eskk-jisyo'),
+"\ 'sorted': 0,
+"\ 'encoding': 'utf-8',
+"\}
+let g:eskk#large_dictionary = {
+      \ 'path': expand('/usr/share/skk/SKK-JISYO.L'),
+      \ 'sorted': 1,
+      \ 'encoding': 'euc-jp',
+      \}
 
-  " Use /bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory" instead of this settings.
-  "if &encoding == 'utf-8' && !has('gui_running')
-  " GNOME Terminal only.
+" Use /bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory" instead of this settings.
+"if &encoding == 'utf-8' && !has('gui_running')
+" GNOME Terminal only.
 
-  " Use <> instead of ▽.
-  "let g:eskk#marker_henkan = '<>'
-  " Use >> instead of ▼.
-  "let g:eskk#marker_henkan_select = '>>'
-  "endif
+" Use <> instead of ▽.
+"let g:eskk#marker_henkan = '<>'
+" Use >> instead of ▼.
+"let g:eskk#marker_henkan_select = '>>'
+"endif
 
-  " Define table.
-  autocmd MyAutoCmd User eskk-initialize-pre call s:eskk_initial_pre()
-  function! s:eskk_initial_pre() "{{{
-    let t = eskk#table#new('rom_to_hira*', 'rom_to_hira')
-    call t.add_map('z ', '　')
-    call t.add_map('~', '〜')
-    call t.add_map('zc', '©')
-    call t.add_map('zr', '®')
-    call t.add_map('z9', '（')
-    call t.add_map('z0', '）')
-    call eskk#register_mode_table('hira', t)
-    unlet t
-  endfunction "}}}
-endif
+" Define table.
+autocmd MyAutoCmd User eskk-initialize-pre call s:eskk_initial_pre()
+function! s:eskk_initial_pre() "{{{
+  let t = eskk#table#new('rom_to_hira*', 'rom_to_hira')
+  call t.add_map('z ', '　')
+  call t.add_map('~', '〜')
+  call t.add_map('zc', '©')
+  call t.add_map('zr', '®')
+  call t.add_map('z9', '（')
+  call t.add_map('z0', '）')
+  call eskk#register_mode_table('hira', t)
+  unlet t
+endfunction "}}}
 "}}}
 
 " vinarise.vim"{{{
