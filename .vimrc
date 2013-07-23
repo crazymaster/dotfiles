@@ -21,8 +21,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "
 
 " Original repositories in github
-NeoBundle 'Lokaltog/vim-powerline'
-NeoBundle 'osyo-manga/vim-powerline-unite-theme'
 "NeoBundleLazy 'Rip-Rip/clang_complete', {
 "      \ 'autoload' : {
 "      \     'filetypes' : ['c', 'cpp'],
@@ -44,6 +42,7 @@ NeoBundle 'adie/BlockDiff'
 "NeoBundleLazy 'basyura/TweetVim',{
 "      \ 'depends' : 'basyura/twibill.vim',
 "      \ 'autoload' : { 'commands' : 'TweetVimHomeTimeline' }}
+NeoBundle 'bling/vim-airline'
 NeoBundle 'csexton/jekyll.vim'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'groenewege/vim-less'
@@ -235,11 +234,8 @@ syntax on
 highlight CursorLine term=none cterm=bold ctermfg=none ctermbg=darkgray
 highlight SpellBad ctermbg=Red
 
-" For Powerline
+" For vim-airline
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
-let g:Powerline_theme = "unite_vimfiler_status"
-let g:Powerline_colorscheme = "unite_vimfiler_status"
-let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 
 "ポップアップ補完メニュー色設定
