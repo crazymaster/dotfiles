@@ -236,7 +236,6 @@ highlight SpellBad ctermbg=Red
 
 " For vim-airline
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
-let g:vimfiler_force_overwrite_statusline = 0
 
 "ポップアップ補完メニュー色設定
 highlight Pmenu ctermbg=DarkGray ctermfg=White guibg=#606060
