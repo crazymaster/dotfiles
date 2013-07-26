@@ -113,3 +113,12 @@ PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\033[
 export GOROOT=$HOME/go
 export GOPATH=$HOME/_go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+#completion
+if [ -r ~/bash-completion ]; then
+  . ~/bash-completion/git-completion.bash
+  . ~/bash-completion/hub.bash_completion.sh
+  . ~/bash-completion/completion-ruby/completion-ruby-all
+fi
+
+export PATH=$PATH:$HOME/bin
