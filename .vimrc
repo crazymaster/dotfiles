@@ -31,11 +31,17 @@ NeoBundle 'Shougo/echodoc'
 NeoBundle 'Shougo/git-vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/unite-build'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vim-vcs'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/vinarise' 
 NeoBundle 'adie/BlockDiff'
+"NeoBundleLazy 'basyura/TweetVim',{
+"      \ 'depends' : 'basyura/twibill.vim',
+"      \ 'autoload' : { 'commands' : 'TweetVimHomeTimeline' }}
 NeoBundle 'bling/vim-airline'
 NeoBundle 'csexton/jekyll.vim'
 NeoBundle 'godlygeek/tabular'
@@ -47,74 +53,57 @@ NeoBundle 'hrsh7th/vim-versions'
 NeoBundle 'kana/vim-smartchr'
 NeoBundleLazy 'kana/vim-smartinput'
 NeoBundle 'majutsushi/tagbar'
-NeoBundleLazy 'mattn/benchvimrc-vim', {
-      \ 'autoload' : {'commands' : 'BenchVimrc'}}
+NeoBundleLazy 'mattn/benchvimrc-vim',
+      \ { 'autoload' : { 'commands' : 'BenchVimrc' }}
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/wwwrenderer-vim'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'miripiruni/CSScomb-for-Vim'
+NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'othree/html5.vim'
+NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sophacles/vim-processing'
 NeoBundle 'thinca/vim-openbuf'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
-NeoBundleLazy 'thinca/vim-scouter', {
-      \ 'autoload' : {'commands' : 'Scouter'}}
+NeoBundleLazy 'thinca/vim-scouter',
+      \ { 'autoload' : { 'commands' : 'Scouter' }}
+NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-liquid'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tsukkee/lingr-vim'
+NeoBundle 'tsukkee/unite-help'
+NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'tyru/eskk.vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
+NeoBundleLazy 'choplin/unite-vim_hacks'
 NeoBundleLazy 'lilydjwg/colorizer'
+NeoBundleLazy 'mattn/unite-advent_calendar'
+NeoBundleLazy 'mattn/unite-remotefile'
+NeoBundleLazy 'osyo-manga/unite-fold'
 NeoBundleLazy 'skammer/vim-css-color'
 NeoBundleLazy 'thinca/vim-showtime', {
-      \ 'autoload' : {'commands' : 'ShowtimeStart'}}
-
-" Unite
-NeoBundle 'Shougo/unite.vim'
-NeoBundleLazy 'Shougo/unite-build', {
-      \ 'autoload' : {'unite_sources' : 'build'}}
-NeoBundleLazy 'Shougo/unite-outline', {
-      \ 'autoload' : {'unite_sources' : 'outline'}}
-NeoBundleLazy 'choplin/unite-vim_hacks', {
-      \ 'autoload' : {'unite_sources' : 'vim_hacks'}}
-NeoBundleLazy 'mattn/unite-advent_calendar', {
-      \ 'autoload' : {'unite_sources' : 'advent_calendar'}}
-NeoBundleLazy 'mattn/unite-remotefile', {
-      \ 'autoload' : {'unite_sources' : 'remotefile'}}
-NeoBundleLazy 'osyo-manga/unite-fold', {
-      \ 'autoload' : {'unite_sources' : 'fold'}}
-NeoBundleLazy 'osyo-manga/unite-quickfix', {
-      \ 'autoload' : {'unite_sources' : 'quickfix'}}
-NeoBundleLazy 'pasela/unite-webcolorname', {
-      \ 'autoload' : {'unite_sources' : 'webcolrname'}}
-NeoBundleLazy 'thinca/vim-unite-history', {
       \ 'autoload' : {
-      \   'unite_sources' : [
-      \     'history/command','history/search', 'history/yank']}}
-NeoBundleLazy 'tsukkee/unite-help', {
-      \ 'autoload' : {'unite_sources' : 'help'}}
-NeoBundleLazy 'tsukkee/unite-tag', {
-      \ 'autoload' : {
-      \   'unite_sources' : [
-      \     'tag','tag/file', 'tag/include']}}
-NeoBundleLazy 'ujihisa/quicklearn', { 
-      \ 'autoload' : {'unite_sources' : 'quicklearn'}}
-NeoBundleLazy 'ujihisa/unite-colorscheme', {
-      \ 'autoload' : {'unite_sources' : 'colorscheme'}}
-NeoBundleLazy 'ujihisa/unite-font', {
-      \ 'autoload' : {'unite_sources' : 'font'}}
-NeoBundleLazy 'ujihisa/unite-gem', {
-      \ 'autoload' : {'unite_sources' : 'gem'}}
-NeoBundleLazy 'ujihisa/unite-locate', {
-      \ 'autoload' : {'unite_sources' : 'locate'}}
+      \  'commands' : 'ShowtimeStart' 
+      \ }}
+NeoBundleLazy 'ujihisa/quicklearn'
+NeoBundleLazy 'ujihisa/unite-colorscheme', { 'autoload' : {
+      \ 'unite_sources' : 'colorscheme',
+      \ }}
+NeoBundleLazy 'ujihisa/unite-font'
+NeoBundleLazy 'ujihisa/unite-gem'
+NeoBundleLazy 'ujihisa/unite-locate', { 'autoload' : {
+      \ 'unite_sources' : 'locate',
+      \ }}
+"NeoBundleLazy 'yomi322/neco-tweetvim'
+"NeoBundleLazy 'yomi322/unite-tweetvim'
 
 " Vim-script repositories
 NeoBundleLazy 'DirDiff.vim'
