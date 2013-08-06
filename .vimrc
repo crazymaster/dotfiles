@@ -52,11 +52,11 @@ NeoBundleLazy 'kana/vim-smartinput'
 NeoBundle 'majutsushi/tagbar'
 NeoBundleLazy 'mattn/benchvimrc-vim',
       \ {'autoload' : { 'commands' : 'BenchVimrc'}}
+NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/wwwrenderer-vim'
-NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'miripiruni/CSScomb-for-Vim'
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'othree/html5.vim'
@@ -800,14 +800,14 @@ if !has('win32') || !has('win64')
 endif
 "}}}
 
-" zencoding-vim"{{{
-let g:user_zen_settings = {
+" emmet-vim"{{{
+let g:user_emmet_settings = {
       \  'lang' : 'ja',
       \  'html' : {
       \    'filters' : 'html',
       \    'indentation' : ' ',
       \    'snippets' : {
-      \      'jq' : "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js\"></script>"
+      \      'jq' : "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js\"></script>"
       \    }, 
       \  },
       \  'javascript' : {
@@ -821,17 +821,10 @@ let g:user_zen_settings = {
       \  },
       \}
 
-let g:use_zen_complete_tag = 1
+let g:use_emmet_complete_tag = 1
 "}}}
 
 " eskk.vim"{{{
-" Disable skk.vim
-let g:plugin_skk_disable = 1
-
-let g:eskk#disable = 0
-
-let g:eskk#debug = 0
-
 " Don't keep state.
 let g:eskk#keep_state = 0
 
