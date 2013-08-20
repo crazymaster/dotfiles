@@ -105,6 +105,7 @@ if has('unix')
 
   NeoBundle 'vim-jp/autofmt'
   NeoBundle 'vim-jp/vimdoc-ja'
+  NeoBundle 'autodate.vim'
 
   " Build repos.
   NeoBundle 'Shougo/vimproc', {
@@ -290,7 +291,7 @@ nnoremap k gk
 vnoremap <silent> <C-p> "0p<CR>
 
 " クリップボードを利用する
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " 自動的にQuickFixを開く
 "autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
