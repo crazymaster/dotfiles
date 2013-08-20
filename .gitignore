@@ -5,3 +5,7 @@
 !/.gitconfig
 !/.gitignore_global
 !/.bashrc
+!/.vim/
+/.vim/spell/
+/.vim/bundle/
+/.vim/.netrwhist
