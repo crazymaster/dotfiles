@@ -37,7 +37,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vim-vcs'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/vinarise' 
+NeoBundle 'Shougo/vinarise'
 NeoBundle 'adie/BlockDiff'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'csexton/jekyll.vim'
@@ -307,7 +307,7 @@ let g:quickrun_config.markdown = {
       \ 'outputter': 'browser'
       \ }
 let g:quickrun_config.html = {
-      \ 'outputter': 'null', 
+      \ 'outputter': 'null',
       \ 'command': 'firefox'
       \ }
 "}}}
@@ -651,7 +651,7 @@ if !exists('g:unite_source_menu_menus')
   let g:unite_source_menu_menus = {}
 endif
 
-let g:unite_source_menu_menus.shortcut =  
+let g:unite_source_menu_menus.shortcut =
       \ {'description' : 'shortcut'}
 let g:unite_source_menu_menus.shortcut.command_candidates = [
       \ ['vimrc', 'edit $MYVIMRC'],
@@ -662,7 +662,7 @@ let g:unite_source_menu_menus.shortcut.command_candidates = [
       \ ]
 nnoremap <silent> [unite]s  :<C-u>Unite menu:shortcut<CR>
 
-let g:unite_source_menu_menus.fenc = 
+let g:unite_source_menu_menus.fenc =
       \ {'description' : 'Change file fenc option.'}
 let g:unite_source_menu_menus.fenc.command_candidates = [
       \ ['utf8', 'setlocal fenc=utf8'],
@@ -676,7 +676,7 @@ let g:unite_source_menu_menus.fenc.command_candidates = [
       \ ['unicode', 'setlocal fenc=unicode'],
       \ ]
 
-let g:unite_source_menu_menus.ff = 
+let g:unite_source_menu_menus.ff =
       \ {'description' : 'Change file format option.'}
 let g:unite_source_menu_menus.ff.command_candidates = [
       \ ['unix', 'setlocal ff=unix'],
@@ -731,7 +731,7 @@ function! s:unite_my_settings() "{{{
         \ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
 endfunction "}}}
 
-let g:unite_cursor_line_highlight = 'CursorLine' 
+let g:unite_cursor_line_highlight = 'CursorLine'
 "let g:unite_abbr_highlight = 'TabLine'
 
 " For optimize.
@@ -809,7 +809,7 @@ let g:user_emmet_settings = {
       \    'indentation' : ' ',
       \    'snippets' : {
       \      'jq' : "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js\"></script>"
-      \    }, 
+      \    },
       \  },
       \  'javascript' : {
       \    'snippets' : {
