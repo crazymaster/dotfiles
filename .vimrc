@@ -229,6 +229,7 @@ highlight SpellBad ctermbg=Red
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+let g:airline#extensions#default#section_truncate_width = {}
 
 "ポップアップ補完メニュー色設定
 highlight Pmenu ctermbg=DarkGray ctermfg=White guibg=#606060
@@ -251,13 +252,13 @@ set title
 set number
 
 " タブ幅制御
-set tabstop=8
+set tabstop=4
 set softtabstop=2
 set shiftwidth=2
 set smarttab
 set shiftround
 " タブをスペースに展開する
-set expandtab
+"set expandtab
 " 自動的にインデントする (noautoindent:インデントしない)
 set autoindent
 " 検索時にファイルの最後まで行ったら最初に戻る (nowrapscan:戻らない)
