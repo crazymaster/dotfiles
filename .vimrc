@@ -270,6 +270,11 @@ set wildmenu
 " テキスト挿入中の自動折り返しを日本語に対応させる
 set formatoptions+=mM
 
+" 日本語の整形にautofmtを使う。Kaoriya版だとデフォルトで設定済み
+set formatexpr=autofmt#japanese#formatexpr()  
+"set colorcolumn=+1    " textwidth を越えた部分に色を付ける
+let autofmt_allow_over_tw=1  " ぶら下げを半角1文字分まで許可
+
 " インクリメンタル検索を有効化
 set incsearch
 " 検索時に大文字小文字を無視 (noignorecase:無視しない)
@@ -292,6 +297,8 @@ nnoremap k gk
 
 " 連続コピペ
 vnoremap <silent> <C-p> "0p<CR>
+
+nnoremap <silent> <Space>. :<C-u>edit $MYVIMRC<CR>
 
 " クリップボードを利用する
 set clipboard=unnamedplus
@@ -662,6 +669,7 @@ let g:unite_source_menu_menus.shortcut.command_candidates = [
       \ ['neobundles', 'Unite directory:$DOTVIM/bundle'],
       \ ['AllMap', 'Unite output:map|map!|lmap'],
       \ ['Unite Beautiful Attack', 'Unite -auto-preview colorscheme'],
+      \ ['text width over', '/\%>79v'],
       \ ]
 nnoremap <silent> [unite]s  :<C-u>Unite menu:shortcut<CR>
 
