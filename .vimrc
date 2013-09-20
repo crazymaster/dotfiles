@@ -301,7 +301,11 @@ vnoremap <silent> <C-p> "0p<CR>
 nnoremap <silent> <Space>. :<C-u>edit $MYVIMRC<CR>
 
 " クリップボードを利用する
-set clipboard=unnamedplus
+if has('unnamedplus')
+  set clipboard=unnamedplus
+else
+  set clipboard=unnamed
+endif
 
 " 自動的にQuickFixを開く
 "autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
