@@ -324,6 +324,11 @@ let g:quickrun_config.html = {
       \ 'outputter': 'null',
       \ 'command': 'firefox'
       \ }
+let g:quickrun_config.processing =  {
+	  \ 'command': 'processing-java',
+	  \ 'runner' : 'vimproc', 
+	  \ 'exec': '%c --sketch=$PWD/ --output=/tmp/processing --run --force',
+	  \ }
 "}}}
 
 let g:echodoc_enable_at_startup = 1
@@ -752,12 +757,12 @@ let g:unite_cursor_line_highlight = 'CursorLine'
 " For optimize.
 let g:unite_source_file_mru_filename_format = ''
 
-if executable('jvgrep')
-  " For jvgrep.
-  let g:unite_source_grep_command = 'jvgrep'
-  let g:unite_source_grep_default_opts = '--exclude ''\.(git|svn|hg|bzr)'''
-  let g:unite_source_grep_recursive_opt = '-R'
-endif
+"if executable('jvgrep')
+"  " For jvgrep.
+"  let g:unite_source_grep_command = 'jvgrep'
+"  let g:unite_source_grep_default_opts = '--exclude ''\.(git|svn|hg|bzr)'''
+"  let g:unite_source_grep_recursive_opt = '-R'
+"endif
 
 " For ack.
 if executable('ack-grep')
