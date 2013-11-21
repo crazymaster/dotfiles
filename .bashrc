@@ -122,3 +122,5 @@ if [ -r ~/bash-completion ]; then
 fi
 
 export PATH=$PATH:$HOME/bin
+
+eval "$(hub alias -s)"
