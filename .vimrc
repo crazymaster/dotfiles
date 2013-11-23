@@ -237,6 +237,8 @@ set wildmenu
 " ファイル名補完時に無視するファイルパターン
 set wildignore=*.o,*.obj,*.bak,*.swp,*.d,*~
 
+set spelllang=en,cjk
+
 " ビジュアルモードでインデント変更後も選択を継続
 vnoremap < <gv
 vnoremap > >gv
