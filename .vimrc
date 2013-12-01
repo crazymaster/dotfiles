@@ -1,7 +1,7 @@
+set encoding=utf-8
 scriptencoding utf-8
-" neobundle.vim"{{{
-set nocompatible                " Recommend
 
+" neobundle.vim"{{{
 if has('win32') || has('win64')
   let $DOTVIM = expand('$VIM/plugins')
 else
@@ -9,6 +9,7 @@ else
 endif
 
 if has('vim_starting')
+  set nocompatible                " Recommend
   set runtimepath+=$DOTVIM/bundle/neobundle.vim
 endif
 
@@ -54,6 +55,7 @@ NeoBundleLazy 'mattn/benchvimrc-vim',
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'mattn/gist-vim'
+NeoBundle 'mattn/unite-gist'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/wwwrenderer-vim'
 NeoBundle 'miripiruni/CSScomb-for-Vim'
@@ -86,11 +88,8 @@ NeoBundleLazy 'osyo-manga/unite-fold'
 NeoBundleLazy 'skammer/vim-css-color'
 NeoBundleLazy 'thinca/vim-showtime',
       \ {'autoload' : {'commands' : 'ShowtimeStart'}}
-NeoBundleLazy 'ujihisa/unite-colorscheme'
-NeoBundleLazy 'ujihisa/unite-font'
-"NeoBundleLazy 'choplin/unite-vim_hacks'
-"NeoBundleLazy 'mattn/unite-advent_calendar'
-"NeoBundleLazy 'mattn/unite-gist'
+"NeoBundleLazy 'ujihisa/unite-colorscheme'
+"NeoBundleLazy 'ujihisa/unite-font'
 "NeoBundleLazy 'ujihisa/quicklearn'
 "NeoBundleLazy 'ujihisa/unite-gem'
 "NeoBundleLazy 'ujihisa/unite-locate'
@@ -134,9 +133,6 @@ filetype plugin indent on       " Required!
 " Installation check.
 NeoBundleCheck
 "}}}
-
-" 文字コード設定
-set encoding=utf-8
 
 " 文字コードの自動認識
 set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
