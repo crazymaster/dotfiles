@@ -532,8 +532,8 @@ nnoremap <silent> [Space]gs :<C-u>Vcs status<CR>
 " The prefix key.
 nnoremap    [unite]   <Nop>
 xnoremap    [unite]   <Nop>
-nmap    f [unite]
-xmap    f [unite]
+nmap    [Space] [unite]
+xmap    [Space] [unite]
 nnoremap	[Window]	<Nop>
 nmap	s [Window]
 
@@ -566,7 +566,6 @@ nnoremap <silent> [Window]c  :<C-u>UniteWithCurrentDir
       \ -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap <silent> [Window]t  :<C-u>Unite -buffer-name=files tab<CR>
 nnoremap <silent> [Window]w  :<C-u>Unite window<CR>
-nnoremap <silent> [Space]b  :<C-u>UniteBookmarkAdd<CR>
 
 " t: tags-and-searches "{{{
 " The prefix key.
