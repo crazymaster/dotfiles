@@ -9,7 +9,6 @@ else
 endif
 
 if has('vim_starting')
-  set nocompatible                " Recommend
   set runtimepath+=$DOTVIM/bundle/neobundle.vim
 endif
 
