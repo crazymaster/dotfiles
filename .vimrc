@@ -97,9 +97,7 @@ NeoBundleLazy 'thinca/vim-showtime',
 NeoBundleLazy 'DirDiff.vim'
 
 if has('unix')
-  " PythonによるIBus制御指定
-  NeoBundle 'fuenor/im_control.vim'
-  let IM_CtrlIBusPython = 1
+  NeoBundle 'lilydjwg/fcitx.vim'
 
   NeoBundle 'vim-jp/autofmt'
   NeoBundle 'vim-jp/vimdoc-ja'
