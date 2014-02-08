@@ -232,6 +232,7 @@ set wildmenu
 set wildignore=*.o,*.obj,*.bak,*.swp,*.d,*~
 
 set spelllang=en,cjk
+set nofoldenable
 
 " ビジュアルモードでインデント変更後も選択を継続
 vnoremap < <gv
