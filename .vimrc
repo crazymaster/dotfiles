@@ -83,22 +83,26 @@ NeoBundle 'tyru/eskk.vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
 NeoBundleLazy 'lilydjwg/colorizer'
-NeoBundleLazy 'mattn/unite-remotefile'
-NeoBundleLazy 'osyo-manga/unite-fold'
 NeoBundleLazy 'skammer/vim-css-color'
 NeoBundleLazy 'thinca/vim-showtime',
       \ {'autoload' : {'commands' : 'ShowtimeStart'}}
-"NeoBundleLazy 'ujihisa/unite-colorscheme'
-"NeoBundleLazy 'ujihisa/unite-font'
+NeoBundleLazy 'ujihisa/unite-colorscheme'
+NeoBundleLazy 'ujihisa/unite-font'
+"NeoBundleLazy 'osyo-manga/unite-fold'
 "NeoBundleLazy 'ujihisa/quicklearn'
 "NeoBundleLazy 'ujihisa/unite-gem'
 "NeoBundleLazy 'ujihisa/unite-locate'
+
+"NeoBundle 'syngan/vim-vimlint', {
+"    \ 'depends' : 'ynkdir/vim-vimlparser'}
+"NeoBundle 'vim-jp/vital.vim'
 
 " Vim-script repositories
 NeoBundleLazy 'DirDiff.vim'
 
 if has('unix')
-  NeoBundle 'lilydjwg/fcitx.vim'
+  "NeoBundle 'lilydjwg/fcitx.vim'
+  NeoBundle 'anekos/felis-cat-igirisu-toast-express'
 
   NeoBundle 'vim-jp/autofmt'
   NeoBundle 'vim-jp/vimdoc-ja'
@@ -203,13 +207,13 @@ set smarttab
 set shiftround
 " タブをスペースに展開する
 "set expandtab
-" 自動的にインデントする (noautoindent:インデントしない)
+" 自動的にインデントする
 set autoindent
-" 検索時にファイルの最後まで行ったら最初に戻る (nowrapscan:戻らない)
+" 検索時にファイルの最後まで行ったら最初に戻る
 set wrapscan
-" 括弧入力時に対応する括弧を表示 (noshowmatch:表示しない)
+" 括弧入力時に対応する括弧を表示
 set showmatch
-" コマンドライン補完するときに強化されたものを使う(参照 :help wildmenu)
+" コマンドライン補完するときに強化されたものを使う
 set wildmenu
 " テキスト挿入中の自動折り返しを日本語に対応させる
 set formatoptions+=mM
@@ -221,7 +225,7 @@ let autofmt_allow_over_tw=1  " ぶら下げを半角1文字分まで許可
 
 " インクリメンタル検索を有効化
 set incsearch
-" 検索時に大文字小文字を無視 (noignorecase:無視しない)
+" 検索時に大文字小文字を無視
 set ignorecase
 " 大文字小文字の両方が含まれている場合は大文字小文字を区別
 set smartcase
@@ -295,20 +299,6 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-      \ 'default' : '',
-      \ 'vimshell' : $HOME.'/.vimshell_hist',
-      \ 'scheme' : $HOME.'/.gosh_completions'
-      \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-  let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
@@ -362,9 +352,6 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
-endif
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
 endif
 let g:neocomplete#sources#omni#input_patterns.php =
       \ '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
@@ -456,7 +443,6 @@ let g:vimfiler_tree_leaf_icon = ' '
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_file_icon = '-'
-let g:vimfiler_marked_file_icon = '*'
 
 " Use trashbox.
 " Windows only and require latest vimproc.
@@ -584,11 +570,11 @@ nnoremap <silent><expr> [Tag]p  &filetype == 'help' ?
 "}}}
 
 " Execute help.
-" nnoremap <C-h>  :<C-u>help<Space>
-nnoremap <C-h>  :<C-u>UniteWithInput help<CR>
+nnoremap <C-h>  :<C-u>help<Space>
+"nnoremap <C-h>  :<C-u>UniteWithInput help<CR>
 " Execute help by cursor keyword.
-" nnoremap <silent> g<C-h>  :<C-u>help<Space><C-r><C-w><CR>
-nnoremap <silent> g<C-h>  :<C-u>UniteWithCursorWord help<CR>
+nnoremap <silent> g<C-h>  :<C-u>help<Space><C-r><C-w><CR>
+"nnoremap <silent> g<C-h>  :<C-u>UniteWithCursorWord help<CR>
 
 " Search.
 nnoremap <expr> /  <SID>smart_search_expr('/',
@@ -652,16 +638,13 @@ let g:unite_source_menu_menus.ff.command_candidates = [
       \ ]
 "}}}
 
-let g:unite_enable_split_vertically = 0
-let g:unite_kind_file_cd_command = 'TabpageCD'
-let g:unite_kind_file_lcd_command = 'TabpageCD'
-
+"let g:unite_enable_split_vertically = 1
 let g:unite_source_history_yank_enable = 1
 
 let g:unite_winheight = 20
 let g:unite_winwidth  = 78
 
-let g:unite_enable_start_insert = 0
+"let g:unite_enable_start_insert = 1
 
 autocmd MyAutoCmd FileType unite call s:unite_my_settings()
 
@@ -712,11 +695,11 @@ let g:unite_source_file_mru_filename_format = ''
 "endif
 
 " For ack.
-if executable('ack-grep')
-  " let g:unite_source_grep_command = 'ack-grep'
-  " let g:unite_source_grep_default_opts = '--no-heading --no-color -a -H'
-  " let g:unite_source_grep_recursive_opt = ''
-endif
+"if executable('ack-grep')
+"  let g:unite_source_grep_command = 'ack-grep'
+"  let g:unite_source_grep_default_opts = '--no-heading --no-color -a -H'
+"  let g:unite_source_grep_recursive_opt = ''
+"endif
 "}}}
 
 " jekyll.vim"{{{
@@ -793,9 +776,6 @@ let g:use_emmet_complete_tag = 1
 "}}}
 
 " eskk.vim"{{{
-" Don't keep state.
-let g:eskk#keep_state = 0
-
 let g:eskk#show_annotation = 1
 let g:eskk#rom_input_style = 'msime'
 let g:eskk#egg_like_newline = 1
