@@ -29,6 +29,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'Shougo/echodoc'
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/unite-build'
@@ -683,9 +684,6 @@ endfunction "}}}
 
 let g:unite_cursor_line_highlight = 'CursorLine'
 "let g:unite_abbr_highlight = 'TabLine'
-
-" For optimize.
-let g:unite_source_file_mru_filename_format = ''
 
 "if executable('jvgrep')
 "  " For jvgrep.
