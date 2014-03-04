@@ -278,10 +278,10 @@ let g:quickrun_config.html = {
       \ 'command': 'firefox'
       \ }
 let g:quickrun_config.processing =  {
-	  \ 'command': 'processing-java',
-	  \ 'runner' : 'vimproc',
-	  \ 'exec': '%c --sketch=$PWD/ --output=/tmp/processing --run --force',
-	  \ }
+      \ 'command': 'processing-java',
+      \ 'runner' : 'vimproc',
+      \ 'exec': '%c --sketch=$PWD/ --output=/tmp/processing --run --force',
+      \ }
 "}}}
 
 let g:echodoc_enable_at_startup = 1
