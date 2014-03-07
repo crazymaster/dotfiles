@@ -280,7 +280,7 @@ let g:quickrun_config.html = {
 let g:quickrun_config.processing =  {
       \ 'command': 'processing-java',
       \ 'runner' : 'vimproc',
-      \ 'exec': '%c --sketch=$PWD/ --output=/tmp/processing --run --force',
+      \ 'exec': '%c --sketch=%s:p:h/ --output=/tmp/processing --run --force',
       \ }
 "}}}
 
