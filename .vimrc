@@ -142,7 +142,7 @@ set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
 " 改行コードの自動認識
 set fileformats=unix,dos,mac
 " □とか○の文字があってもカーソル位置がずれないようにする
-if exists('&ambiwidth')
+if exists('&ambiwidth') && has('gui_running')
   set ambiwidth=double
 endif
 
