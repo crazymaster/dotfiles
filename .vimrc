@@ -104,6 +104,7 @@ NeoBundleLazy 'DirDiff.vim'
 if has('unix')
   "NeoBundle 'lilydjwg/fcitx.vim'
   NeoBundle 'anekos/felis-cat-igirisu-toast-express'
+  set timeout timeoutlen=3000 ttimeoutlen=100
 
   NeoBundle 'vim-jp/autofmt'
   NeoBundle 'vim-jp/vimdoc-ja'
