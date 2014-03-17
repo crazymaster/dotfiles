@@ -14,7 +14,10 @@
 [branch]
 	autosetuprebase = always
 [pull]
-        # from 1.7.9
+	# from 1.7.9
 	rebase = true
 [push]
 	default = simple
+[rebase]
+	# from 1.8.4
+	autostash = true
