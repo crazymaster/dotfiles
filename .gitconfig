@@ -16,3 +16,5 @@
 [pull]
         # from 1.7.9
 	rebase = true
+[push]
+	default = simple
