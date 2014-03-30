@@ -56,6 +56,7 @@ NeoBundleLazy 'mattn/benchvimrc-vim',
       \ {'autoload' : { 'commands' : 'BenchVimrc'}}
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mattn/excitetranslate-vim'
+NeoBundle 'mattn/emoji-vim'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/unite-gist'
 NeoBundle 'mattn/webapi-vim'
@@ -240,6 +241,7 @@ set wildignore=*.o,*.obj,*.bak,*.swp,*.d,*~
 set spelllang=en,cjk
 set nofoldenable
 set history=100
+set undofile
 
 " ビジュアルモードでインデント変更後も選択を継続
 vnoremap < <gv
