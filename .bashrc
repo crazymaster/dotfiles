@@ -118,7 +118,7 @@ PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\033[
 
 #Go tools
 export GOROOT=$HOME/go
-export GOPATH=$HOME/_go
+export GOPATH=$HOME/.go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 #completion

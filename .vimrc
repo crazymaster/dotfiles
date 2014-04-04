@@ -64,6 +64,7 @@ NeoBundle 'mattn/wwwrenderer-vim'
 NeoBundle 'miripiruni/CSScomb-for-Vim'
 NeoBundle 'motemen/git-vim'
 NeoBundle 'osyo-manga/unite-quickfix'
+NeoBundle 'osyo-manga/unite-vimpatches'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'scrooloose/syntastic'
@@ -97,7 +98,7 @@ NeoBundleLazy 'ujihisa/unite-font'
 
 "NeoBundle 'syngan/vim-vimlint', {
 "    \ 'depends' : 'ynkdir/vim-vimlparser'}
-"NeoBundle 'vim-jp/vital.vim'
+NeoBundle 'vim-jp/vital.vim'
 
 " Vim-script repositories
 NeoBundleLazy 'DirDiff.vim'
