@@ -67,6 +67,7 @@ NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'osyo-manga/unite-vimpatches'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'pasela/unite-webcolorname'
+NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sophacles/vim-processing'
 NeoBundle 'thinca/vim-openbuf'
@@ -77,7 +78,6 @@ NeoBundleLazy 'thinca/vim-scouter',
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-liquid'
-NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tsukkee/lingr-vim'
@@ -289,6 +289,7 @@ let g:quickrun_config.processing =  {
 "}}}
 
 let g:echodoc_enable_at_startup = 1
+let g:vim_markdown_folding_disabled = 1
 
 " Smart space mapping.
 " Notice: when starting other <Space> mappings in noremap,  disappeared [Space].
