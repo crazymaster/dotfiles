@@ -12,7 +12,7 @@ if has('vim_starting')
   set runtimepath+=$DOTVIM/bundle/neobundle.vim
 endif
 
-call neobundle#rc(expand('$DOTVIM/bundle'))
+call neobundle#begin(expand('$DOTVIM/bundle'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -127,18 +127,20 @@ endif
 "autocmd FileType python
 "	  \ NeoBundleSource python-mode
 
-" Go tools
-if $GOROOT != ''
-  set rtp+=$GOROOT/misc/vim,$GOPATH/src/github.com/nsf/gocode/vim
-endif
-
 " Disable netrw.vim
 let g:loaded_netrwPlugin = 1
+
+call neobundle#end()
 
 filetype plugin indent on       " Required!
 " Installation check.
 NeoBundleCheck
 "}}}
+
+" Go tools
+if $GOROOT != ''
+  set rtp+=$GOROOT/misc/vim,$GOPATH/src/github.com/nsf/gocode/vim
+endif
 
 " 文字コードの自動認識
 set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
