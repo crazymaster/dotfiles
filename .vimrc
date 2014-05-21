@@ -259,6 +259,8 @@ vnoremap <silent> <C-p> "0p<CR>
 
 nnoremap <silent> <Space>. :<C-u>edit $MYVIMRC<CR>
 
+nnoremap <F5> :!ctags -R<CR>
+
 " クリップボードを利用する
 if has('unnamedplus')
   set clipboard=unnamedplus
