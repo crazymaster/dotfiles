@@ -245,6 +245,7 @@ set spelllang=en,cjk
 set nofoldenable
 set history=100
 set undofile
+set shortmess+=c
 
 " ビジュアルモードでインデント変更後も選択を継続
 vnoremap < <gv
