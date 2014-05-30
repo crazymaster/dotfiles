@@ -269,7 +269,7 @@ else
 endif
 
 " 自動的にQuickFixを開く
-"autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
+autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,helpgrep copen
 
 " Add path
 if has('unix')
