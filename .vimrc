@@ -113,7 +113,7 @@ if has('unix')
   NeoBundle 'autodate.vim'
 
   " Build repos.
-  NeoBundle 'Shougo/vimproc', {
+  NeoBundle 'Shougo/vimproc.vim', {
         \ 'build' : {
         \     'unix' : 'make -f make_unix.mak',
         \    },
