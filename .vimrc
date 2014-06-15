@@ -246,10 +246,6 @@ set nofoldenable
 set history=100
 set undofile
 
-if has('patch-7.4.314')
-  set shortmess+=c
-endif
-
 " ビジュアルモードでインデント変更後も選択を継続
 vnoremap < <gv
 vnoremap > >gv
