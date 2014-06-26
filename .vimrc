@@ -245,6 +245,9 @@ set spelllang=en,cjk
 set nofoldenable
 set history=100
 set undofile
+if has('patch-7.4.338')
+  set breakindent
+endif
 
 " ビジュアルモードでインデント変更後も選択を継続
 vnoremap < <gv
