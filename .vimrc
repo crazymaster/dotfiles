@@ -495,6 +495,7 @@ nnoremap <silent> [Space]gL :<C-u>GitLog -u \| head -10000<CR>
 nnoremap <silent> [Space]ga :<C-u>GitAdd<CR>
 nnoremap <silent> [Space]gA :<C-u>GitAdd <cfile><CR>
 nnoremap <silent> [Space]gc :<C-u>Gcommit -a<CR>
+nnoremap <silent> [Space]gC :<C-u>Gcommit<CR>
 "nnoremap <silent> [Space]gp q:Git push<Space>
 "nnoremap <silent> [Space]gt q:Git tag<Space>
 "}}}
