@@ -305,7 +305,7 @@ xmap <Space> [Space]
 nnoremap [Space] <Nop>
 xnoremap [Space] <Nop>
 
-" neocomplcache"{{{
+" neocomplete.vim"{{{
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
@@ -348,6 +348,8 @@ inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
 
 " AutoComplPop like behavior.
 "let g:neocomplete#enable_auto_select = 1
+
+set completeopt-=preview
 
 " Shell like behavior(not recommended).
 "set completeopt+=longest
