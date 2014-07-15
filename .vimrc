@@ -635,14 +635,11 @@ let g:unite_source_menu_menus.ff.command_candidates = [
 
 "let g:unite_enable_split_vertically = 1
 let g:unite_source_history_yank_enable = 1
-
 let g:unite_winheight = 20
 let g:unite_winwidth  = 78
-
-"let g:unite_enable_start_insert = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
 autocmd MyAutoCmd FileType unite call s:unite_my_settings()
-
 function! s:unite_my_settings() "{{{
   " Overwrite settings.
   "nmap <buffer> <ESC>      <Plug>(unite_exit)
