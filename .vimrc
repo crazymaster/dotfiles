@@ -248,6 +248,7 @@ set undofile
 if has('patch-7.4.338')
   set breakindent
 endif
+set splitright
 
 " ビジュアルモードでインデント変更後も選択を継続
 vnoremap < <gv
