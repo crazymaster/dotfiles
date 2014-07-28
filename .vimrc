@@ -568,7 +568,7 @@ nnoremap <silent><expr> [Tag]p  &filetype == 'help' ?
 nnoremap <C-h>  :<C-u>help<Space>
 "nnoremap <C-h>  :<C-u>UniteWithInput help<CR>
 " Execute help by cursor keyword.
-nnoremap <silent> g<C-h>  :<C-u>help<Space><C-r><C-w><CR>
+nnoremap <silent> g<C-h>  :<C-u>help<Space><C-r><C-W><CR>
 "nnoremap <silent> g<C-h>  :<C-u>UniteWithCursorWord help<CR>
 
 " Search.
