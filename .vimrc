@@ -137,11 +137,6 @@ filetype plugin indent on       " Required!
 NeoBundleCheck
 "}}}
 
-" Go tools
-if $GOROOT != ''
-  set rtp+=$GOROOT/misc/vim,$GOPATH/src/github.com/nsf/gocode/vim
-endif
-
 " 文字コードの自動認識
 set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
 " 改行コードの自動認識
