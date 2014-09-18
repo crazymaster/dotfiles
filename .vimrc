@@ -201,7 +201,7 @@ set title
 set number
 
 " タブ幅制御
-set tabstop=4
+set tabstop=8
 set softtabstop=2
 set shiftwidth=2
 set smarttab
