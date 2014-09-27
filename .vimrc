@@ -141,7 +141,9 @@ NeoBundleCheck
 set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
 " 改行コードの自動認識
 set fileformats=unix,dos,mac
+
 " □とか○の文字があってもカーソル位置がずれないようにする
+" /bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory"
 if exists('&ambiwidth') && has('gui_running')
   set ambiwidth=double
 endif
@@ -518,14 +520,14 @@ function! s:unite_build()
   return ":\<C-u>Unite -buffer-name=build". tabpagenr() ." -no-quit build\<CR>"
 endfunction
 nnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register history/yank<CR>
+xnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register history/yank<CR>
 nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
 nnoremap <silent> [unite]t  :<C-u>UniteWithCursorWord -buffer-name=tag tag tag/include<CR>
-xnoremap <silent> [unite]r  d:<C-u>Unite -buffer-name=register register history/yank<CR>
 nnoremap <silent> [unite]w  :<C-u>UniteWithCursorWord -buffer-name=register
       \ buffer file_mru bookmark file<CR>
 nnoremap <silent> [unite]h  :<C-u>Unite history/command<CR>
 nnoremap <silent> [unite]q  :<C-u>Unite qflist -no-quit<CR>
-nnoremap <silent> [unite]g  :<C-u>Unite grep -buffer-name=search -no-quit<CR>
+nnoremap <silent> [unite]gr :<C-u>Unite grep -buffer-name=search -no-quit<CR>
 nnoremap <silent> <C-k>  :<C-u>Unite change jump<CR>
 nnoremap <silent> [unite]c  :<C-u>Unite change<CR>
 nnoremap <silent> [unite]d  :<C-u>Unite -buffer-name=files -default-action=lcd directory_mru<CR>
