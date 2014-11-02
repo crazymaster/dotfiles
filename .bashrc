@@ -116,18 +116,20 @@ fi
 # echo git branch
 PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
 
-#Go tools
-export GOROOT=$HOME/go
-export GOPATH=$HOME/.go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-
-#completion
+# completion
 if [ -r ~/bash-completion ]; then
   . ~/bash-completion/git-completion.bash
+  . ~/bash-completion/git-prompt.sh
   . ~/bash-completion/hub.bash_completion.sh
   . ~/bash-completion/completion-ruby/completion-ruby-all
 fi
 
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWUNTRACKEDFILES=true
+GIT_PS1_SHOWSTASHSTATE=true
+GIT_PS1_SHOWUPSTREAM=auto
+
 export PATH=$PATH:$HOME/bin
 
 eval "$(hub alias -s)"
+
