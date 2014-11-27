@@ -114,8 +114,8 @@ if has('unix')
   " Build repos.
   NeoBundle 'Shougo/vimproc.vim', {
         \ 'build' : {
-        \     'unix' : 'make -f make_unix.mak',
-        \    },
+        \   'linux' : 'make',
+        \   },
         \ }
 endif
 
