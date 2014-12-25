@@ -237,6 +237,9 @@ set wildmenu
 " ファイル名補完時に無視するファイルパターン
 set wildignore=*.o,*.obj,*.bak,*.swp,*.d,*~
 
+" Change the way text is displayed
+set display=lastline
+
 set spelllang=en,cjk
 set nofoldenable
 set history=200
@@ -271,10 +274,15 @@ endif
 " 自動的にQuickFixを開く
 autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,helpgrep copen
 
-" Add path
 if has('unix')
   set path+=/usr/include/qt5,/usr/local/include/bullet
 endif
+
+" Edit in read-only mode if swapfile exists
+augroup swapchoice-readonly
+  autocmd!
+  autocmd SwapExists * let v:swapchoice = 'o'
+augroup END
 
 " quickrun.vim"{{{
 let g:quickrun_config = {}
