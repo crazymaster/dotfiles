@@ -50,18 +50,12 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'hrsh7th/vim-versions'
 NeoBundle 'kana/vim-smartchr'
-NeoBundleLazy 'kana/vim-smartinput'
+NeoBundle 'lambdalisue/vim-gista'
 NeoBundle 'majutsushi/tagbar'
 NeoBundleLazy 'mattn/benchvimrc-vim',
       \ {'autoload' : { 'commands' : 'BenchVimrc'}}
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mattn/excitetranslate-vim'
-"NeoBundle 'mattn/emoji-vim'
-NeoBundle 'mattn/gist-vim'
-NeoBundle 'mattn/unite-gist'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mattn/wwwrenderer-vim'
-NeoBundle 'miripiruni/CSScomb-for-Vim'
 NeoBundle 'motemen/git-vim'
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'osyo-manga/unite-vimpatches'
@@ -69,7 +63,6 @@ NeoBundle 'othree/html5.vim'
 NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sophacles/vim-processing'
-NeoBundle 'thinca/vim-openbuf'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
 NeoBundleLazy 'thinca/vim-scouter',
@@ -84,12 +77,18 @@ NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'tyru/eskk.vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
+NeoBundleLazy 'cohama/lexima.vim'
+NeoBundleLazy 'kana/vim-smartinput'
 NeoBundleLazy 'lilydjwg/colorizer'
+NeoBundleLazy 'mattn/emoji-vim'
+NeoBundleLazy 'mattn/webapi-vim'
+NeoBundleLazy 'mattn/wwwrenderer-vim'
 NeoBundleLazy 'skammer/vim-css-color'
-NeoBundleLazy 'thinca/vim-showtime',
-      \ {'autoload' : {'commands' : 'ShowtimeStart'}}
+NeoBundleLazy 'thinca/vim-openbuf'
+NeoBundleLazy 'thinca/vim-showtime'
 NeoBundleLazy 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'ujihisa/unite-font'
+"NeoBundleLazy 'miripiruni/CSScomb-for-Vim'
 "NeoBundleLazy 'osyo-manga/unite-fold'
 "NeoBundleLazy 'ujihisa/quicklearn'
 "NeoBundleLazy 'ujihisa/unite-gem'
@@ -98,6 +97,7 @@ NeoBundleLazy 'ujihisa/unite-font'
 "NeoBundle 'syngan/vim-vimlint', {
 "    \ 'depends' : 'ynkdir/vim-vimlparser'}
 NeoBundle 'vim-jp/vital.vim'
+NeoBundle 'thinca/vim-themis'
 
 " Vim-script repositories
 NeoBundleLazy 'DirDiff.vim'
@@ -199,7 +199,7 @@ set showcmd
 set title
 
 " 行番号を表示
-set number
+"set number
 
 " タブ幅制御
 set tabstop=8
@@ -247,7 +247,7 @@ set undofile
 if has('patch-7.4.338')
   set breakindent
 endif
-set splitright
+"set splitright
 
 " ビジュアルモードでインデント変更後も選択を継続
 vnoremap < <gv
@@ -286,6 +286,9 @@ augroup END
 
 " quickrun.vim"{{{
 let g:quickrun_config = {}
+let g:quickrun_config._ = {
+      \ 'runner' : 'vimproc',
+      \ }
 let g:quickrun_config.markdown = {
       \ 'outputter': 'browser'
       \ }
