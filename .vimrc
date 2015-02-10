@@ -103,8 +103,8 @@ NeoBundle 'thinca/vim-themis'
 NeoBundleLazy 'DirDiff.vim'
 
 if has('unix')
-  "NeoBundle 'lilydjwg/fcitx.vim'
-  NeoBundle 'anekos/felis-cat-igirisu-toast-express'
+  NeoBundle 'fuenor/im_control.vim'
+  let IM_CtrlMode = 6
   set timeout timeoutlen=3000 ttimeoutlen=100
 
   NeoBundle 'vim-jp/autofmt'
@@ -175,11 +175,15 @@ syntax enable
 highlight CursorLine term=none cterm=bold ctermfg=none ctermbg=darkgray
 highlight SpellBad ctermbg=Red
 
-" For vim-airline
+" vim-airline"{{{
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline#extensions#default#section_truncate_width = {}
+"let g:airline#extensions#tabline#enabled = 0
+"let g:airline#extensions#tabline#tab_min_count = 2
+"let g:airline#extensions#tabline#show_buffers = 0
+"}}}
 
 "ポップアップ補完メニュー色設定
 highlight Pmenu ctermbg=DarkGray ctermfg=White guibg=#606060
