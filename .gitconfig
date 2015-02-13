@@ -11,13 +11,26 @@
 	excludesfile = ~/.gitignore_global
 	autocrlf = input
 	editor = vim
+[alias]
+	status = status -sb
+#	diff = diff --color-words
+[pager]
+	log = diff-highlight | less
+	show = diff-highlight | less
+	diff = diff-highlight | less
 [branch]
 	autosetuprebase = always
 [pull]
-	# from 1.7.9
 	rebase = true
 [push]
 	default = simple
 [rebase]
-	# from 1.8.4
 	autostash = true
+[merge]
+	tool = vimdiff3
+[diff]
+	tool = vimdiff3
+	algorithm = histogram
+	rename = copies
+[difftool]
+	prompt = false
