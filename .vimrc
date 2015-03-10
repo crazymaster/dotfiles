@@ -276,7 +276,10 @@ else
 endif
 
 " 自動的にQuickFixを開く
-autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,helpgrep copen
+augroup quickfix
+  autocmd!
+  autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,helpgrep copen
+augroup END
 
 if has('unix')
   set path+=/usr/include/qt5,/usr/local/include/bullet
