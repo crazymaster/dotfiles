@@ -305,7 +305,7 @@ else
 endif
 
 " 自動的にQuickFixを開く
-augroup quickfix
+augroup vimrc-auto-quickfix
   autocmd!
   autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,helpgrep copen
 augroup END
@@ -315,7 +315,7 @@ if has('unix')
 endif
 
 " Edit in read-only mode if swapfile exists
-augroup swapchoice-readonly
+augroup vimrc-swapchoice-readonly
   autocmd!
   autocmd SwapExists * let v:swapchoice = 'o'
 augroup END
@@ -402,11 +402,14 @@ set completeopt-=preview
 "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup vimrc-omni-completion
+  autocmd!
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup END
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -450,13 +453,19 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='$DOTVIM/bundle/vim-snippets/snippets'
+
+augroup vimrc-neosnippet-marker
+  autocmd!
+  autocmd InsertLeave * NeoSnippetClearMarkers
+augroup END
 "}}}
 
 " smartchr.vim"{{{
 inoremap <expr> , smartchr#one_of(', ', ',')
 inoremap <expr> ? smartchr#one_of('?', '? ')
 
-augroup MyAutoCmd
+augroup vimrc-smartchr-rule
+  autocmd!
   " Substitute .. into -> .
   autocmd FileType c,cpp inoremap <buffer> <expr> . smartchr#loop('.', '->', '...')
   autocmd FileType perl,php inoremap <buffer> <expr> . smartchr#loop(' . ', '->', '.')
@@ -615,26 +624,26 @@ nnoremap <silent> g<C-h>  :<C-u>help<Space><C-r><C-W><CR>
 "nnoremap <silent> g<C-h>  :<C-u>UniteWithCursorWord help<CR>
 
 " Search.
-nnoremap <expr> /  <SID>smart_search_expr('/',
-      \ ":\<C-u>Unite -buffer-name=search -start-insert line\<CR>")
-nnoremap <expr> g/  <SID>smart_search_expr('g/',
-      \ ":\<C-u>Unite -buffer-name=search -start-insert line_migemo\<CR>")
-nnoremap [Alt]/  g/
-nnoremap <silent><expr> ? <SID>smart_search_expr('?',
-      \ ":\<C-u>Unite mapping\<CR>")
-nnoremap <silent><expr> * <SID>smart_search_expr('*',
-      \ ":\<C-u>UniteWithCursorWord -input="
-      \ . expand('<cword>') . " -buffer-name=search line\<CR>")
-
-function! s:smart_search_expr(expr1, expr2)
-  return line('$') > 4000 ?  a:expr1 : a:expr2
-endfunction
-
-nnoremap <expr><silent> N  <SID>smart_search_expr('N',
-      \ ":\<C-u>Unite -buffer-name=search -input=" . @/
-      \  . " -no-start-insert line\<CR>")
-nnoremap <silent><expr> n  <SID>smart_search_expr('n',
-      \ ":\<C-u>UniteResume search -no-start-insert\<CR>")
+"nnoremap <expr> /  <SID>smart_search_expr('/',
+"      \ ":\<C-u>Unite -buffer-name=search -start-insert line\<CR>")
+"nnoremap <expr> g/  <SID>smart_search_expr('g/',
+"      \ ":\<C-u>Unite -buffer-name=search -start-insert line_migemo\<CR>")
+"nnoremap [Alt]/  g/
+"nnoremap <silent><expr> ? <SID>smart_search_expr('?',
+"      \ ":\<C-u>Unite mapping\<CR>")
+"nnoremap <silent><expr> * <SID>smart_search_expr('*',
+"      \ ":\<C-u>UniteWithCursorWord -input="
+"      \ . expand('<cword>') . " -buffer-name=search line\<CR>")
+"
+"function! s:smart_search_expr(expr1, expr2)
+"  return line('$') > 4000 ?  a:expr1 : a:expr2
+"endfunction
+"
+"nnoremap <expr><silent> N  <SID>smart_search_expr('N',
+"      \ ":\<C-u>Unite -buffer-name=search -input=" . @/
+"      \  . " -no-start-insert line\<CR>")
+"nnoremap <silent><expr> n  <SID>smart_search_expr('n',
+"      \ ":\<C-u>UniteResume search -no-start-insert\<CR>")
 
 " unite-menu {{{
 if !exists('g:unite_source_menu_menus')
@@ -682,7 +691,11 @@ let g:unite_winheight = 20
 let g:unite_winwidth  = 78
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
-autocmd MyAutoCmd FileType unite call s:unite_my_settings()
+augroup vimrc-unite-ft
+  autocmd!
+  autocmd FileType unite call s:unite_my_settings()
+augroup END
+
 function! s:unite_my_settings() "{{{
   " Overwrite settings.
   "nmap <buffer> <ESC>      <Plug>(unite_exit)
@@ -752,9 +765,12 @@ nnoremap <Space>jl  :JekyllList<CR>
 let g:lingr_vim_sidebar_width = 30
 
 " Keymappings.
-autocmd MyAutoCmd FileType lingr-messages call s:lingr_messages_my_settings()
-autocmd MyAutoCmd FileType lingr-say call s:lingr_say_my_settings()
-autocmd MyAutoCmd FileType lingr-rooms call s:lingr_looms_my_settings()
+augroup vimrc-lingr-ft
+  autocmd!
+  autocmd FileType lingr-messages call s:lingr_messages_my_settings()
+  autocmd FileType lingr-say call s:lingr_say_my_settings()
+  autocmd FileType lingr-rooms call s:lingr_looms_my_settings()
+augroup END
 
 function! s:lingr_messages_my_settings() "{{{
   nmap <buffer> o <Plug>(lingr-messages-show-say-buffer)
@@ -764,7 +780,8 @@ function! s:lingr_messages_my_settings() "{{{
     " Dirty shellslash hack.
     set noshellslash
 
-    augroup MyAutoCmd
+    augroup vimrc-win-shellslash-hack
+      autocmd!
       autocmd WinEnter,BufWinEnter <buffer> set noshellslash
       autocmd WinLeave,BufWinLeave <buffer> set shellslash
     augroup END
@@ -816,8 +833,11 @@ let g:eskk#egg_like_newline_completion = 1
 " Disable mapping.
 "let g:eskk#map_normal_keys = 0
 
-autocmd VimEnter * imap <C-j> <Plug>(eskk:toggle)
-autocmd VimEnter * cmap <C-j> <Plug>(eskk:toggle)
+augroup vimrc-eskk-mapping
+  autocmd!
+  autocmd VimEnter * imap <C-j> <Plug>(eskk:toggle)
+  autocmd VimEnter * cmap <C-j> <Plug>(eskk:toggle)
+augroup END
 
 "let g:eskk#dictionary = {
 "\ 'path': expand('~/.skk-eskk-jisyo'),
@@ -841,7 +861,10 @@ let g:eskk#large_dictionary = {
 "endif
 
 " Define table.
-autocmd MyAutoCmd User eskk-initialize-pre call s:eskk_initial_pre()
+augroup vimrc-eskk-init
+  autocmd!
+  autocmd User eskk-initialize-pre call s:eskk_initial_pre()
+augroup END
 function! s:eskk_initial_pre() "{{{
   let t = eskk#table#new('rom_to_hira*', 'rom_to_hira')
   call t.add_map('z ', '　')
