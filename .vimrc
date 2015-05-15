@@ -22,10 +22,10 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Original repositories in github
 "NeoBundleLazy 'Rip-Rip/clang_complete', {
-"      \ 'autoload' : {
-"      \     'filetypes' : ['c', 'cpp'],
-"      \    },
-"      \ }
+"  \ 'autoload' : {
+"  \     'filetypes' : ['c', 'cpp'],
+"  \    },
+"  \ }
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'Shougo/echodoc'
 NeoBundle 'Shougo/neocomplete.vim'
@@ -53,7 +53,7 @@ NeoBundle 'kana/vim-smartchr'
 NeoBundle 'lambdalisue/vim-gista'
 NeoBundle 'majutsushi/tagbar'
 NeoBundleLazy 'mattn/benchvimrc-vim',
-      \ {'autoload' : { 'commands' : 'BenchVimrc'}}
+  \ {'autoload' : { 'commands' : 'BenchVimrc'}}
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'motemen/git-vim'
@@ -66,7 +66,7 @@ NeoBundle 'sophacles/vim-processing'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
 NeoBundleLazy 'thinca/vim-scouter',
-      \ {'autoload' : { 'commands' : 'Scouter'}}
+  \ {'autoload' : { 'commands' : 'Scouter'}}
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-liquid'
@@ -95,7 +95,7 @@ NeoBundleLazy 'ujihisa/unite-font'
 "NeoBundleLazy 'ujihisa/unite-locate'
 
 "NeoBundle 'syngan/vim-vimlint', {
-"    \ 'depends' : 'ynkdir/vim-vimlparser'}
+"  \ 'depends' : 'ynkdir/vim-vimlparser'}
 NeoBundle 'vim-jp/vital.vim'
 NeoBundle 'thinca/vim-themis'
 
@@ -113,18 +113,20 @@ if has('unix')
 
   " Build repos.
   NeoBundle 'Shougo/vimproc.vim', {
-        \ 'build' : {
-        \   'linux' : 'make',
-        \   },
-        \ }
+    \ 'build' : {
+    \   'linux' : 'make',
+    \   },
+    \ }
 endif
 
 " Lazy load.
 "NeoBundleLazy 'c9s/perlomni.vim.git'
 "NeoBundleSource perlomni.vim
 "NeoBundleLazy 'klen/python-mode'
-"autocmd FileType python
-"	  \ NeoBundleSource python-mode
+"augroup vimrc-python
+"  autocmd!
+"  autocmd FileType python NeoBundleSource python-mode
+"augroup END
 
 " Disable netrw.vim
 let g:loaded_netrwPlugin = 1
@@ -220,12 +222,12 @@ augroup vimrc-auto-cursorline
       setlocal nocursorline
     elseif a:event ==# 'CursorMoved'
       if s:cursorline_lock
-        if 1 < s:cursorline_lock
-          let s:cursorline_lock = 1
-        else
-          setlocal nocursorline
-          let s:cursorline_lock = 0
-        endif
+	if 1 < s:cursorline_lock
+	  let s:cursorline_lock = 1
+	else
+	  setlocal nocursorline
+	  let s:cursorline_lock = 0
+	endif
       endif
     elseif a:event ==# 'CursorHold'
       setlocal cursorline
@@ -323,21 +325,24 @@ augroup END
 " quickrun.vim"{{{
 let g:quickrun_config = {}
 let g:quickrun_config._ = {
-      \ 'runner' : 'vimproc',
-      \ }
+  \ 'runner' : 'vimproc',
+  \ }
 let g:quickrun_config.markdown = {
-      \ 'outputter': 'browser'
-      \ }
+  \ 'outputter': 'browser'
+  \ }
 let g:quickrun_config.html = {
-      \ 'outputter': 'null',
-      \ 'command': 'firefox'
-      \ }
+  \ 'outputter': 'null',
+  \ 'command': 'firefox'
+  \ }
 let g:quickrun_config.processing =  {
-      \ 'command': 'processing-java',
-      \ 'runner' : 'vimproc',
-      \ 'exec': '%c --sketch=%s:p:h/ --output=/tmp/processing --run --force',
-      \ }
+  \ 'command': 'processing-java',
+  \ 'runner' : 'vimproc',
+  \ 'exec': '%c --sketch=%s:p:h/ --output=/tmp/processing --run --force',
+  \ }
 "}}}
+
+" line-continuation indent in Vim script
+let g:vim_indent_cont = 2
 
 let g:echodoc_enable_at_startup = 1
 let g:vim_markdown_folding_disabled = 1
@@ -416,16 +421,16 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
 let g:neocomplete#sources#omni#input_patterns.php =
-      \ '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+  \ '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 let g:neocomplete#sources#omni#input_patterns.c =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?'
+  \ '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?'
 let g:neocomplete#sources#omni#input_patterns.cpp =
-      \ '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+  \ '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl =
-      \ '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+  \ '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 "}}}
 
 " neosnippet"{{{
@@ -474,26 +479,26 @@ augroup vimrc-smartchr-rule
 
   " Smart =.
   autocmd FileType c,cpp,perl,php,vim inoremap <expr> = search('\(&\<bar><bar>\<bar>+\<bar>-\<bar>/\<bar>>\<bar><\) \%#', 'bcn')? '<bs>= '
-        \ : search('\(*\<bar>!\)\%#', 'bcn') ? '= '
-        \ : smartchr#one_of(' = ', '=', ' == ')
+    \ : search('\(*\<bar>!\)\%#', 'bcn') ? '= '
+    \ : smartchr#one_of(' = ', '=', ' == ')
 
   autocmd FileType haskell,int-ghci
-        \ inoremap <buffer> <expr> + smartchr#loop('+', ' ++ ')
-        \| inoremap <buffer> <expr> - smartchr#loop('-', ' -> ', ' <- ')
-        \| inoremap <buffer> <expr> $ smartchr#loop(' $ ', '$')
-        \| inoremap <buffer> <expr> \ smartchr#loop('\ ', '\')
-        \| inoremap <buffer> <expr> : smartchr#loop(':', ' :: ', ' : ')
-        \| inoremap <buffer> <expr> . smartchr#loop('.', ' . ', '..')
+    \ inoremap <buffer> <expr> + smartchr#loop('+', ' ++ ')
+    \| inoremap <buffer> <expr> - smartchr#loop('-', ' -> ', ' <- ')
+    \| inoremap <buffer> <expr> $ smartchr#loop(' $ ', '$')
+    \| inoremap <buffer> <expr> \ smartchr#loop('\ ', '\')
+    \| inoremap <buffer> <expr> : smartchr#loop(':', ' :: ', ' : ')
+    \| inoremap <buffer> <expr> . smartchr#loop('.', ' . ', '..')
 
   autocmd FileType scala
-        \ inoremap <buffer> <expr> - smartchr#loop('-', ' -> ', ' <- ')
-        \| inoremap <buffer> <expr> = smartchr#loop(' = ', '=', ' => ')
-        \| inoremap <buffer> <expr> : smartchr#loop(': ', ':', ' :: ')
-        \| inoremap <buffer> <expr> . smartchr#loop('.', ' => ')
+    \ inoremap <buffer> <expr> - smartchr#loop('-', ' -> ', ' <- ')
+    \| inoremap <buffer> <expr> = smartchr#loop(' = ', '=', ' => ')
+    \| inoremap <buffer> <expr> : smartchr#loop(': ', ':', ' :: ')
+    \| inoremap <buffer> <expr> . smartchr#loop('.', ' => ')
 
   autocmd FileType eruby
-        \ inoremap <buffer> <expr> > smartchr#loop('>', '%>')
-        \| inoremap <buffer> <expr> < smartchr#loop('<', '<%', '<%=')
+    \ inoremap <buffer> <expr> > smartchr#loop('>', '%>')
+    \| inoremap <buffer> <expr> < smartchr#loop('<', '<%', '<%=')
 augroup END
 "}}}
 
@@ -579,7 +584,7 @@ xnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register history/y
 nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
 nnoremap <silent> [unite]t  :<C-u>UniteWithCursorWord -buffer-name=tag tag tag/include<CR>
 nnoremap <silent> [unite]w  :<C-u>UniteWithCursorWord -buffer-name=register
-      \ buffer file_mru bookmark file<CR>
+  \ buffer file_mru bookmark file<CR>
 nnoremap <silent> [unite]h  :<C-u>Unite history/command<CR>
 nnoremap <silent> [unite]q  :<C-u>Unite qflist -no-quit<CR>
 nnoremap <silent> [unite]gr :<C-u>Unite grep -buffer-name=search -no-quit<CR>
@@ -593,10 +598,10 @@ inoremap <silent> <C-z>  <C-o>:call unite#start_complete(['register'], {'is_inse
 nnoremap  [unite]f  :<C-u>Unite source<CR>
 
 nnoremap <silent> [Window]s  :<C-u>Unite -buffer-name=files -no-split
-      \ jump_point file_point buffer_tab file_rec/async:!
-      \ file file/new file_mru<CR>
+  \ jump_point file_point buffer_tab file_rec/async:!
+  \ file file/new file_mru<CR>
 nnoremap <silent> [Window]c  :<C-u>UniteWithCurrentDir
-      \ -buffer-name=files buffer file_mru bookmark file<CR>
+  \ -buffer-name=files buffer file_mru bookmark file<CR>
 nnoremap <silent> [Window]t  :<C-u>Unite -buffer-name=files tab<CR>
 nnoremap <silent> [Window]w  :<C-u>Unite window<CR>
 
@@ -607,13 +612,13 @@ nmap    t [Tag]
 " Jump.
 " nnoremap [Tag]t  <C-]>
 nnoremap <silent><expr> [Tag]t  &filetype == 'help' ?  "\<C-]>" :
-      \ ":\<C-u>UniteWithCursorWord -buffer-name=tag tag tag/include\<CR>"
+  \ ":\<C-u>UniteWithCursorWord -buffer-name=tag tag tag/include\<CR>"
 " Jump next.
 nnoremap <silent> [Tag]n  :<C-u>tag<CR>
 " Jump previous.
 " nnoremap <silent> [Tag]p  :<C-u>pop<CR>
 nnoremap <silent><expr> [Tag]p  &filetype == 'help' ?
-      \ ":\<C-u>pop\<CR>" : ":\<C-u>Unite jump\<CR>"
+  \ ":\<C-u>pop\<CR>" : ":\<C-u>Unite jump\<CR>"
 "}}}
 
 " Execute help.
@@ -625,25 +630,25 @@ nnoremap <silent> g<C-h>  :<C-u>help<Space><C-r><C-W><CR>
 
 " Search.
 "nnoremap <expr> /  <SID>smart_search_expr('/',
-"      \ ":\<C-u>Unite -buffer-name=search -start-insert line\<CR>")
+"  \ ":\<C-u>Unite -buffer-name=search -start-insert line\<CR>")
 "nnoremap <expr> g/  <SID>smart_search_expr('g/',
-"      \ ":\<C-u>Unite -buffer-name=search -start-insert line_migemo\<CR>")
+"  \ ":\<C-u>Unite -buffer-name=search -start-insert line_migemo\<CR>")
 "nnoremap [Alt]/  g/
 "nnoremap <silent><expr> ? <SID>smart_search_expr('?',
-"      \ ":\<C-u>Unite mapping\<CR>")
+"  \ ":\<C-u>Unite mapping\<CR>")
 "nnoremap <silent><expr> * <SID>smart_search_expr('*',
-"      \ ":\<C-u>UniteWithCursorWord -input="
-"      \ . expand('<cword>') . " -buffer-name=search line\<CR>")
+"  \ ":\<C-u>UniteWithCursorWord -input="
+"  \ . expand('<cword>') . " -buffer-name=search line\<CR>")
 "
 "function! s:smart_search_expr(expr1, expr2)
 "  return line('$') > 4000 ?  a:expr1 : a:expr2
 "endfunction
 "
 "nnoremap <expr><silent> N  <SID>smart_search_expr('N',
-"      \ ":\<C-u>Unite -buffer-name=search -input=" . @/
-"      \  . " -no-start-insert line\<CR>")
+"  \ ":\<C-u>Unite -buffer-name=search -input=" . @/
+"  \  . " -no-start-insert line\<CR>")
 "nnoremap <silent><expr> n  <SID>smart_search_expr('n',
-"      \ ":\<C-u>UniteResume search -no-start-insert\<CR>")
+"  \ ":\<C-u>UniteResume search -no-start-insert\<CR>")
 
 " unite-menu {{{
 if !exists('g:unite_source_menu_menus')
@@ -651,38 +656,38 @@ if !exists('g:unite_source_menu_menus')
 endif
 
 let g:unite_source_menu_menus.shortcut =
-      \ {'description' : 'shortcut'}
+  \ {'description' : 'shortcut'}
 let g:unite_source_menu_menus.shortcut.command_candidates = [
-      \ ['vimrc', 'edit $MYVIMRC'],
-      \ ['gvimrc', 'edit $MYGVIMRC'],
-      \ ['neobundles', 'Unite directory:$DOTVIM/bundle'],
-      \ ['AllMap', 'Unite output:map|map!|lmap'],
-      \ ['Unite Beautiful Attack', 'Unite -auto-preview colorscheme'],
-      \ ['text width over', '/\%>79v'],
-      \ ]
+  \ ['vimrc', 'edit $MYVIMRC'],
+  \ ['gvimrc', 'edit $MYGVIMRC'],
+  \ ['neobundles', 'Unite directory:$DOTVIM/bundle'],
+  \ ['AllMap', 'Unite output:map|map!|lmap'],
+  \ ['Unite Beautiful Attack', 'Unite -auto-preview colorscheme'],
+  \ ['text width over', '/\%>79v'],
+  \ ]
 nnoremap <silent> [unite]s  :<C-u>Unite menu:shortcut<CR>
 
 let g:unite_source_menu_menus.fenc =
-      \ {'description' : 'Change file fenc option.'}
+  \ {'description' : 'Change file fenc option.'}
 let g:unite_source_menu_menus.fenc.command_candidates = [
-      \ ['utf8', 'setlocal fenc=utf8'],
-      \ ['iso2022jp', 'setlocal fenc=iso2022jp'],
-      \ ['cp932', 'setlocal fenc=cp932'],
-      \ ['euc', 'setlocal fenc=euc'],
-      \ ['utf16', 'setlocal fenc=utf16'],
-      \ ['utf16-be', 'setlocal fenc=utf16be'],
-      \ ['jis', 'setlocal fenc=jis'],
-      \ ['sjis', 'setlocal fenc=sjis'],
-      \ ['unicode', 'setlocal fenc=unicode'],
-      \ ]
+  \ ['utf8', 'setlocal fenc=utf8'],
+  \ ['iso2022jp', 'setlocal fenc=iso2022jp'],
+  \ ['cp932', 'setlocal fenc=cp932'],
+  \ ['euc', 'setlocal fenc=euc'],
+  \ ['utf16', 'setlocal fenc=utf16'],
+  \ ['utf16-be', 'setlocal fenc=utf16be'],
+  \ ['jis', 'setlocal fenc=jis'],
+  \ ['sjis', 'setlocal fenc=sjis'],
+  \ ['unicode', 'setlocal fenc=unicode'],
+  \ ]
 
 let g:unite_source_menu_menus.ff =
-      \ {'description' : 'Change file format option.'}
+  \ {'description' : 'Change file format option.'}
 let g:unite_source_menu_menus.ff.command_candidates = [
-      \ ['unix', 'setlocal ff=unix'],
-      \ ['dos', 'setlocal ff=dos'],
-      \ ['mac', 'setlocal ff=mac'],
-      \ ]
+  \ ['unix', 'setlocal ff=unix'],
+  \ ['dos', 'setlocal ff=dos'],
+  \ ['mac', 'setlocal ff=mac'],
+  \ ]
 "}}}
 
 "let g:unite_enable_split_vertically = 1
@@ -706,7 +711,7 @@ function! s:unite_my_settings() "{{{
   imap <buffer> ' <Plug>(unite_quick_match_default_action)
   nmap <buffer> ' <Plug>(unite_quick_match_default_action)
   imap <buffer><expr> x
-        \ unite#smart_map('x', "\<Plug>(unite_quick_match_choose_action)")
+    \ unite#smart_map('x', "\<Plug>(unite_quick_match_choose_action)")
   nmap <buffer> x <Plug>(unite_quick_match_choose_action)
   nmap <buffer> cd <Plug>(unite_quick_match_default_action)
   nmap <buffer> <C-z> <Plug>(unite_toggle_transpose_window)
@@ -715,7 +720,7 @@ function! s:unite_my_settings() "{{{
   nmap <buffer> <C-y> <Plug>(unite_narrowing_path)
   nmap <buffer> <C-j> <Plug>(unite_toggle_auto_preview)
   nnoremap <silent><buffer><expr> l
-        \ unite#smart_map('l', unite#do_action('default'))
+    \ unite#smart_map('l', unite#do_action('default'))
 
   let unite = unite#get_current_unite()
   if unite.buffer_name =~# '^search'
@@ -726,7 +731,7 @@ function! s:unite_my_settings() "{{{
 
   nnoremap <silent><buffer><expr> cd unite#do_action('lcd')
   nnoremap <buffer><expr> S unite#mappings#set_current_filters(
-        \ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
+    \ empty(unite#mappings#get_current_filters()) ? ['sorter_reverse'] : [])
 endfunction "}}}
 
 let g:unite_cursor_line_highlight = 'CursorLine'
@@ -802,24 +807,24 @@ endif
 
 " emmet-vim"{{{
 let g:user_emmet_settings = {
-      \  'lang' : 'ja',
-      \  'html' : {
-      \    'filters' : 'html',
-      \    'indentation' : ' ',
-      \    'snippets' : {
-      \      'jq' : "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js\"></script>"
-      \    },
-      \  },
-      \  'javascript' : {
-      \    'snippets' : {
-      \      'jq' : "\\$(function() {\n\t\\${cursor}\\${child}\n});",
-      \      'jq:json' : "\\$.getJSON(\"${cursor}\", function(data) {\n\t\\${child}\n});",
-      \      'jq:each' : "\\$.each(arr, function(index, item)\n\t\\${child}\n});",
-      \      'fn' : "(function() {\n\t\\${cursor}\n})();",
-      \      'tm' : "setTimeout(function() {\n\t\\${cursor}\n}, 100);",
-      \    },
-      \  },
-      \}
+  \  'lang' : 'ja',
+  \  'html' : {
+  \    'filters' : 'html',
+  \    'indentation' : ' ',
+  \    'snippets' : {
+  \      'jq' : "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js\"></script>"
+  \    },
+  \  },
+  \  'javascript' : {
+  \    'snippets' : {
+  \      'jq' : "\\$(function() {\n\t\\${cursor}\\${child}\n});",
+  \      'jq:json' : "\\$.getJSON(\"${cursor}\", function(data) {\n\t\\${child}\n});",
+  \      'jq:each' : "\\$.each(arr, function(index, item)\n\t\\${child}\n});",
+  \      'fn' : "(function() {\n\t\\${cursor}\n})();",
+  \      'tm' : "setTimeout(function() {\n\t\\${cursor}\n}, 100);",
+  \    },
+  \  },
+  \}
 
 let g:use_emmet_complete_tag = 1
 "}}}
@@ -840,20 +845,19 @@ augroup vimrc-eskk-mapping
 augroup END
 
 "let g:eskk#dictionary = {
-"\ 'path': expand('~/.skk-eskk-jisyo'),
-"\ 'sorted': 0,
-"\ 'encoding': 'utf-8',
-"\}
+"  \ 'path': expand('~/.skk-eskk-jisyo'),
+"  \ 'sorted': 0,
+"  \ 'encoding': 'utf-8',
+"  \}
 let g:eskk#large_dictionary = {
-      \ 'path': expand('/usr/share/skk/SKK-JISYO.L'),
-      \ 'sorted': 1,
-      \ 'encoding': 'euc-jp',
-      \}
+  \ 'path': expand('/usr/share/skk/SKK-JISYO.L'),
+  \ 'sorted': 1,
+  \ 'encoding': 'euc-jp',
+  \}
 
 " Use /bin/sh -c "VTE_CJK_WIDTH=1 gnome-terminal --disable-factory" instead of this settings.
 "if &encoding == 'utf-8' && !has('gui_running')
 " GNOME Terminal only.
-
 " Use <> instead of ▽.
 "let g:eskk#marker_henkan = '<>'
 " Use >> instead of ▼.
