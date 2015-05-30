@@ -52,8 +52,6 @@ NeoBundle 'hrsh7th/vim-versions'
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'lambdalisue/vim-gista'
 NeoBundle 'majutsushi/tagbar'
-NeoBundleLazy 'mattn/benchvimrc-vim',
-  \ {'autoload' : { 'commands' : 'BenchVimrc'}}
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'motemen/git-vim'
@@ -61,12 +59,11 @@ NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'osyo-manga/unite-vimpatches'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'pasela/unite-webcolorname'
+NeoBundle 'rhysd/github-complete.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sophacles/vim-processing'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
-NeoBundleLazy 'thinca/vim-scouter',
-  \ {'autoload' : { 'commands' : 'Scouter'}}
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-liquid'
@@ -78,13 +75,16 @@ NeoBundle 'tyru/eskk.vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
 NeoBundleLazy 'cohama/lexima.vim'
-NeoBundleLazy 'kana/vim-smartinput'
 NeoBundleLazy 'lilydjwg/colorizer'
+NeoBundleLazy 'mattn/benchvimrc-vim',
+  \ {'autoload' : { 'commands' : 'BenchVimrc'}}
 NeoBundleLazy 'mattn/emoji-vim'
 NeoBundleLazy 'mattn/webapi-vim'
 NeoBundleLazy 'mattn/wwwrenderer-vim'
 NeoBundleLazy 'skammer/vim-css-color'
 NeoBundleLazy 'thinca/vim-openbuf'
+NeoBundleLazy 'thinca/vim-scouter',
+  \ {'autoload' : { 'commands' : 'Scouter'}}
 NeoBundleLazy 'thinca/vim-showtime'
 NeoBundleLazy 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'ujihisa/unite-font'
@@ -206,36 +206,6 @@ set title
 " 行番号を表示
 "set number
 
-augroup vimrc-auto-cursorline
-  autocmd!
-  autocmd CursorMoved,CursorMovedI * call s:auto_cursorline('CursorMoved')
-  autocmd CursorHold,CursorHoldI * call s:auto_cursorline('CursorHold')
-  autocmd WinEnter * call s:auto_cursorline('WinEnter')
-  autocmd WinLeave * call s:auto_cursorline('WinLeave')
-
-  let s:cursorline_lock = 0
-  function! s:auto_cursorline(event)
-    if a:event ==# 'WinEnter'
-      setlocal cursorline
-      let s:cursorline_lock = 2
-    elseif a:event ==# 'WinLeave'
-      setlocal nocursorline
-    elseif a:event ==# 'CursorMoved'
-      if s:cursorline_lock
-	if 1 < s:cursorline_lock
-	  let s:cursorline_lock = 1
-	else
-	  setlocal nocursorline
-	  let s:cursorline_lock = 0
-	endif
-      endif
-    elseif a:event ==# 'CursorHold'
-      setlocal cursorline
-      let s:cursorline_lock = 1
-    endif
-  endfunction
-augroup END
-
 " タブ幅制御
 set tabstop=8
 set softtabstop=2
@@ -321,6 +291,67 @@ augroup vimrc-swapchoice-readonly
   autocmd!
   autocmd SwapExists * let v:swapchoice = 'o'
 augroup END
+
+augroup vimrc-auto-cursorline
+  autocmd!
+  autocmd CursorMoved,CursorMovedI * call s:auto_cursorline('CursorMoved')
+  autocmd CursorHold,CursorHoldI * call s:auto_cursorline('CursorHold')
+  autocmd WinEnter * call s:auto_cursorline('WinEnter')
+  autocmd WinLeave * call s:auto_cursorline('WinLeave')
+
+  let s:cursorline_lock = 0
+  function! s:auto_cursorline(event)
+    if a:event ==# 'WinEnter'
+      setlocal cursorline
+      let s:cursorline_lock = 2
+    elseif a:event ==# 'WinLeave'
+      setlocal nocursorline
+    elseif a:event ==# 'CursorMoved'
+      if s:cursorline_lock
+	if 1 < s:cursorline_lock
+	  let s:cursorline_lock = 1
+	else
+	  setlocal nocursorline
+	  let s:cursorline_lock = 0
+	endif
+      endif
+    elseif a:event ==# 'CursorHold'
+      setlocal cursorline
+      let s:cursorline_lock = 1
+    endif
+  endfunction
+augroup END
+
+" From vimrc_example.vim"{{{
+augroup vimrc-from-vimrc_example
+  autocmd!
+  " For all text files set 'textwidth' to 78 characters.
+  autocmd FileType text setlocal textwidth=78
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+augroup END
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+    \ | wincmd p | diffthis
+endif
+
+if has('langmap') && exists('+langnoremap')
+  " Prevent that the langmap option applies to characters that result from a
+  " mapping.  If unset (default), this may break plugins (but it's backward
+  " compatible).
+  set langnoremap
+endif
+"}}}
 
 " quickrun.vim"{{{
 let g:quickrun_config = {}
@@ -593,7 +624,7 @@ nnoremap <silent> [unite]c  :<C-u>Unite change<CR>
 nnoremap <silent> [unite]d  :<C-u>Unite -buffer-name=files -default-action=lcd directory_mru<CR>
 nnoremap <silent> [unite]ma :<C-u>Unite mapping<CR>
 nnoremap <silent> [unite]me :<C-u>Unite output:message -wrap<CR>
-nnoremap <silent> [unite]up :<C-u>Unite neobundle/update -log -wrap<CR>
+nnoremap <silent> [unite]up :<C-u>Unite neobundle/update -wrap<CR>
 inoremap <silent> <C-z>  <C-o>:call unite#start_complete(['register'], {'is_insert' : 1})<CR>
 nnoremap  [unite]f  :<C-u>Unite source<CR>
 
