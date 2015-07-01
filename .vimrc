@@ -131,6 +131,8 @@ endif
 " Disable netrw.vim
 let g:loaded_netrwPlugin = 1
 
+NeoBundle 'tomasr/molokai'
+
 call neobundle#end()
 
 filetype plugin indent on       " Required!
@@ -172,26 +174,37 @@ set mouse=a
 
 " シンタックスハイライト有効化
 syntax enable
-"highlight Normal ctermbg=black ctermfg=grey
-"highlight StatusLine term=none cterm=none ctermfg=black ctermbg=grey
-highlight CursorLine term=none cterm=bold ctermfg=none ctermbg=darkgray
-highlight SpellBad ctermbg=Red
+set background=dark
+
+" Explicitly tell vim that the terminal supports 256 colors
+set t_Co=256
+
+" 以下のコマンドは :colorscheme の前に記述する
+augroup vimrc-colorscheme
+  autocmd!
+  autocmd ColorScheme * highlight Normal ctermbg=none ctermfg=white
+  "autocmd ColorScheme * highlight StatusLine term=none cterm=none ctermfg=black ctermbg=grey
+  "autocmd ColorScheme * highlight CursorLine term=none cterm=bold ctermfg=none ctermbg=darkgray
+  "autocmd ColorScheme * highlight SpellBad term=reverse ctermbg=52
+
+  "ポップアップ補完メニュー色設定
+  "autocmd ColorScheme * highlight Pmenu ctermbg=DarkGray ctermfg=White guibg=#606060
+  "autocmd ColorScheme * highlight PmenuSel ctermbg=Blue guibg=SlateBlue
+  "autocmd ColorScheme * highlight PmenuSbar ctermbg=Gray guibg=#404040
+  "autocmd ColorScheme * highlight PmenuThumb ctermbg=DarkBlue guibg=Red
+augroup END
+
+colorscheme molokai
 
 " vim-airline"{{{
-set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+let g:airline_theme = 'dark'
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 let g:airline#extensions#default#section_truncate_width = {}
 "let g:airline#extensions#tabline#enabled = 0
 "let g:airline#extensions#tabline#tab_min_count = 2
 "let g:airline#extensions#tabline#show_buffers = 0
 "}}}
-
-"ポップアップ補完メニュー色設定
-highlight Pmenu ctermbg=DarkGray ctermfg=White guibg=#606060
-highlight PmenuSel ctermbg=Blue guibg=SlateBlue
-highlight PmenuSbar ctermbg=Gray guibg=#404040
-highlight PmenuThumb ctermbg=DarkBlue guibg=Red
 
 " ステータスラインを表示
 set laststatus=2 " ステータスラインを常に表示
