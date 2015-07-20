@@ -738,7 +738,7 @@ let g:unite_source_menu_menus.ff.command_candidates = [
 let g:unite_source_history_yank_enable = 1
 let g:unite_winheight = 20
 let g:unite_winwidth  = 78
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
+"call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
 augroup vimrc-unite-ft
   autocmd!
