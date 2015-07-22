@@ -259,7 +259,7 @@ set wildignore=*.o,*.obj,*.bak,*.swp,*.d,*~
 set display=lastline
 
 set spelllang=en,cjk
-set nofoldenable
+set foldlevelstart=99
 set history=200
 set undofile
 if has('patch-7.4.338')
