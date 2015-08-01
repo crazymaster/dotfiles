@@ -566,7 +566,7 @@ let g:vimfiler_file_icon = '-'
 " Windows only and require latest vimproc.
 "let g:unite_kind_file_use_trashbox = 1
 
-let g:vimfiler_ignore_pattern = '\(\~$\)'
+let g:vimfiler_ignore_pattern = '\~$'
 "}}}
 
 " vimshell"{{{
