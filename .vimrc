@@ -75,7 +75,7 @@ NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'tyru/eskk.vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
-NeoBundleLazy 'cohama/lexima.vim'
+NeoBundle 'cohama/lexima.vim'
 NeoBundleLazy 'lilydjwg/colorizer'
 NeoBundleLazy 'mattn/benchvimrc-vim',
   \ {'autoload' : { 'commands' : 'BenchVimrc'}}
@@ -94,6 +94,7 @@ NeoBundleLazy 'ujihisa/unite-font'
 "NeoBundleLazy 'ujihisa/quicklearn'
 "NeoBundleLazy 'ujihisa/unite-gem'
 "NeoBundleLazy 'ujihisa/unite-locate'
+"NeoBundle 'osyo-manga/vim-watchdogs'
 
 "NeoBundle 'syngan/vim-vimlint', {
 "  \ 'depends' : 'ynkdir/vim-vimlparser'}
@@ -939,4 +940,12 @@ let g:syntastic_auto_loc_list = 2
 
 " Tagbar"{{{
 nmap <F8> :TagbarToggle<CR>
+"}}}
+
+" github-complete.vim{{{
+augroup vimrc-github-complete
+  autocmd!
+  autocmd FileType gitcommit setl omnifunc=github_complete#complete
+augroup END
+let g:github_complete_enable_neocomplete = 1
 "}}}
