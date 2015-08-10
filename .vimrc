@@ -28,6 +28,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "  \ }
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'Shougo/echodoc'
+NeoBundle 'Shougo/neco-syntax'
+NeoBundle 'Shougo/neco-vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neoinclude.vim'
 NeoBundle 'Shougo/neomru.vim'
