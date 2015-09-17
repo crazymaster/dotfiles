@@ -34,3 +34,5 @@
 	rename = copies
 [difftool]
 	prompt = false
+[fetch]
+	prune = true
