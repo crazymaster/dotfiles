@@ -12,8 +12,9 @@ set guioptions-=b "下スクロールバーなし
 if has('win32') || has('win64')
   augroup hack234
     autocmd!
-    autocmd FocusGained * set transparency=220
-    autocmd FocusLost * set transparency=150
+"    autocmd FocusGained * set transparency=250
+"    autocmd FocusLost * set transparency=160
+    autocmd GUIEnter * set transparency=240
   augroup END
 elseif has('unix')
   set guifont=Ubuntu\ Mono\ 13
