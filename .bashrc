@@ -138,5 +138,6 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWUPSTREAM=auto
 
+export PATH=$PATH:$HOME/bin
 eval "$(hub alias -s)"
 
