@@ -21,11 +21,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "
 
 " Original repositories in github
-"NeoBundleLazy 'Rip-Rip/clang_complete', {
-"  \ 'autoload' : {
-"  \     'filetypes' : ['c', 'cpp'],
-"  \    },
-"  \ }
 NeoBundle 'Shougo/context_filetype.vim'
 NeoBundle 'Shougo/echodoc'
 NeoBundle 'Shougo/neco-syntax'
@@ -45,31 +40,23 @@ NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/vinarise'
 NeoBundle 'adie/BlockDiff'
 NeoBundle 'bling/vim-airline'
-NeoBundle 'csexton/jekyll.vim'
 NeoBundle 'godlygeek/tabular'
-NeoBundle 'groenewege/vim-less'
 NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'hrsh7th/vim-versions'
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'lambdalisue/vim-gista'
 NeoBundle 'majutsushi/tagbar'
-NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'motemen/git-vim'
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'osyo-manga/unite-vimpatches'
-NeoBundle 'othree/html5.vim'
 NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'rhysd/github-complete.vim'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'sophacles/vim-processing'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-liquid'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tsukkee/lingr-vim'
@@ -78,33 +65,62 @@ NeoBundle 'tyru/eskk.vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'cohama/lexima.vim'
-NeoBundleLazy 'lilydjwg/colorizer'
 NeoBundleLazy 'mattn/benchvimrc-vim',
   \ {'autoload' : { 'commands' : 'BenchVimrc'}}
 NeoBundleLazy 'mattn/emoji-vim'
 NeoBundleLazy 'mattn/webapi-vim'
 NeoBundleLazy 'mattn/wwwrenderer-vim'
-NeoBundleLazy 'skammer/vim-css-color'
 NeoBundleLazy 'thinca/vim-openbuf'
 NeoBundleLazy 'thinca/vim-scouter',
   \ {'autoload' : { 'commands' : 'Scouter'}}
 NeoBundleLazy 'thinca/vim-showtime'
 NeoBundleLazy 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'ujihisa/unite-font'
-"NeoBundleLazy 'miripiruni/CSScomb-for-Vim'
 "NeoBundleLazy 'osyo-manga/unite-fold'
 "NeoBundleLazy 'ujihisa/quicklearn'
 "NeoBundleLazy 'ujihisa/unite-gem'
 "NeoBundleLazy 'ujihisa/unite-locate'
+
+NeoBundle 'scrooloose/syntastic'
 "NeoBundle 'osyo-manga/vim-watchdogs'
 
+" Language specific plugin
 "NeoBundle 'syngan/vim-vimlint', {
 "  \ 'depends' : 'ynkdir/vim-vimlparser'}
-NeoBundle 'vim-jp/vital.vim'
-NeoBundle 'thinca/vim-themis'
+"NeoBundle 'vim-jp/vital.vim'
+"NeoBundle 'thinca/vim-themis'
+
+"NeoBundleLazy 'Rip-Rip/clang_complete', {
+"  \ 'autoload' : {
+"  \     'filetypes' : ['c', 'cpp'],
+"  \    },
+"  \ }
+
+NeoBundle 'vim-jp/vim-go-extra'
+"NeoBundle 'fatih/vim-go'
+
+"NeoBundleLazy 'c9s/perlomni.vim.git'
+"NeoBundleSource perlomni.vim
+"NeoBundleLazy 'klen/python-mode'
+"augroup vimrc-python
+"  autocmd!
+"  autocmd FileType python NeoBundleSource python-mode
+"augroup END
+
+NeoBundle 'othree/html5.vim'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundleLazy 'skammer/vim-css-color'
+NeoBundleLazy 'lilydjwg/colorizer'
+NeoBundle 'csexton/jekyll.vim'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'tpope/vim-liquid'
+NeoBundle 'mattn/emmet-vim'
+"NeoBundleLazy 'miripiruni/CSScomb-for-Vim'
+
+NeoBundle 'sophacles/vim-processing'
 
 " Vim-script repositories
-NeoBundleLazy 'DirDiff.vim'
+"NeoBundleLazy 'DirDiff.vim'
 
 if has('unix')
   NeoBundle 'fuenor/im_control.vim'
@@ -123,18 +139,10 @@ if has('unix')
     \ }
 endif
 
-" Lazy load.
-"NeoBundleLazy 'c9s/perlomni.vim.git'
-"NeoBundleSource perlomni.vim
-"NeoBundleLazy 'klen/python-mode'
-"augroup vimrc-python
-"  autocmd!
-"  autocmd FileType python NeoBundleSource python-mode
-"augroup END
-
 " Disable netrw.vim
 let g:loaded_netrwPlugin = 1
 
+" ColorScheme
 NeoBundle 'tomasr/molokai'
 
 call neobundle#end()
