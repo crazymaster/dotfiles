@@ -982,3 +982,6 @@ if has("vim_starting") && !has('gui_running') && has('vertsplit')
   let &t_RV .= "\e[?6;69h\e[3;9H\e[6n\e[0;0s\e[?6;69l"
 endif
 "}}}
+
+" gofmt
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
