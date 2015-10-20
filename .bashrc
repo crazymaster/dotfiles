@@ -138,6 +138,10 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWUPSTREAM=auto
 
-export PATH=$PATH:$HOME/bin
+#export PATH=$PATH:$HOME/bin
 eval "$(hub alias -s)"
+
+# golang config
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
