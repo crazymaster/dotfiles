@@ -30,6 +30,7 @@ NeoBundle 'Shougo/neoinclude.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/neoyank.vim'
 NeoBundle 'Shougo/unite-build'
 NeoBundle 'Shougo/unite-help'
 NeoBundle 'Shougo/unite-outline'
@@ -232,7 +233,7 @@ set title
 "set number
 
 " タブ幅制御
-set tabstop=8
+set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set smarttab
