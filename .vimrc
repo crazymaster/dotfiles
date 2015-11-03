@@ -334,12 +334,12 @@ augroup vimrc-auto-cursorline
       setlocal nocursorline
     elseif a:event ==# 'CursorMoved'
       if s:cursorline_lock
-	if 1 < s:cursorline_lock
-	  let s:cursorline_lock = 1
-	else
-	  setlocal nocursorline
-	  let s:cursorline_lock = 0
-	endif
+        if 1 < s:cursorline_lock
+          let s:cursorline_lock = 1
+        else
+          setlocal nocursorline
+          let s:cursorline_lock = 0
+        endif
       endif
     elseif a:event ==# 'CursorHold'
       setlocal cursorline
