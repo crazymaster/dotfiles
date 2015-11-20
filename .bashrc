@@ -127,12 +127,6 @@ if [ -r ~/bash-completion ]; then
   . ~/bash-completion/completion-ruby/completion-ruby-all
 fi
 
-#  find /usr/share -name '*contrib*' | grep git
-GIT_CONTRIB_DIR=/usr/share/doc/git/contrib
-if [ -r ${GIT_CONTRIB_DIR}/diff-highlight ]; then
-  export PATH=$PATH:${GIT_CONTRIB_DIR}/diff-highlight
-fi
-
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWSTASHSTATE=true

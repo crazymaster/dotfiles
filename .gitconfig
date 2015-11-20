@@ -15,6 +15,7 @@
 #	status = status -sb
 #	diff = diff --color-words
 [pager]
+	## find /usr/share -name '*contrib*' | grep git
 	log = diff-highlight | less
 	show = diff-highlight | less
 	diff = diff-highlight | less
