@@ -121,7 +121,6 @@ PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[31m\]$(__git_ps1)\[\033[
 
 # completion
 if [ -r ~/bash-completion ]; then
-  . ~/bash-completion/git-completion.bash
   . ~/bash-completion/git-prompt.sh
   . ~/bash-completion/hub.bash_completion.sh
   . ~/bash-completion/completion-ruby/completion-ruby-all
@@ -132,10 +131,9 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWUPSTREAM=auto
 
-#export PATH=$PATH:$HOME/bin
 eval "$(hub alias -s)"
 
 # golang config
 export GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin
 
