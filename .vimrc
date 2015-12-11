@@ -252,7 +252,7 @@ set wildmenu
 set formatoptions+=mM
 
 " 日本語の整形にautofmtを使う。Kaoriya版だとデフォルトで設定済み
-set formatexpr=autofmt#japanese#formatexpr()
+"set formatexpr=autofmt#japanese#formatexpr()
 "set colorcolumn=+1    " textwidth を越えた部分に色を付ける
 let autofmt_allow_over_tw=1  " ぶら下げを半角1文字分まで許可
 
