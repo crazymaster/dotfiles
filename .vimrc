@@ -65,7 +65,7 @@ NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'tyru/eskk.vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
-NeoBundle 'cohama/lexima.vim'
+NeoBundleLazy 'cohama/lexima.vim'
 NeoBundleLazy 'mattn/benchvimrc-vim',
   \ {'autoload' : { 'commands' : 'BenchVimrc'}}
 NeoBundleLazy 'mattn/emoji-vim'
