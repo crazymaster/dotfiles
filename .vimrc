@@ -297,9 +297,9 @@ nnoremap <F5> :!ctags -R<CR>
 
 " クリップボードを利用する
 if has('unnamedplus')
-  set clipboard=unnamedplus
+  set clipboard^=unnamedplus
 else
-  set clipboard=unnamed
+  set clipboard^=unnamed
 endif
 
 " 自動的にQuickFixを開く
