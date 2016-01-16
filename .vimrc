@@ -40,13 +40,11 @@ NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/vinarise'
 NeoBundle 'adie/BlockDiff'
-NeoBundle 'bling/vim-airline'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'honza/vim-snippets'
-NeoBundle 'hrsh7th/vim-versions'
-NeoBundle 'kmnk/vim-unite-giti'
 NeoBundle 'kana/vim-smartchr'
+NeoBundle 'kmnk/vim-unite-giti'
 NeoBundle 'lambdalisue/vim-gista'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'mattn/excitetranslate-vim'
@@ -66,6 +64,7 @@ NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'tyru/eskk.vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
+NeoBundle 'vim-airline/vim-airline'
 NeoBundleLazy 'cohama/lexima.vim'
 NeoBundleLazy 'mattn/benchvimrc-vim',
   \ {'autoload' : { 'commands' : 'BenchVimrc'}}
@@ -986,4 +985,7 @@ endif
 "}}}
 
 " gofmt
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
+augroup vimrc-gofmt
+  autocmd!
+  autocmd FileType go autocmd BufWritePre <buffer> Fmt
+augroup END
