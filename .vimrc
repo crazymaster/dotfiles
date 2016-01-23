@@ -234,8 +234,8 @@ set title
 
 " タブ幅制御
 set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set softtabstop=-1
+set shiftwidth=0
 set smarttab
 set shiftround
 " タブをスペースに展開する
@@ -950,7 +950,7 @@ let g:syntastic_auto_loc_list = 2
 "}}}
 
 " Tagbar"{{{
-nmap <F8> :TagbarToggle<CR>
+nnoremap <F8> :TagbarToggle<CR>
 "}}}
 
 " github-complete.vim{{{
@@ -964,7 +964,7 @@ let g:github_complete_enable_neocomplete = 1
 " Use vsplit mode{{{
 " http://qiita.com/kefir_/items/c725731d33de4d8fb096
 if has("vim_starting") && !has('gui_running') && has('vertsplit')
-  function! g:EnableVsplitMode()
+  function! EnableVsplitMode()
     " enable origin mode and left/right margins
     let &t_CS = "y"
     let &t_ti = &t_ti . "\e[?6;69h"
