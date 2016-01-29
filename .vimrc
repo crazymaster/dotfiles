@@ -65,6 +65,7 @@ NeoBundle 'tyru/eskk.vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundleLazy 'cohama/lexima.vim'
 NeoBundleLazy 'mattn/benchvimrc-vim',
   \ {'autoload' : { 'commands' : 'BenchVimrc'}}
