@@ -142,6 +142,7 @@ endif
 
 " Disable netrw.vim
 let g:loaded_netrwPlugin = 1
+runtime macros/matchit.vim
 
 " ColorScheme
 NeoBundle 'tomasr/molokai'
@@ -285,8 +286,8 @@ vnoremap < <gv
 vnoremap > >gv
 
 " 表示行移動
-nnoremap j gj
-nnoremap k gk
+"nnoremap j gj
+"nnoremap k gk
 
 " 連続コピペ
 vnoremap <silent> <C-p> "0p<CR>
