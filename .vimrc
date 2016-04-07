@@ -37,17 +37,16 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vim-vcs'
 NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/vinarise'
-NeoBundle 'adie/BlockDiff'
-NeoBundle 'godlygeek/tabular'
+NeoBundleLazy 'Shougo/vinarise'
+NeoBundleLazy 'adie/BlockDiff'
+NeoBundleLazy 'godlygeek/tabular'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kmnk/vim-unite-giti'
 NeoBundle 'lambdalisue/vim-gista'
 NeoBundle 'majutsushi/tagbar'
-NeoBundle 'mattn/excitetranslate-vim'
+NeoBundleLazy 'mattn/excitetranslate-vim'
 NeoBundle 'motemen/git-vim'
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'osyo-manga/unite-vimpatches'
@@ -59,9 +58,9 @@ NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'tsukkee/lingr-vim'
+NeoBundleLazy 'tsukkee/lingr-vim'
 NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'tyru/eskk.vim'
+NeoBundleLazy 'tyru/eskk.vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'vim-airline/vim-airline'
@@ -115,7 +114,7 @@ NeoBundleLazy 'skammer/vim-css-color'
 NeoBundleLazy 'lilydjwg/colorizer'
 NeoBundle 'csexton/jekyll.vim'
 NeoBundle 'tpope/vim-liquid'
-NeoBundle 'mattn/emmet-vim'
+NeoBundleLazy 'mattn/emmet-vim'
 "NeoBundleLazy 'miripiruni/CSScomb-for-Vim'
 
 NeoBundle 'sophacles/vim-processing'
@@ -580,27 +579,6 @@ let g:vimfiler_file_icon = '-'
 "let g:unite_kind_file_use_trashbox = 1
 
 let g:vimfiler_ignore_pattern = '\~$'
-"}}}
-
-" vimshell"{{{
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-"let g:vimshell_right_prompt = 'vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
-
-if has('win32') || has('win64')
-  " Display user name on Windows.
-  let g:vimshell_prompt = $USERNAME."% "
-else
-  " Display user name on Linux.
-  let g:vimshell_prompt = $USER."% "
-endif
-
-" Initialize execute file list.
-let g:vimshell_execute_file_list = {}
-call vimshell#set_execute_file('txt,vim,c,h,cpp,d,xml,java', 'vim')
-let g:vimshell_execute_file_list['rb'] = 'ruby'
-let g:vimshell_execute_file_list['pl'] = 'perl'
-let g:vimshell_execute_file_list['py'] = 'python'
-call vimshell#set_execute_file('html,xhtml', 'gexe firefox')
 "}}}
 
 " git.vim{{{
