@@ -246,8 +246,6 @@ set autoindent
 set wrapscan
 " 括弧入力時に対応する括弧を表示
 set showmatch
-" コマンドライン補完するときに強化されたものを使う
-set wildmenu
 " テキスト挿入中の自動折り返しを日本語に対応させる
 set formatoptions+=mM
 
