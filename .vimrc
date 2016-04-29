@@ -245,7 +245,7 @@ set autoindent
 " 検索時にファイルの最後まで行ったら最初に戻る
 set wrapscan
 " 括弧入力時に対応する括弧を表示
-set showmatch
+"set showmatch
 " テキスト挿入中の自動折り返しを日本語に対応させる
 set formatoptions+=mM
 
