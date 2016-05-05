@@ -124,6 +124,7 @@ NeoBundle 'sophacles/vim-processing'
 
 if has('unix')
   NeoBundle 'fuenor/im_control.vim'
+  let IM_CtrlMode = 6
   set timeout timeoutlen=3000 ttimeoutlen=100
 
   NeoBundle 'vim-jp/autofmt'
@@ -151,11 +152,6 @@ filetype plugin indent on       " Required!
 " Installation check.
 NeoBundleCheck
 "}}}
-
-" マシン固有の設定
-if filereadable(expand('~/.vimrc.local'))
-  source ~/.vimrc.local
-endif
 
 " 文字コードの自動認識
 set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
