@@ -2,7 +2,7 @@
 	name = Kenichi Ito
 	email = ken.i54k@gmail.com
 [credential]
-	helper = cache
+	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
 [github]
 	user = crazymaster
 [color]
