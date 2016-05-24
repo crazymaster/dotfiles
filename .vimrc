@@ -108,6 +108,12 @@ NeoBundle 'vim-jp/vim-go-extra'
 "  autocmd FileType python NeoBundleSource python-mode
 "augroup END
 
+NeoBundle 'rhysd/vim-clang-format'
+augroup vimrc-clang-format
+  autocmd!
+  autocmd FileType c,cpp ClangFormatAutoEnable
+augroup END
+
 NeoBundle 'othree/html5.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundleLazy 'skammer/vim-css-color'
