@@ -66,14 +66,14 @@ NeoBundle 'ujihisa/neco-look'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundleLazy 'cohama/lexima.vim'
-NeoBundleLazy 'mattn/benchvimrc-vim',
-  \ {'autoload' : { 'commands' : 'BenchVimrc'}}
+NeoBundle 'mattn/benchvimrc-vim',
+  \ {'on_cmd' : 'BenchVimrc'}
 NeoBundleLazy 'mattn/emoji-vim'
 NeoBundleLazy 'mattn/webapi-vim'
 NeoBundleLazy 'mattn/wwwrenderer-vim'
 NeoBundleLazy 'thinca/vim-openbuf'
-NeoBundleLazy 'thinca/vim-scouter',
-  \ {'autoload' : { 'commands' : 'Scouter'}}
+NeoBundle 'thinca/vim-scouter',
+  \ { 'on_cmd' : 'Scouter'}
 NeoBundleLazy 'thinca/vim-showtime'
 NeoBundleLazy 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'ujihisa/unite-font'
@@ -97,8 +97,8 @@ NeoBundle 'scrooloose/syntastic'
 "  \    },
 "  \ }
 
-NeoBundle 'vim-jp/vim-go-extra'
-"NeoBundle 'fatih/vim-go'
+"NeoBundle 'vim-jp/vim-go-extra'
+NeoBundle 'fatih/vim-go'
 
 "NeoBundleLazy 'c9s/perlomni.vim.git'
 "NeoBundleSource perlomni.vim
@@ -933,7 +933,7 @@ let g:syntastic_auto_loc_list = 2
 "}}}
 
 " Tagbar"{{{
-nnoremap <F8> :TagbarToggle<CR>
+nnoremap <F8> :<C-u>TagbarToggle<CR>
 "}}}
 
 " github-complete.vim{{{
@@ -968,7 +968,7 @@ endif
 "}}}
 
 " gofmt
-augroup vimrc-gofmt
-  autocmd!
-  autocmd FileType go autocmd BufWritePre <buffer> Fmt
-augroup END
+"augroup vimrc-gofmt
+"  autocmd!
+"  autocmd FileType go BufWritePre <buffer> Fmt
+"augroup END
