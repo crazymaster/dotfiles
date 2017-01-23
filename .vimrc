@@ -583,6 +583,8 @@ let g:vimfiler_file_icon = '-'
 "let g:unite_kind_file_use_trashbox = 1
 
 let g:vimfiler_ignore_pattern = '\~$'
+
+nnoremap <F4> :<C-u>VimFilerExplorer -toggle -winwidth=25<CR>
 "}}}
 
 " git.vim{{{
@@ -933,7 +935,7 @@ let g:syntastic_auto_loc_list = 2
 "}}}
 
 " Tagbar"{{{
-nnoremap <F8> :<C-u>TagbarToggle<CR>
+nnoremap <F3> :<C-u>TagbarToggle<CR>
 "}}}
 
 " github-complete.vim{{{
