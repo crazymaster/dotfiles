@@ -99,6 +99,7 @@ NeoBundle 'scrooloose/syntastic'
 
 "NeoBundle 'vim-jp/vim-go-extra'
 NeoBundle 'fatih/vim-go'
+NeoBundle 'vim-jp/syntax-vim-ex'
 
 "NeoBundleLazy 'c9s/perlomni.vim.git'
 "NeoBundleSource perlomni.vim
@@ -219,6 +220,7 @@ colorscheme molokai
 let g:airline_theme = 'dark'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+let g:airline_symbols_ascii = 1
 let g:airline#extensions#default#section_truncate_width = {}
 "let g:airline#extensions#tabline#enabled = 0
 "let g:airline#extensions#tabline#tab_min_count = 2
