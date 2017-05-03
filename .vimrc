@@ -121,7 +121,7 @@ NeoBundleLazy 'skammer/vim-css-color'
 NeoBundleLazy 'lilydjwg/colorizer'
 NeoBundle 'csexton/jekyll.vim'
 NeoBundle 'tpope/vim-liquid'
-NeoBundleLazy 'mattn/emmet-vim'
+NeoBundle 'mattn/emmet-vim'
 "NeoBundleLazy 'miripiruni/CSScomb-for-Vim'
 
 NeoBundle 'sophacles/vim-processing'
