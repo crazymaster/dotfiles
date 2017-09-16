@@ -137,3 +137,6 @@ eval "$(hub alias -s)"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+# Java application fonts workaround
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+
