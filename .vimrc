@@ -131,7 +131,16 @@ NeoBundle 'sophacles/vim-processing'
 
 if has('unix')
   NeoBundle 'fuenor/im_control.vim'
-  let IM_CtrlMode = 6
+  let IM_CtrlMode = 1
+  function! IMCtrl(cmd)
+    let cmd = a:cmd
+    if cmd == 'On'
+      let res = system('ibus engine "mozc-jp"')
+    elseif cmd == 'Off'
+      let res = system('ibus engine "xkb:jp::jpn"')
+    endif
+    return ''
+  endfunction
   set timeout timeoutlen=3000 ttimeoutlen=100
 
   NeoBundle 'vim-jp/autofmt'
