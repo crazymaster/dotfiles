@@ -97,7 +97,6 @@ NeoBundle 'scrooloose/syntastic'
 "  \    },
 "  \ }
 
-"NeoBundle 'vim-jp/vim-go-extra'
 NeoBundle 'fatih/vim-go'
 NeoBundle 'vim-jp/syntax-vim-ex'
 
@@ -125,6 +124,10 @@ NeoBundle 'mattn/emmet-vim'
 "NeoBundleLazy 'miripiruni/CSScomb-for-Vim'
 
 NeoBundle 'sophacles/vim-processing'
+
+NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'racer-rust/vim-racer'
+let g:rustfmt_autosave = 1
 
 " Vim-script repositories
 "NeoBundleLazy 'DirDiff.vim'
