@@ -109,7 +109,6 @@ augroup vimrc-python
 augroup END
 let g:pymode_python = 'python3'
 let g:pymode_options = 0
-set completeopt-=preview
 
 NeoBundle 'rhysd/vim-clang-format'
 augroup vimrc-clang-format
