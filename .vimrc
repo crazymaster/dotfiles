@@ -102,11 +102,12 @@ NeoBundle 'vim-jp/syntax-vim-ex'
 
 "NeoBundleLazy 'c9s/perlomni.vim.git'
 "NeoBundleSource perlomni.vim
-"NeoBundleLazy 'klen/python-mode'
-"augroup vimrc-python
-"  autocmd!
-"  autocmd FileType python NeoBundleSource python-mode
-"augroup END
+NeoBundleLazy 'python-mode/python-mode'
+augroup vimrc-python
+  autocmd!
+  autocmd FileType python NeoBundleSource python-mode
+augroup END
+let g:pymode_python = 'python3'
 
 NeoBundle 'rhysd/vim-clang-format'
 augroup vimrc-clang-format
@@ -249,8 +250,8 @@ set showcmd
 " タイトルを表示
 set title
 
-" 行番号を表示
-"set number
+" 行番号を非表示
+set nonumber
 
 " タブ幅制御
 set tabstop=2
