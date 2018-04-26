@@ -140,3 +140,6 @@ export PATH=$PATH:$GOPATH/bin
 # Java application fonts workaround
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
+source /opt/Xilinx/Vivado/2016.3/settings64.sh
+source /opt/Xilinx/SDK/2016.3/settings64.sh
+export PATH=$PATH:/opt/Xilinx/SDK/2016.3/bin
