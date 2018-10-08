@@ -131,6 +131,8 @@ NeoBundle 'rust-lang/rust.vim'
 NeoBundle 'racer-rust/vim-racer'
 let g:rustfmt_autosave = 1
 
+NeoBundle 'jvirtanen/vim-octave'
+
 " Vim-script repositories
 "NeoBundleLazy 'DirDiff.vim'
 
