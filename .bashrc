@@ -154,3 +154,5 @@ _pip_completion()
 complete -o default -F _pip_completion pip3
 # pip bash completion end
 
+export PATH=$PATH:$HOME/.local/bin
+
