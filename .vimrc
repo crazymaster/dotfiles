@@ -102,13 +102,13 @@ NeoBundle 'vim-jp/syntax-vim-ex'
 
 "NeoBundleLazy 'c9s/perlomni.vim.git'
 "NeoBundleSource perlomni.vim
-NeoBundleLazy 'python-mode/python-mode'
-augroup vimrc-python
-  autocmd!
-  autocmd FileType python NeoBundleSource python-mode
-augroup END
-let g:pymode_python = 'python3'
-let g:pymode_options = 0
+"NeoBundle 'python-mode/python-mode'
+"augroup vimrc-python
+"  autocmd!
+"  autocmd FileType python NeoBundleSource python-mode
+"augroup END
+"let g:pymode_python = 'python3'
+"let g:pymode_options = 0
 
 NeoBundle 'rhysd/vim-clang-format'
 augroup vimrc-clang-format
