@@ -156,3 +156,4 @@ complete -o default -F _pip_completion pip3
 
 export PATH=$PATH:$HOME/.local/bin
 
+eval "$(direnv hook bash)"
