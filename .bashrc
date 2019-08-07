@@ -138,11 +138,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 # Java application fonts workaround
-#export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-
-source /opt/Xilinx/Vivado/2016.3/settings64.sh
-source /opt/Xilinx/SDK/2016.3/settings64.sh
-export PATH=$PATH:/opt/Xilinx/SDK/2016.3/bin
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 # pip bash completion start
 _pip_completion()
