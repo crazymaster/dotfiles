@@ -1,8 +1,13 @@
 [user]
 	name = Kenichi Ito
 	email = ken.i54k@gmail.com
+	signingkey = ~/.ssh/id_ed25519.pub
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
 [credential]
-	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
+#	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
 [github]
 	user = crazymaster
 [color]
@@ -16,9 +21,9 @@
 #	diff = diff --color-words
 [pager]
 	## find /usr/share -name '*contrib*' | grep git
-	log = diff-highlight | less
-	show = diff-highlight | less
-	diff = diff-highlight | less
+#	log = diff-highlight | less
+#	show = diff-highlight | less
+#	diff = diff-highlight | less
 [branch]
 	autosetuprebase = always
 [pull]
