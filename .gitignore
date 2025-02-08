@@ -5,7 +5,9 @@
 !/.gitconfig
 !/.gitignore_global
 !/.bashrc
+!/.bash_aliases
 !/.ctags
+!/.tmux.conf
 !/.vim/
 /.vim/spell/
 /.vim/bundle/

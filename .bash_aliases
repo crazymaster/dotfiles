@@ -1,0 +1,5 @@
+alias r='ranger'
+alias df='df -hT'
+alias h='htop'
+alias rehash='hash -r'
+alias free='free -hw'
